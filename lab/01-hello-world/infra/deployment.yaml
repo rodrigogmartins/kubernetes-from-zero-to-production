@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greetings-k8s
+  labels:
+    app: greetings-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: greetings-k8s
+  template:
+    metadata:
+      labels:
+        app: greetings-k8s
+    spec:
+      containers:
+      - name: greetings-k8s-container
+        image: greetings-api:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
