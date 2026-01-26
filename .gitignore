@@ -1,0 +1,107 @@
+#######################################
+# General
+#######################################
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+.idea/
+.vscode/
+*.code-workspace
+
+#######################################
+# Go
+#######################################
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Build artifacts
+/bin/
+/build/
+/dist/
+*.out
+*.test
+
+# Go workspace
+/go.work
+/go.work.sum
+
+# Go modules (keep go.sum!)
+/vendor/
+
+#######################################
+# Terraform
+#######################################
+# Local terraform directories
+**/.terraform/
+.terraform.lock.hcl
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+#######################################
+# Kubernetes
+#######################################
+# Generated manifests / local artifacts
+*.local.yaml
+*.local.yml
+
+# Helm
+charts/*/charts/
+charts/*/tmp/
+charts/*/.helmignore.lock
+
+#######################################
+# LocalStack / AWS
+#######################################
+# LocalStack data
+.localstack/
+localstack-data/
+
+# AWS credentials (never commit)
+.aws/
+.env
+.env.*
+
+#######################################
+# Test & Coverage
+#######################################
+coverage.out
+coverage.txt
+coverage.html
+*.coverprofile
+
+#######################################
+# OS / Tooling
+#######################################
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+#######################################
+# Misc
+#######################################
+tmp/
+temp/
+.cache/
