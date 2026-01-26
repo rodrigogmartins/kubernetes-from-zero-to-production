@@ -49,10 +49,6 @@ docs/
 ├── index.md
 ├── 01-fundamentals/
 │ ├── index.md
-│ ├── what-problem-kubernetes-solves.md
-│ ├── control-plane-vs-data-plane.md
-│ ├── reconciliation-loop.md
-│ └── kubernetes-as-a-distributed-system.md
 ├── 02-core-objects/
 │ └── index.md
 ├── 03-scheduling-and-resources/
@@ -159,5 +155,6 @@ If you truly understand what is written here, you will:
 
 ## 📌 Status
 
-🟢 Phase 1 — In Progress
-⚪ Phase 2+ — Planned
+🟢 Phase 1 — Done
+🟢 Phase 2 — In Progress
+⚪ Phase 3+ — Planned
