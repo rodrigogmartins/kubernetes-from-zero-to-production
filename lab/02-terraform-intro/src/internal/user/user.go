@@ -1,7 +1,7 @@
 package user
 
 type User struct {
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Email string `json:"email"`
+	ID    string `json:"id"    dynamodbav:"id"    binding:"required"`
+	Name  string `json:"name"  dynamodbav:"name"  binding:"required"`
+	Email string `json:"email" dynamodbav:"email" binding:"required"`
 }

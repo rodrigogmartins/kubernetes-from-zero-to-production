@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -19,18 +20,19 @@ import (
 
 const (
 	app_port  string = "3000"
-	region    string = "us-east-1"
 	tablename string = "users"
 )
 
 func main() {
+	ctx := context.Background()
 
-	cfg, err := config.LoadDefaultConfig(
-		context.Background(),
+	region := os.Getenv("AWS_REGION")
+
+	cfg, err := config.LoadDefaultConfig(ctx,
 		config.WithRegion(region),
 	)
 	if err != nil {
-		log.Fatalf("unable to load AWS SDK config: %v", err)
+		log.Fatal(err)
 	}
 
 	dynamoClient := dynamodb.NewFromConfig(cfg, func(o *dynamodb.Options) {

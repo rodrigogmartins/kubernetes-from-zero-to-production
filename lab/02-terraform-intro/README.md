@@ -40,7 +40,7 @@ Optional (recommended):
 
 ## 🚀 How to run the lab
 
-### 1️⃣ Start LocalStack
+### 1️. Start LocalStack
 
 Run the following command to start LocalStack with DynamoDB enabled:
 
@@ -61,7 +61,7 @@ docker ps
 
 ---
 
-### 2️⃣ Initialize Terraform
+### 2. Initialize Terraform
 
 Navigate to the lab directory:
 
@@ -77,7 +77,7 @@ terraform init
 
 ---
 
-### 3️⃣ Apply the infrastructure
+### 3. Apply the infrastructure
 
 Run:
 
@@ -95,13 +95,12 @@ Once completed, the DynamoDB table will be created in LocalStack.
 
 ---
 
-### 4️⃣ Validate the table creation
+### 4. Validate the table creation
 
 Use the AWS CLI pointing to the LocalStack endpoint:
 
 ```bash
-aws --endpoint-url=http://localhost:4566 \
-    dynamodb list-tables
+aws --endpoint-url=http://localhost:4566 dynamodb list-tables
 ```
 
 Expected output:
@@ -112,24 +111,65 @@ Expected output:
 }
 ```
 
-## 🔌 Integration with the Go API
-
-To connect the API to the local DynamoDB instance, use:
-
-- Endpoint: `http://localhost:4566`
-- Region: `us-east-1`
-- Table name: `users`
-
-Example environment variables:
+### 5. Build Docker image
 
 ```bash
-export AWS_REGION=us-east-1
-export DYNAMODB_TABLE=users
+docker build -t terraform-intro:v1 .
 ```
 
-In the application, the DynamoDB client must be configured to use the LocalStack endpoint explicitly.
+### 6. Run project with Kubernetes
+
+```bash
+kubectl apply -f infra
+```
+
+### 6. Verify result
+
+#### Create user
+
+```bash
+curl --request POST \
+  --url http://localhost:3000/users \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "id": "user-123",
+    "name": "John Wick",
+    "email": "john@example.com"
+  }'
+```
+
+#### Query user
+
+```bash
+curl --request GET --url http://localhost:3000/users/user-123
+```
+
+#### Update user
+
+```bash
+curl --request PUT \
+  --url http://localhost:3000/users/user-123 \
+  --header 'Content-Type: application/json'
+  --data '{
+    "id": "user-123",
+    "name": "Winston Scott",
+    "email": "winston@continental.com"
+  }'
+```
+
+#### Delete user
+
+```bash
+curl --request DELETE --url http://localhost:3000/users/user-123
+```
 
 ## 🧹 Destroying resources
+
+To stop Kubernetes deployment and service:
+
+```bash
+kubectl delete -f infra
+```
 
 To remove the DynamoDB table created by Terraform:
 
@@ -149,14 +189,6 @@ yes
 - Credentials are mocked (`test / test`)
 - LocalStack is used strictly for local development
 - Never use this configuration in production environments
-
-## 📌 Suggested next steps
-
-- Add TTL support to the DynamoDB table
-- Create Global Secondary Indexes (GSIs)
-- Enable DynamoDB Streams
-- Add integration tests using DynamoDB Local
-- Integrate this lab with the Go CRUD API
 
 ## ✅ Conclusion
 

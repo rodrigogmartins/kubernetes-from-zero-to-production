@@ -25,14 +25,21 @@ func (h *UserHandler) Register(r *gin.Engine) {
 
 func (h *UserHandler) create(c *gin.Context) {
 	var user user.User
+
 	if err := c.ShouldBindJSON(&user); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
 		return
 	}
-	if err := h.service.Create(c, user); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+
+	if err := h.service.Create(c.Request.Context(), user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
 		return
 	}
+
 	c.Status(http.StatusCreated)
 }
 

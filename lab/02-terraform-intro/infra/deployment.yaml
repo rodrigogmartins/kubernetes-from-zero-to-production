@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: terraform-intro
+  labels:
+    app: terraform-intro
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: terraform-intro
+  template:
+    metadata:
+      labels:
+        app: terraform-intro
+    spec:
+      containers:
+      - name: terraform-intro-container
+        image: terraform-intro:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        env:
+        - name: AWS_REGION
+          value: us-east-1
+        - name: AWS_ACCESS_KEY_ID
+          value: test
+        - name: AWS_SECRET_ACCESS_KEY
+          value: test
+        - name: AWS_ENDPOINT_URL
+          value: http://host.docker.internal:4566
