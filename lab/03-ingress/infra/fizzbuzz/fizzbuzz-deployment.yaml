@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fizzbuzz-k8s
+  labels:
+    app: fizzbuzz-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fizzbuzz-k8s
+  template:
+    metadata:
+      labels:
+        app: fizzbuzz-k8s
+    spec:
+      containers:
+      - name: fizzbuzz-k8s-container
+        image: fizzbuzz-app-api:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000

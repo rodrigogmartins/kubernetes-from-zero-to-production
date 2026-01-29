@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sandbox-all
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: greetings.sandbox.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: greetings
+            port:
+              number: 3000
+  - host: fizz.sandbox.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: fizzbuzz
+            port:
+              number: 3000
+  - host: sandbox.com
+    http:
+      paths:
+      - path: /greetings
+        pathType: Prefix
+        backend:
+          service:
+            name: greetings
+            port:
+              number: 3000
+      - path: /fizz
+        pathType: Prefix
+        backend:
+          service:
+            name: fizzbuzz
+            port:
+              number: 3000
