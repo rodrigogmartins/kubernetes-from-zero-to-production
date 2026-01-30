@@ -1,4 +1,4 @@
-import type { Task } from '../tasks/types'
+import type { Task } from "../tasks/types"
 
 type Props = {
   task?: Task
@@ -7,28 +7,25 @@ type Props = {
 export function ActiveTaskPanel({ task }: Props) {
   if (!task) {
     return (
-      <div style={{ marginBottom: 20 }}>
-        <strong>Phase 1 completed</strong>
-        <p>
-          You have experienced the fundamental behavior of Pods and Nodes.
+      <div className="p-3 md:p-6 bg-card border-l-4 border-accent rounded-lg">
+        <h3 className="text-base md:text-xl font-bold text-accent mb-2">Phase 1 Complete!</h3>
+        <p className="text-xs md:text-base text-foreground/80">
+          You have experienced the fundamental behavior of Pods and Nodes. You understand how Kubernetes schedules pods onto
+          nodes and recovers from failures.
         </p>
       </div>
     )
   }
 
   return (
-    <div
-      style={{
-        border: '1px solid black',
-        padding: 10,
-        marginBottom: 20,
-        color: '#0f0f0f',
-        backgroundColor: '#afafe8'
-      }}
-    >
-      <strong>Current Task</strong>
-      <h3>{task.title}</h3>
-      <p>{task.description}</p>
+    <div className="p-3 md:p-6 bg-card border-l-4 border-primary rounded-lg space-y-2 md:space-y-3">
+      <div className="flex items-start justify-between gap-2">
+        <h3 className="text-base md:text-xl font-bold text-primary flex-1">{task.title}</h3>
+        <span className="text-xs px-2 py-1 rounded-full bg-primary/20 text-primary font-semibold whitespace-nowrap">
+          Current
+        </span>
+      </div>
+      <p className="text-xs md:text-base text-foreground/80">{task.description}</p>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import type { ActualState } from '../state/types'
+import type { ActualState, Node, Pod } from '../state/types'
 
 type Props = {
   state: ActualState
@@ -6,60 +6,110 @@ type Props = {
 
 export function ClusterView({ state }: Props) {
   return (
-    <div style={{ display: 'flex', gap: 40 }}>
-      {state.nodes.map(node => (
-        <div
-          key={node.id}
-          style={{
-            border: '2px solid black',
-            padding: 10,
-            width: 150,
-            color: '#0f0f0f',
-            backgroundColor:
-              node.status === 'Down'
-                ? '#e8757e'
-                : '#5ebc92'
-          }}
-        >
-          <strong>{node.id}</strong>
-          <div>Status: {node.status}</div>
-          <div>
-            {node.pods.length}/{node.capacity} pods
+    <div className="flex-1 overflow-auto p-4 md:p-6 lg:p-8">
+      <div className="grid grid-cols-1 gap-4 md:gap-6 max-w-full">
+        {/* Nodes Section */}
+        <div className="space-y-4">
+          <h2 className="text-lg md:text-xl font-semibold text-accent">Nodes</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+            {state.nodes.map((node: Node) => (
+              <div
+                key={node.id}
+                className={`p-4 rounded-lg border-2 transition-colors ${
+                  node.status === 'Ready'
+                    ? 'border-accent bg-card/50 hover:bg-card'
+                    : 'border-destructive bg-destructive/10'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-bold text-sm md:text-base capitalize">{node.id}</h3>
+                  <span
+                    className={`text-xs px-2 py-1 rounded font-semibold ${
+                      node.status === 'Ready'
+                        ? 'bg-accent/20 text-accent'
+                        : 'bg-destructive/20 text-destructive'
+                    }`}
+                  >
+                    {node.status}
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="text-xs md:text-sm text-muted-foreground">
+                    Pods: {node.pods.length}/{node.capacity}
+                  </p>
+
+                  {/* Pod slots visualization */}
+                  <div className="flex flex-wrap gap-1">
+                    {Array.from({ length: node.capacity }).map((_, i) => (
+                      <div
+                        key={i}
+                        className={`w-6 h-6 md:w-7 md:h-7 rounded border-2 flex items-center justify-center text-xs font-semibold transition-all ${
+                          i < node.pods.length
+                            ? 'bg-primary/30 border-primary text-primary'
+                            : 'border-border bg-transparent'
+                        }`}
+                      >
+                        {i < node.pods.length ? '●' : ''}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-
-          <ul>
-            {node.pods.map(podId => (
-              <li key={podId}>
-                Pod {podId.slice(0, 4)}
-              </li>
-            ))}
-          </ul>
         </div>
-      ))}
 
-      <div>
-        <strong>Pending Pods</strong>
-        <ul>
-          {state.pods
-            .filter(p => p.status === 'Pending')
-            .map(p => (
-              <li key={p.id}>
-                Pod {p.id.slice(0, 4)}
-              </li>
-            ))}
-        </ul>
-      </div>
-
-      <div style={{ marginTop: 20 }}>
-        <strong>Cluster Status</strong>
-        <div>Total Pods: {state.pods.length}</div>
-        <div>
-          Running Pods:{' '}
-          {state.pods.filter(p => p.status === 'Running').length}
+        {/* Pending Pods Section */}
+        <div className="space-y-4">
+          <h2 className="text-lg md:text-xl font-semibold text-accent">Pending Pods</h2>
+          <div className="p-4 rounded-lg border-2 border-border bg-card/30">
+            {state.pods.filter((p: Pod) => p.status === 'Pending').length === 0 ? (
+              <p className="text-sm text-muted-foreground italic">No pending pods</p>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {state.pods
+                  .filter((p: Pod) => p.status === 'Pending')
+                  .map((pod: Pod) => (
+                    <div
+                      key={pod.id}
+                      className="px-3 py-1 bg-secondary/20 border border-secondary text-secondary rounded text-xs font-semibold"
+                    >
+                      {pod.id.slice(0, 8)}
+                    </div>
+                  ))}
+              </div>
+            )}
+          </div>
         </div>
-        <div>
-          Pending Pods:{' '}
-          {state.pods.filter(p => p.status === 'Pending').length}
+
+        {/* Cluster Status */}
+        <div className="space-y-4">
+          <h2 className="text-lg md:text-xl font-semibold text-accent">Cluster Status</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
+            <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
+              <p className="text-xs text-muted-foreground mb-1">Total Pods</p>
+              <p className="text-xl md:text-2xl font-bold text-accent">{state.pods.length}</p>
+            </div>
+            <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
+              <p className="text-xs text-muted-foreground mb-1">Running</p>
+              <p className="text-xl md:text-2xl font-bold text-primary">
+                {state.pods.filter((p: Pod) => p.status === 'Running').length}
+              </p>
+            </div>
+            <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
+              <p className="text-xs text-muted-foreground mb-1">Pending</p>
+              <p className="text-xl md:text-2xl font-bold text-secondary">
+                {state.pods.filter((p: Pod) => p.status === 'Pending').length}
+              </p>
+            </div>
+            <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
+              <p className="text-xs text-muted-foreground mb-1">Nodes Ready</p>
+              <p className="text-xl md:text-2xl font-bold text-accent">
+                {state.nodes.filter((n: Node) => n.status === 'Ready').length}/{state.nodes.length}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
