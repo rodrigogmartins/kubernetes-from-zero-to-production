@@ -1,7 +1,8 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+
 import { createInitialState } from './state/initialState'
 import type { Task } from './tasks/types'
 import { reconcile } from './engine/reconcile'
@@ -17,15 +18,28 @@ export default function KubeGame() {
   const [lastCompletedTask, setLastCompletedTask] = useState<Task | null>(null)
   const [showTaskNotification, setShowTaskNotification] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const notifiedTasksRef = useRef(new Set<string>())
+  const reconcileIntervalRef = useRef<number | null>(null)
 
+  // Separate effect for reconciliation - doesn't depend on showTaskNotification
   useEffect(() => {
-    const interval = setInterval(() => {
+    reconcileIntervalRef.current = setInterval(() => {
+      setState((prev) => reconcile(prev))
+    }, 1000)
+
+    return () => {
+      if (reconcileIntervalRef.current) clearInterval(reconcileIntervalRef.current)
+    }
+  }, [])
+
+  // Separate effect for checking task completion - independent of reconciliation
+  useEffect(() => {
+    const checkTaskCompletion = setInterval(() => {
       setState((prev) => {
-        const next = reconcile(prev)
+        const nextTask = phase1Tasks.find((task) => !completedTasks.has(task.id) && task.isCompleted(prev))
 
-        const nextTask = phase1Tasks.find((task: Task) => !completedTasks.has(task.id) && task.isCompleted(next))
-
-        if (nextTask) {
+        if (nextTask && !notifiedTasksRef.current.has(nextTask.id)) {
+          notifiedTasksRef.current.add(nextTask.id)
           setCompletedTasks((prevSet) => {
             const newSet = new Set(prevSet)
             newSet.add(nextTask.id)
@@ -36,11 +50,11 @@ export default function KubeGame() {
           setShowTaskNotification(true)
         }
 
-        return next
+        return prev
       })
     }, 1000)
 
-    return () => clearInterval(interval)
+    return () => clearInterval(checkTaskCompletion)
   }, [completedTasks])
 
   function addPod() {
