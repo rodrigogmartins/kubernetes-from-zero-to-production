@@ -2,18 +2,14 @@
 
 import { useEffect, useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
-
-import type { Task } from './tasks/types'
-import type { ActualState } from './state/types'
-
 import { createInitialState } from './state/initialState'
-import { phase1Tasks } from './tasks/phase1Tasks'
+import type { Task } from './tasks/types'
 import { reconcile } from './engine/reconcile'
+import { phase1Tasks } from './tasks/phase1Tasks'
 import { ClusterView } from './ui/ClusterView'
 import { ActiveTaskPanel } from './ui/ActiveTaskPanel'
 import { Controls } from './ui/Controls'
 import { TaskPanel } from './ui/TaskPanel'
-
 
 export default function KubeGame() {
   const [state, setState] = useState(createInitialState())
@@ -24,7 +20,7 @@ export default function KubeGame() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setState((prev: ActualState) => {
+      setState((prev) => {
         const next = reconcile(prev)
 
         const nextTask = phase1Tasks.find((task: Task) => !completedTasks.has(task.id) && task.isCompleted(next))
@@ -38,9 +34,6 @@ export default function KubeGame() {
 
           setLastCompletedTask(nextTask)
           setShowTaskNotification(true)
-
-          // Hide notification after 5 seconds
-          setTimeout(() => setShowTaskNotification(false), 5000)
         }
 
         return next
@@ -127,7 +120,9 @@ export default function KubeGame() {
       </div>
 
       {/* Task Completion Notification */}
-      {showTaskNotification && lastCompletedTask && <TaskPanel task={lastCompletedTask} />}
+      {showTaskNotification && lastCompletedTask && (
+        <TaskPanel task={lastCompletedTask} onClose={() => setShowTaskNotification(false)} />
+      )}
     </div>
   )
 }
