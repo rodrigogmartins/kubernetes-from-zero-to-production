@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
 import { createInitialState } from './state/initialState'
@@ -14,48 +14,48 @@ import { TaskPanel } from './ui/TaskPanel'
 
 export default function KubeGame() {
   const [state, setState] = useState(createInitialState())
-  const [completedTasks, setCompletedTasks] = useState(new Set<string>())
   const [lastCompletedTask, setLastCompletedTask] = useState<Task | null>(null)
   const [showTaskNotification, setShowTaskNotification] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const notifiedTasksRef = useRef(new Set<string>())
-  const reconcileIntervalRef = useRef<number | null>(null)
+  const isModalOpenRef = useRef(false)
 
-  // Separate effect for reconciliation - doesn't depend on showTaskNotification
-  useEffect(() => {
-    reconcileIntervalRef.current = setInterval(() => {
-      setState((prev) => reconcile(prev))
-    }, 1000)
-
-    return () => {
-      if (reconcileIntervalRef.current) clearInterval(reconcileIntervalRef.current)
-    }
+  const handleCloseModal = useCallback(() => {
+    setShowTaskNotification(false)
+    isModalOpenRef.current = false
   }, [])
 
-  // Separate effect for checking task completion - independent of reconciliation
   useEffect(() => {
-    const checkTaskCompletion = setInterval(() => {
+    console.log('[v0] Modal visibility changed:', showTaskNotification, 'Task:', lastCompletedTask?.id)
+    if (showTaskNotification) {
+      isModalOpenRef.current = true
+    }
+  }, [showTaskNotification, lastCompletedTask])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
       setState((prev) => {
-        const nextTask = phase1Tasks.find((task) => !completedTasks.has(task.id) && task.isCompleted(prev))
+        const next = reconcile(prev)
 
-        if (nextTask && !notifiedTasksRef.current.has(nextTask.id)) {
-          notifiedTasksRef.current.add(nextTask.id)
-          setCompletedTasks((prevSet) => {
-            const newSet = new Set(prevSet)
-            newSet.add(nextTask.id)
-            return newSet
-          })
+        // Only show next task if modal is not currently open
+        if (!isModalOpenRef.current) {
+          const nextTask = phase1Tasks.find((task) => !notifiedTasksRef.current.has(task.id) && task.isCompleted(next))
 
-          setLastCompletedTask(nextTask)
-          setShowTaskNotification(true)
+          if (nextTask) {
+            notifiedTasksRef.current.add(nextTask.id)
+            setLastCompletedTask(nextTask)
+            setShowTaskNotification(true)
+          }
         }
 
-        return prev
+        return next
       })
     }, 1000)
 
-    return () => clearInterval(checkTaskCompletion)
-  }, [completedTasks])
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
 
   function addPod() {
     setState((prev) => ({
@@ -77,7 +77,7 @@ export default function KubeGame() {
     }))
   }
 
-  const activeTask = phase1Tasks.find((task) => !completedTasks.has(task.id))
+  const activeTask = phase1Tasks.find((task) => !notifiedTasksRef.current.has(task.id))
 
   return (
     <div className="w-full h-full flex flex-col lg:flex-row gap-0 bg-background">
@@ -135,7 +135,7 @@ export default function KubeGame() {
 
       {/* Task Completion Notification */}
       {showTaskNotification && lastCompletedTask && (
-        <TaskPanel task={lastCompletedTask} onClose={() => setShowTaskNotification(false)} />
+        <TaskPanel task={lastCompletedTask} onClose={handleCloseModal} />
       )}
     </div>
   )
