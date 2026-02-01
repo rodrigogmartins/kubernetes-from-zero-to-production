@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# Kube Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Kube Game is an educational, game-based project designed to teach Kubernetes concepts in a visual and interactive way.
 
-Currently, two official plugins are available:
+Instead of only reading documentation, players learn by *acting as Kubernetes itself*, managing nodes, pods, and cluster behavior through hands-on challenges.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎮 How It Works
 
-## React Compiler
+The game is structured into **phases (worlds)**.  
+Each phase represents a conceptual step in Kubernetes learning.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Players interact with a simulated cluster
+- Tasks guide the player’s actions
+- Each completed task explains *what happened* and *why*
+- Concepts are reinforced through cause-and-effect, not quizzes
 
-## Expanding the ESLint configuration
+## 🧠 Phase 1 – Core Concepts
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Phase 1 focuses on the fundamentals:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Nodes and Pods
+- Scheduling behavior
+- Lack of self-healing without controllers
+- Pod states when no nodes are available
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+This phase helps players understand **why Kubernetes abstractions exist**, before introducing them.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Running the Game Locally
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The game will be available at:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+[http://localhost:5173](http://localhost:5173)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠 Tech Stack
+
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- Game-style state management
+- Deployed as a static site (S3 + CloudFront)
+
+## 🧭 Roadmap
+
+- Phase 2: ReplicaSet & desired state
+- Phase 3: Deployments & rollouts
+- Phase 4: Services & networking
+- Achievements, progression, and visual feedback improvements
+
+## 📌 Project Status
+
+This project is under active development.  
+New phases and mechanics will be added progressively.
+
+Contributions and feedback are welcome.

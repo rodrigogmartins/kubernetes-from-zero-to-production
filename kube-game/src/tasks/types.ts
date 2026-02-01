@@ -4,6 +4,6 @@ export type Task = {
   id: string
   title: string
   description: string
-  isCompleted: (state: ActualState) => boolean
+  isCompleted: (state: ActualState, currentTime: number) => boolean
   summary: string
 }

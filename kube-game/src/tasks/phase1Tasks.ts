@@ -1,55 +1,37 @@
+import type { ActualState } from '../state/types'
 import type { Task } from './types'
 
 export const phase1Tasks: Task[] = [
   {
-    id: 'create-pods',
-    title: 'Create Pods',
-    description: 'Create at least 5 Pods.',
-    isCompleted: state => state.pods.length >= 5,
-    summary: `
-Pods were created without specifying a Node.
-Kubernetes uses a Scheduler to decide where Pods run,
-based on available Node capacity.
-`
+    id: 'first-pod',
+    title: 'Create Your First Pod',
+    description: 'Click "Create Pod" to add a pod to the cluster.',
+    summary: 'You created your first pod! Pods are the smallest deployable units in Kubernetes.',
+    isCompleted: (state: ActualState) => state.pods.length > 0
   },
   {
-    id: 'pending-pods',
-    title: 'Capacity Limit',
-    description: 'Create Pods until some remain Pending.',
-    isCompleted: state =>
-      state.pods.some(p => p.status === 'Pending'),
-    summary: `
-Nodes have limited resources.
-When no Node can accept a Pod, it remains in Pending state.
-Pods do not fail — they wait for capacity.
-`
+    id: 'pod-pending',
+    title: 'Understand Pod States',
+    description: 'Your pods will move from Pending to Running as nodes accept them.',
+    summary: 'Your pods are now running! You understand pod lifecycle states.',
+    isCompleted: (state: ActualState) => state.pods.some(p => p.status === 'Running')
+  },
+  {
+    id: 'fill-node',
+    title: 'Fill a Node',
+    description: 'Keep creating pods until you fill one of your nodes to capacity.',
+    summary: 'Node is now full! You understand node capacity constraints.',
+    isCompleted: (state: ActualState) => state.nodes.some(n => n.pods.length >= n.capacity)
   },
   {
     id: 'node-failure',
-    title: 'Node Failure',
-    description: 'Kill a Node.',
-    isCompleted: state =>
-      state.nodes.some(n => n.status === 'Down'),
-    summary: `
-Pods are tightly coupled to Nodes.
-When a Node goes down, all its Pods are lost.
-At this level, Kubernetes does not restore them.
-`
-  },
-  {
-    id: 'post-failure-pods',
-    title: 'Post-Failure Scheduling',
-    description:
-      'Try to create new Pods after a Node failure and observe the cluster behavior.',
-    isCompleted: state =>
-      state.nodes.some(n => n.status === 'Down') &&
-      state.pods.some(p => p.status === 'Pending'),
-    summary: `
-Even after a Node failure, the Scheduler continues to work.
-However, without available Node capacity, new Pods remain Pending.
-
-Kubernetes does not revive Nodes or Pods automatically at this level.
-This behavior highlights the limitations of managing Pods directly.
-`
+    title: 'Handle Node Failure',
+    description: 'Kill a node to simulate failure and see how pods are rescheduled.',
+    summary: 'Great recovery! You learned how Kubernetes handles node failures through rescheduling.',
+    isCompleted: (state: ActualState) => {
+      const hadDownNode = state.nodes.some(n => n.status === 'Down')
+      const hasRecovered = state.pods.some(p => p.status === 'Running')
+      return hadDownNode && hasRecovered
+    }
   }
 ]

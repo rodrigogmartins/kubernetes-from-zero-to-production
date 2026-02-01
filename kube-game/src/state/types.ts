@@ -1,7 +1,7 @@
 export type Pod = {
   id: string
   nodeId?: string
-  status: 'Pending' | 'Running'
+  status: 'Pending' | 'Running' | 'Failed'
 }
 
 export type Node = {
@@ -14,4 +14,8 @@ export type Node = {
 export type ActualState = {
   pods: Pod[]
   nodes: Node[]
+  phase: 1 | 2
+  desiredPods?: number
+  lastFeedbackMessage?: string
+  nodeKilledAt?: number
 }

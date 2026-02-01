@@ -2,16 +2,20 @@ import type { Task } from "../tasks/types"
 
 type Props = {
   task?: Task
+  phase?: 1 | 2
 }
 
-export function ActiveTaskPanel({ task }: Props) {
+export function ActiveTaskPanel({ task, phase = 1 }: Props) {
   if (!task) {
     return (
       <div className="p-3 md:p-6 bg-card border-l-4 border-accent rounded-lg">
-        <h3 className="text-base md:text-xl font-bold text-accent mb-2">Phase 1 Complete!</h3>
+        <h3 className="text-base md:text-xl font-bold text-accent mb-2">
+          {phase === 2 ? 'Phase 2 Complete!' : 'Phase 1 Complete!'}
+        </h3>
         <p className="text-xs md:text-base text-foreground/80">
-          You have experienced the fundamental behavior of Pods and Nodes. You understand how Kubernetes schedules pods onto
-          nodes and recovers from failures.
+          {phase === 2 
+            ? 'You finished Phase 2. You learned that Desired State expresses intent, but does not enforce reality. In the next phase, a controller will take responsibility.'
+            : 'You have experienced the fundamental behavior of Pods and Nodes. You understand how Kubernetes schedules pods onto nodes and recovers from failures.'}
         </p>
       </div>
     )
