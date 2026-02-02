@@ -1,29 +1,127 @@
-# Kube Game
+# 🎮 Kube Game
 
-Kube Game is an educational, game-based project designed to teach Kubernetes concepts in a visual and interactive way.
+A short preview of the gameplay:
 
-Instead of only reading documentation, players learn by *acting as Kubernetes itself*, managing nodes, pods, and cluster behavior through hands-on challenges.
+![Kube Game Demo](../assets/gifs/kube-game-v1.gif)
 
-## 🎮 How It Works
+👉 **Play the game:**  [https://game.kubelab.com.br](https://game.kubelab.com.br)
 
-The game is structured into **phases (worlds)**.  
-Each phase represents a conceptual step in Kubernetes learning.
+**Kube Game** is an interactive learning game designed to teach **Kubernetes fundamentals through gameplay**, not tutorials.
 
-- Players interact with a simulated cluster
-- Tasks guide the player’s actions
-- Each completed task explains *what happened* and *why*
-- Concepts are reinforced through cause-and-effect, not quizzes
+Instead of reading YAML files or documentation, you *play as Kubernetes* — observing the cluster, defining desired state, and understanding how the system reacts to failures.
 
-## 🧠 Phase 1 – Core Concepts
+## 🧠 What is the idea?
 
-Phase 1 focuses on the fundamentals:
+Kubernetes is not about *doing things manually*.  
+It’s about **declaring what you want** and letting the system continuously reconcile reality.
 
-- Nodes and Pods
-- Scheduling behavior
-- Lack of self-healing without controllers
-- Pod states when no nodes are available
+Kube Game makes this behavior **visual, explicit, and intuitive**.
 
-This phase helps players understand **why Kubernetes abstractions exist**, before introducing them.
+You don’t manage pods directly.  
+You **define intent** — and watch Kubernetes do the work.
+
+## 🕹️ How the game works
+
+The game is divided into **phases**, each introducing a core Kubernetes concept.
+
+Each phase:
+
+- Starts with a **fresh isolated scenario**
+- Presents **guided tasks** (goals) on the right panel
+- Requires the player to execute a specific **action**
+- Explains *why* Kubernetes behaves the way it does
+- Only advances after the explanation is acknowledged
+
+This guarantees learning happens **step by step**, without skipping concepts.
+
+## 📚 Game Phases
+
+### Phase 1 — Core Objects
+
+Learn the basics:
+
+- Pods
+- Nodes
+- Scheduling
+- What happens when resources are created
+
+---
+
+### Phase 2 — Desired State
+
+Understand the most important Kubernetes concept:
+
+- Desired vs Current state
+- Why Kubernetes reacts *after* you declare intent
+- Why nothing happens if the state already matches
+
+---
+
+### Phase 3 — Controllers
+
+Discover how Kubernetes actually works:
+
+- Controllers monitor state
+- Reconciliation loops
+- Why Kubernetes is always “watching”
+
+---
+
+### Phase 4 — Failure & Recovery
+
+Learn failure as a feature:
+
+- Pods being deleted
+- Controllers recreating resources
+- Why manual actions don’t last
+
+---
+
+### Phase 5 — Self-Healing
+
+See Kubernetes in action:
+
+- Node failures
+- Pod rescheduling
+- Workloads surviving infrastructure problems
+
+This is where everything clicks.
+
+## 🏁 Game Completion
+
+After finishing Phase 5, the game shows a **final completion message**, reinforcing the key takeaway:
+
+> Kubernetes doesn’t prevent failures — it embraces them.  
+> You define *what you want*.  
+> Kubernetes ensures it stays true.
+
+![Kube Game Completition Message](../assets/imgs/kube-game-completition.jpg)
+
+## 🚀 Tech Stack
+
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- Custom game engine (state + reconciliation loop)
+
+## 🎯 Goal of the project
+
+This is **not** a Kubernetes simulator.  
+It’s a **mental model builder**.
+
+The goal is to help developers:
+
+- Think in terms of desired state
+- Understand reconciliation
+- Stop fighting Kubernetes behavior
+- Start designing systems the Kubernetes way
+
+## 📌 Status
+
+🚧 Actively evolving  
+New mechanics and learning experiences may be added over time.
+
+---
 
 ## 🚀 Running the Game Locally
 
@@ -35,25 +133,3 @@ npm run dev
 The game will be available at:
 
 [http://localhost:5173](http://localhost:5173)
-
-## 🛠 Tech Stack
-
-- React + TypeScript
-- Vite
-- Tailwind CSS
-- Game-style state management
-- Deployed as a static site (S3 + CloudFront)
-
-## 🧭 Roadmap
-
-- Phase 2: ReplicaSet & desired state
-- Phase 3: Deployments & rollouts
-- Phase 4: Services & networking
-- Achievements, progression, and visual feedback improvements
-
-## 📌 Project Status
-
-This project is under active development.  
-New phases and mechanics will be added progressively.
-
-Contributions and feedback are welcome.

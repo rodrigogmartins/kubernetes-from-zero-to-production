@@ -57,7 +57,6 @@ export default function KubeGame() {
         if (next.phase === 1 && phase1Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
           next.phase = 2
           // Reset to Phase 2 initial state
-          // notifiedTasksRef.current.clear()
           return createPhase2InitialState()
         }
 
