@@ -19,7 +19,9 @@ export type ActualState = {
   lastFeedbackMessage?: string
   nodeKilledAt?: number
   controllerActive?: boolean
+  controllerMode?: 'bootstrap' | 'reconcile'
   lastPodCreatedAt?: number
+  podDeletedByUser?: boolean
 }
 
 export type Task = {

@@ -90,26 +90,32 @@ export function ClusterView({ state }: Props) {
         {/* Cluster Status */}
         <div className="space-y-4">
           <h2 className="text-lg md:text-xl font-semibold text-accent">Cluster Status</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 md:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 md:gap-3">
             <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
               <p className="text-xs text-muted-foreground mb-1">Total Pods</p>
-              <p className="text-xl md:text-2xl font-bold text-accent">{state.pods.length}</p>
+              <p className="text-lg md:text-xl font-bold text-accent">{state.pods.filter((p) => p.status !== 'Failed').length}</p>
             </div>
             <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
               <p className="text-xs text-muted-foreground mb-1">Running</p>
-              <p className="text-xl md:text-2xl font-bold text-primary">
+              <p className="text-lg md:text-xl font-bold text-primary">
                 {state.pods.filter((p: Pod) => p.status === 'Running').length}
               </p>
             </div>
             <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
               <p className="text-xs text-muted-foreground mb-1">Pending</p>
-              <p className="text-xl md:text-2xl font-bold text-secondary">
+              <p className="text-lg md:text-xl font-bold text-secondary">
                 {state.pods.filter((p: Pod) => p.status === 'Pending').length}
               </p>
             </div>
             <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
+              <p className="text-xs text-muted-foreground mb-1">Failed</p>
+              <p className="text-lg md:text-xl font-bold text-destructive">
+                {state.pods.filter((p: Pod) => p.status === 'Failed').length}
+              </p>
+            </div>
+            <div className="p-3 md:p-4 rounded-lg bg-card border border-border text-center">
               <p className="text-xs text-muted-foreground mb-1">Nodes Ready</p>
-              <p className="text-xl md:text-2xl font-bold text-accent">
+              <p className="text-lg md:text-xl font-bold text-accent">
                 {state.nodes.filter((n: Node) => n.status === 'Ready').length}/{state.nodes.length}
               </p>
             </div>

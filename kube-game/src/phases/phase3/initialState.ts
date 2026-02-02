@@ -21,6 +21,8 @@ export function createPhase3InitialState(): ActualState {
     phase: 3,
     desiredPods: 3,
     controllerActive: false,
+    controllerMode: 'bootstrap',
+    podDeletedByUser: false,
     lastFeedbackMessage: 'Phase 3 started. Controller is PAUSED. You have 0 pods, desired state is 3.'
   }
 }

@@ -4,15 +4,8 @@ export const phase2Tasks: Task[] = [
   {
     id: 'declare-intent',
     title: 'Declare Intent',
-    description: 'Observe that you start with Desired State = 5 and 5 running pods. This is the current state.',
-    summary: 'You observed the initial state. You have 5 pods running on 2 healthy nodes, and Desired State is set to 5.',
-    isCompleted: (state: ActualState) => state.desiredPods === 5 && state.pods.length === 5
-  },
-  {
-    id: 'observe-creation',
-    title: 'Increase Desired State',
-    description: 'Increase Desired State to 8. Watch the system create new pods to match your intent.',
-    summary: 'The system created new pods to reach your desired state. But observe: not all pods became Running. Some are Pending because nodes ran out of capacity.',
+    description: 'Observe that you start with Desired State = 5 and 5 running pods. This is the current state. Increase Desired State to 8.',
+    summary: 'The system created new pods to reach your desired state.',
     isCompleted: (state: ActualState) => {
       const totalPods = state.pods.length
       return state.desiredPods === 8 && totalPods >= 8

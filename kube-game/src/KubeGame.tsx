@@ -31,14 +31,31 @@ export default function KubeGame() {
   const [showGameCompletion, setShowGameCompletion] = useState(false)
   const notifiedTasksRef = useRef(new Set<string>())
   const isModalOpenRef = useRef(false)
-
+  
   const handleCloseModal = useCallback(() => {
     setShowTaskNotification(false)
     isModalOpenRef.current = false
     setIsGamePaused(false)
     
-    // Check if this was the final Phase 5 task completion
-    if (state.phase === 5 && phase5Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
+    // Check if all tasks are complete for current phase - if so, queue phase transition
+    if (state.phase === 1 && phase1Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
+      // Set the final task to show its summary
+      setLastCompletedTask(phase1Tasks[phase1Tasks.length - 1])
+      notifiedTasksRef.current.clear()
+      setPendingPhaseTransition(2)
+    } else if (state.phase === 2 && phase2Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
+      setLastCompletedTask(phase2Tasks[phase2Tasks.length - 1])
+      notifiedTasksRef.current.clear()
+      setPendingPhaseTransition(3)
+    } else if (state.phase === 3 && phase3Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
+      setLastCompletedTask(phase3Tasks[phase3Tasks.length - 1])
+      notifiedTasksRef.current.clear()
+      setPendingPhaseTransition(4)
+    } else if (state.phase === 4 && phase4Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
+      setLastCompletedTask(phase4Tasks[phase4Tasks.length - 1])
+      notifiedTasksRef.current.clear()
+      setPendingPhaseTransition(5)
+    } else if (state.phase === 5 && phase5Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
       // Schedule completion screen to show after a brief delay
       setTimeout(() => {
         setShowGameCompletion(true)
@@ -48,7 +65,7 @@ export default function KubeGame() {
     
     // If there's a pending phase transition, execute it after modal closes
     if (pendingPhaseTransition) {
-      setState((prev: ActualState) => {
+      setState((prev) => {
         if (pendingPhaseTransition === 2) {
           return createPhase2InitialState()
         } else if (pendingPhaseTransition === 3) {
@@ -103,40 +120,15 @@ export default function KubeGame() {
         const allPhase4Complete = next.phase === 4 && phase4Tasks.every(t => notifiedTasksRef.current.has(t.id))
         const allPhase5Complete = next.phase === 5 && phase5Tasks.every(t => notifiedTasksRef.current.has(t.id))
 
-        // Queue phase transitions instead of executing immediately
-        if (allPhase1Complete) {
-          notifiedTasksRef.current.clear()
-          setPendingPhaseTransition(2)
-          return next
-        }
-
-        if (allPhase2Complete) {
-          notifiedTasksRef.current.clear()
-          setPendingPhaseTransition(3)
-          return next
-        }
-
-        if (allPhase3Complete) {
-          notifiedTasksRef.current.clear()
-          setPendingPhaseTransition(4)
-          return next
-        }
-
-        if (allPhase4Complete) {
-          notifiedTasksRef.current.clear()
-          setPendingPhaseTransition(5)
-          return next
-        }
-
-        // Phase 5 is the final phase - just acknowledge completion
-        if (allPhase5Complete) {
-          // Phase 5 is complete but no further transition
+        // If all tasks are complete, don't auto-transition here - let the last task modal close trigger it
+        // This ensures the conclusion message is shown before transitioning
+        if (allPhase1Complete || allPhase2Complete || allPhase3Complete || allPhase4Complete || allPhase5Complete) {
           return next
         }
 
         return next
       })
-    }, 1000)
+    }, 2000)
 
     return () => {
       clearInterval(interval)
@@ -193,6 +185,10 @@ export default function KubeGame() {
           ...n,
           pods: n.pods.filter(id => id !== podId)
         }))
+      }
+      // In Phase 3, mark that a user deleted a pod (triggers reconcile mode)
+      if (prev.phase === 3 && prev.controllerActive) {
+        newState.podDeletedByUser = true
       }
       return newState
     })

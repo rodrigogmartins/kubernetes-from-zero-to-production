@@ -4,49 +4,54 @@ export const phase4Tasks: Task[] = [
   {
     id: 'observe-scheduling',
     title: 'Observe Scheduling',
-    description: 'Wait and observe the scheduler placing pods on nodes with available capacity.',
+    description: 'All 5 pods are already running on the 3 nodes. The scheduler placed them based on available capacity.',
     summary: 'The scheduler assigned pods to nodes based on available capacity. This is automatic scheduling—the system decided where each pod should run.',
-    isCompleted: (state: ActualState) => state.pods.filter(p => p.status === 'Running').length >= 2
+    isCompleted: (state: ActualState, _currentTime: number) => {
+      const runningCount = state.pods.filter(p => p.status === 'Running').length
+      return state.phase === 4 && runningCount === 5 && state.podDeletedByUser === false
+    }
   },
   {
     id: 'reach-capacity',
     title: 'Reach Node Capacity',
-    description: 'Wait for more pods to be scheduled until all nodes are at capacity.',
-    summary: 'Nodes A and B are at capacity (2 pods each). Node C has 1 pod. You have 5 pods scheduled across the 3 nodes.',
+    description: 'All nodes are at capacity. Nodes 1 and 2 have 2 pods each, Node 3 has 1 pod.',
+    summary: 'All nodes are at capacity with 5 running pods. The scheduler has optimally distributed pods based on node capacity constraints.',
     isCompleted: (state: ActualState, _currentTime: number) => {
       const runningCount = state.pods.filter(p => p.status === 'Running').length
-      return state.desiredPods === 5 && runningCount === 5
+      return state.desiredPods === 5 && runningCount === 5 && state.podDeletedByUser === false
     }
   },
   {
     id: 'observe-pending',
     title: 'Observe Pending Pods',
-    description: 'Increase desired state to 7. Observe pods remaining in Pending state with no available node capacity.',
-    summary: 'You increased desired state to 7, but no more pods could be scheduled. 2 pods remain Pending because all nodes are at capacity. The scheduler is waiting for space.',
-    isCompleted: (state: ActualState) => {
+    description: 'Increase desired state to 7. The scheduler cannot place more pods—all nodes are at capacity.',
+    summary: 'You increased desired state to 7, but no more pods could be scheduled. 2 pods remain Pending because all nodes are at capacity. The scheduler cannot place pods where there is no space.',
+    isCompleted: (state: ActualState, _currentTime: number) => {
       const pendingCount = state.pods.filter(p => p.status === 'Pending').length
-      return state.desiredPods === 7 && pendingCount === 2
+      // Only complete when pending pods exist AND no user deletion has occurred
+      return state.desiredPods === 7 && pendingCount === 2 && state.podDeletedByUser === false
     }
   },
   {
     id: 'delete-pod',
     title: 'Delete a Running Pod',
-    description: 'Delete one running pod to free capacity on a node.',
-    summary: 'You deleted a running pod. Capacity is now available on one of the nodes. The scheduler can now place pending pods.',
-    isCompleted: (state: ActualState) => {
-      const totalPods = state.pods.filter(p => p.status !== 'Failed').length
-      return state.desiredPods === 7 && totalPods === 6
+    description: 'You must manually delete one running pod to free capacity on a node.',
+    summary: 'You deleted a running pod, freeing capacity on one of the nodes. Now the scheduler can place one of the pending pods.',
+    isCompleted: (state: ActualState, _currentTime: number) => {
+      // Only complete when user has explicitly deleted a pod
+      return state.podDeletedByUser === true
     }
   },
   {
     id: 'observe-rescheduling',
-    title: 'Observe Pending Pod Scheduled',
+    title: 'Observe Scheduler Reschedule',
     description: 'Watch the scheduler automatically place a pending pod on the newly available node.',
-    summary: 'The scheduler automatically scheduled the pending pod to the freed node. This is the scheduler in action—continuously matching pending pods to available capacity. Kubernetes orchestration is seamless.',
-    isCompleted: (state: ActualState) => {
-      const runningCount = state.pods.filter(p => p.status === 'Running').length
+    summary: 'The scheduler automatically scheduled a pending pod to the freed node. This is the scheduler in action—it continuously matches pending pods to available capacity. The scheduler reacted to freed capacity created by your deletion.',
+    isCompleted: (state: ActualState, _currentTime: number) => {
       const pendingCount = state.pods.filter(p => p.status === 'Pending').length
-      return state.desiredPods === 7 && runningCount === 5 && pendingCount === 2
+      const runningCount = state.pods.filter(p => p.status === 'Running').length
+      // Complete when: user deleted a pod AND pending pods were scheduled (1 pending became running)
+      return state.podDeletedByUser === true && state.desiredPods === 7 && runningCount === 6 && pendingCount === 1
     }
   }
 ]

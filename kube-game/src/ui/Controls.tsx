@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 type Props = {
   addPod: () => void
@@ -18,6 +18,10 @@ type Props = {
 
 export function Controls({ addPod, killNode, setDesiredPods, toggleController, deletePod, phase = 1, desiredPods, activeTaskId, controllerActive, pods = [], nodes = [] }: Props) {
   const [inputValue, setInputValue] = useState(desiredPods?.toString() || '0')
+  
+  useEffect(() => {
+    setInputValue(desiredPods?.toString() || '0')
+  }, [desiredPods])
 
   const handleSetDesiredPods = () => {
     const count = Math.max(0, parseInt(inputValue, 10) || 0)
