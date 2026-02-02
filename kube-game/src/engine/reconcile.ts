@@ -8,6 +8,113 @@ export function reconcile(state: ActualState): ActualState {
     pods: state.pods.map(p => ({ ...p }))
   }
 
+  // Phase 5: Self-healing with controller always active
+  if (newState.phase === 5 && newState.controllerActive && newState.desiredPods !== undefined) {
+    const currentRunningPods = newState.pods.filter(p => p.status === 'Running').length
+    const currentPendingPods = newState.pods.filter(p => p.status === 'Pending').length
+    const totalCurrentPods = currentRunningPods + currentPendingPods
+
+    // Create ONE pod per tick if below desired (incremental)
+    if (totalCurrentPods < newState.desiredPods) {
+      newState.pods.push({
+        id: crypto.randomUUID(),
+        status: 'Pending'
+      })
+      newState.lastPodCreatedAt = Date.now()
+    }
+    // Delete pods if above desired (one at a time)
+    else if (totalCurrentPods > newState.desiredPods) {
+      const pendingPodIndex = newState.pods.findIndex(p => p.status === 'Pending')
+      if (pendingPodIndex !== -1) {
+        newState.pods.splice(pendingPodIndex, 1)
+      } else {
+        const runningPodIndex = newState.pods.findIndex(p => p.status === 'Running')
+        if (runningPodIndex !== -1) {
+          const pod = newState.pods[runningPodIndex]
+          if (pod.nodeId) {
+            const node = newState.nodes.find(n => n.id === pod.nodeId)
+            if (node) {
+              node.pods = node.pods.filter(id => id !== pod.id)
+            }
+          }
+          newState.pods.splice(runningPodIndex, 1)
+        }
+      }
+    }
+  }
+
+  // Phase 4: Scheduler-driven - controller always active, incremental pod creation
+  if (newState.phase === 4 && newState.desiredPods !== undefined) {
+    const currentRunningPods = newState.pods.filter(p => p.status === 'Running').length
+    const currentPendingPods = newState.pods.filter(p => p.status === 'Pending').length
+    const totalCurrentPods = currentRunningPods + currentPendingPods
+
+    // Create ONE pod per tick if below desired (incremental)
+    if (totalCurrentPods < newState.desiredPods) {
+      newState.pods.push({
+        id: crypto.randomUUID(),
+        status: 'Pending'
+      })
+      newState.lastPodCreatedAt = Date.now()
+    }
+    // Delete pods if above desired (one at a time)
+    else if (totalCurrentPods > newState.desiredPods) {
+      // Remove one pending pod first, then running
+      const pendingPodIndex = newState.pods.findIndex(p => p.status === 'Pending')
+      if (pendingPodIndex !== -1) {
+        newState.pods.splice(pendingPodIndex, 1)
+      } else {
+        const runningPodIndex = newState.pods.findIndex(p => p.status === 'Running')
+        if (runningPodIndex !== -1) {
+          const pod = newState.pods[runningPodIndex]
+          if (pod.nodeId) {
+            const node = newState.nodes.find(n => n.id === pod.nodeId)
+            if (node) {
+              node.pods = node.pods.filter(id => id !== pod.id)
+            }
+          }
+          newState.pods.splice(runningPodIndex, 1)
+        }
+      }
+    }
+  }
+
+  // Phase 3: Controller-driven reconciliation (only when active)
+  if (newState.phase === 3 && newState.controllerActive && newState.desiredPods !== undefined) {
+    const currentRunningPods = newState.pods.filter(p => p.status === 'Running').length
+    const currentPendingPods = newState.pods.filter(p => p.status === 'Pending').length
+    const totalCurrentPods = currentRunningPods + currentPendingPods
+
+    // Create ONE pod per tick if below desired (incremental)
+    if (totalCurrentPods < newState.desiredPods) {
+      newState.pods.push({
+        id: crypto.randomUUID(),
+        status: 'Pending'
+      })
+      newState.lastPodCreatedAt = Date.now()
+    }
+    // Delete pods if above desired (one at a time)
+    else if (totalCurrentPods > newState.desiredPods) {
+      // Remove one pending pod first, then running
+      const pendingPodIndex = newState.pods.findIndex(p => p.status === 'Pending')
+      if (pendingPodIndex !== -1) {
+        newState.pods.splice(pendingPodIndex, 1)
+      } else {
+        const runningPodIndex = newState.pods.findIndex(p => p.status === 'Running')
+        if (runningPodIndex !== -1) {
+          const pod = newState.pods[runningPodIndex]
+          if (pod.nodeId) {
+            const node = newState.nodes.find(n => n.id === pod.nodeId)
+            if (node) {
+              node.pods = node.pods.filter(id => id !== pod.id)
+            }
+          }
+          newState.pods.splice(runningPodIndex, 1)
+        }
+      }
+    }
+  }
+
   // Phase 2: Handle desired state increase (only increase, never decrease)
   if (newState.phase === 2 && newState.desiredPods !== undefined) {
     const currentRunningPods = newState.pods.filter(p => p.status === 'Running').length

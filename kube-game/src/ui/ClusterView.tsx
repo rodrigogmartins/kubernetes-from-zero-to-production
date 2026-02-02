@@ -12,25 +12,29 @@ export function ClusterView({ state }: Props) {
         <div className="space-y-4">
           <h2 className="text-lg md:text-xl font-semibold text-accent">Nodes</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-            {state.nodes.map((node: Node) => (
+            {state.nodes.map((node) => (
               <div
                 key={node.id}
                 className={`p-4 rounded-lg border-2 transition-colors ${
-                  node.status === 'Ready'
-                    ? 'border-accent bg-card/50 hover:bg-card'
-                    : 'border-destructive bg-destructive/10'
+                  node.status === 'Down'
+                    ? 'border-gray-500 bg-gray-900/20'
+                    : node.pods.length >= node.capacity
+                    ? 'border-amber-500 bg-amber-900/20'
+                    : 'border-accent bg-card/50 hover:bg-card'
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-bold text-sm md:text-base capitalize">{node.id}</h3>
                   <span
                     className={`text-xs px-2 py-1 rounded font-semibold ${
-                      node.status === 'Ready'
-                        ? 'bg-accent/20 text-accent'
-                        : 'bg-destructive/20 text-destructive'
+                      node.status === 'Down'
+                        ? 'bg-gray-500/20 text-gray-400'
+                        : node.pods.length >= node.capacity
+                        ? 'bg-amber-500/20 text-amber-400'
+                        : 'bg-accent/20 text-accent'
                     }`}
                   >
-                    {node.status}
+                    {node.status === 'Down' ? 'DOWN' : node.pods.length >= node.capacity ? 'FULL' : 'Ready'}
                   </span>
                 </div>
 

@@ -14,8 +14,10 @@ export type Node = {
 export type ActualState = {
   pods: Pod[]
   nodes: Node[]
-  phase: 1 | 2
+  phase: 1 | 2 | 3 | 4 | 5
   desiredPods?: number
   lastFeedbackMessage?: string
   nodeKilledAt?: number
+  controllerActive?: boolean
+  lastPodCreatedAt?: number
 }
