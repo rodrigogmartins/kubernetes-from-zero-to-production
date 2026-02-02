@@ -18,23 +18,11 @@ provider "aws" {
   skip_requesting_account_id  = true
   s3_use_path_style           = true
 
-  endpoints {
-    dynamodb = "http://localhost:4566"    
+  endpoints {  
     s3 = "http://localhost:4566"
-  }
-}
-
-resource "aws_s3_bucket" "this" {
-  bucket = var.bucket_name
-  force_destroy = true
-
-  tags = {
-    Environment = "local"
-    ManagedBy   = "terraform"
-  }
-
-  provisioner "local-exec" {
-    when    = destroy
-    command = "aws --endpoint-url=http://localhost:4566 s3 rm s3://${self.bucket} --recursive"
+    sqs = "http://localhost:4566"
+    lambda = "http://localhost:4566"
+    iam    = "http://localhost:4566"
+    dynamodb = "http://localhost:4566"
   }
 }

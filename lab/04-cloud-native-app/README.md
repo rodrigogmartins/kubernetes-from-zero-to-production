@@ -47,11 +47,19 @@ Run the following command to start LocalStack with DynamoDB enabled:
 ```bash
 docker run -d \
   -p 4566:4566 \
-  -e SERVICES=dynamodb,s3 \
+  -e SERVICES=dynamodb,s3,iam,lambda,sqs \
   -e DEBUG=1 \
+  -v //var/run/docker.sock:/var/run/docker.sock \
   --name localstack \
   localstack/localstack
 ```
+
+docker run --rm -it ^
+  -p 4566:4566 ^
+  -e SERVICES=dynamodb,s3,iam,lambda,sqs ^
+  -e DEBUG=1 ^
+  -v //var/run/docker.sock:/var/run/docker.sock ^
+  localstack/localstack
 
 Verify the container is running:
 
@@ -200,3 +208,16 @@ It serves as a solid foundation for more advanced studies in:
 - DynamoDB internals
 - Backend platform engineering
 - Kubernetes and cloud-native architectures
+
+build lamdbda:
+
+Linux:
+GOOS=linux GOARCH=amd64 go build -o bootstrap lambda-s3-events/main.go
+
+compress:
+tar -tf lambda.zip
+
+Windows:
+$env:GOOS="linux"; $env:GOARCH="amd64"; cd lambda-s3-events; go build -o bootstrap ; cd ..
+
+Compress-Archive -Path .\lambda-s3-events\bootstrap -DestinationPath .\lambda-s3-events\lambda.zip -Force
