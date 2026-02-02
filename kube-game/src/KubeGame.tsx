@@ -25,61 +25,81 @@ export default function KubeGame() {
   const [state, setState] = useState(createPhase1InitialState())
   const [lastCompletedTask, setLastCompletedTask] = useState<Task | null>(null)
   const [showTaskNotification, setShowTaskNotification] = useState(false)
+  const [showPhaseCompletion, setShowPhaseCompletion] = useState(false)
+  const [phaseCompletionTask, setPhaseCompletionTask] = useState<Task | null>(null)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [isGamePaused, setIsGamePaused] = useState(false)
   const [pendingPhaseTransition, setPendingPhaseTransition] = useState<1 | 2 | 3 | 4 | 5 | null>(null)
   const [showGameCompletion, setShowGameCompletion] = useState(false)
   const notifiedTasksRef = useRef(new Set<string>())
   const isModalOpenRef = useRef(false)
-  
+  const currentlyShowingTaskRef = useRef<string | null>(null)
+
   const handleCloseModal = useCallback(() => {
     setShowTaskNotification(false)
     isModalOpenRef.current = false
-    setIsGamePaused(false)
+    currentlyShowingTaskRef.current = null
     
-    // Check if all tasks are complete for current phase - if so, queue phase transition
-    if (state.phase === 1 && phase1Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
-      // Set the final task to show its summary
-      setLastCompletedTask(phase1Tasks[phase1Tasks.length - 1])
-      notifiedTasksRef.current.clear()
-      setPendingPhaseTransition(2)
-    } else if (state.phase === 2 && phase2Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
-      setLastCompletedTask(phase2Tasks[phase2Tasks.length - 1])
-      notifiedTasksRef.current.clear()
-      setPendingPhaseTransition(3)
-    } else if (state.phase === 3 && phase3Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
-      setLastCompletedTask(phase3Tasks[phase3Tasks.length - 1])
-      notifiedTasksRef.current.clear()
-      setPendingPhaseTransition(4)
-    } else if (state.phase === 4 && phase4Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
-      setLastCompletedTask(phase4Tasks[phase4Tasks.length - 1])
-      notifiedTasksRef.current.clear()
-      setPendingPhaseTransition(5)
-    } else if (state.phase === 5 && phase5Tasks.every(t => notifiedTasksRef.current.has(t.id))) {
-      // Schedule completion screen to show after a brief delay
-      setTimeout(() => {
-        setShowGameCompletion(true)
-        setIsGamePaused(true)
-      }, 300)
-    }
+    // Check if we just closed the final task of the phase
+    const currentTasks = state.phase === 2 ? phase2Tasks : state.phase === 3 ? phase3Tasks : state.phase === 4 ? phase4Tasks : state.phase === 5 ? phase5Tasks : phase1Tasks
     
-    // If there's a pending phase transition, execute it after modal closes
-    if (pendingPhaseTransition) {
-      setState((prev) => {
-        if (pendingPhaseTransition === 2) {
-          return createPhase2InitialState()
-        } else if (pendingPhaseTransition === 3) {
-          return createPhase3InitialState()
-        } else if (pendingPhaseTransition === 4) {
-          return createPhase4InitialState()
-        } else if (pendingPhaseTransition === 5) {
-          return createPhase5InitialState()
+    if (lastCompletedTask && currentTasks[currentTasks.length - 1].id === lastCompletedTask.id) {
+      // This was the final task - check if all tasks are complete
+      if (currentTasks.every(t => notifiedTasksRef.current.has(t.id))) {
+        // Show phase completion modal
+        setPhaseCompletionTask(lastCompletedTask)
+        setShowPhaseCompletion(true)
+        
+        // Set up the next phase transition
+        if (state.phase === 1) {
+          setPendingPhaseTransition(2)
+        } else if (state.phase === 2) {
+          setPendingPhaseTransition(3)
+        } else if (state.phase === 3) {
+          setPendingPhaseTransition(4)
+        } else if (state.phase === 4) {
+          setPendingPhaseTransition(5)
+        } else if (state.phase === 5) {
+          setShowGameCompletion(true)
         }
-        return prev
-      })
-      setPendingPhaseTransition(null)
+        
+        return
+      }
     }
-  }, [pendingPhaseTransition, state.phase])
+    
+    setIsGamePaused(false)
+  }, [state.phase, lastCompletedTask])
+
+  const handleClosePhaseCompletion = useCallback(() => {
+    setShowPhaseCompletion(false)
+    setPhaseCompletionTask(null)
+    
+    // Wait 500ms before transitioning
+    setTimeout(() => {
+      if (pendingPhaseTransition) {
+        setState((prev: ActualState) => {
+          let newState
+          if (pendingPhaseTransition === 2) {
+            newState = createPhase2InitialState()
+          } else if (pendingPhaseTransition === 3) {
+            newState = createPhase3InitialState()
+          } else if (pendingPhaseTransition === 4) {
+            newState = createPhase4InitialState()
+          } else if (pendingPhaseTransition === 5) {
+            newState = createPhase5InitialState()
+          } else {
+            return prev
+          }
+          // Clear notified tasks for new phase
+          notifiedTasksRef.current.clear()
+          return newState
+        })
+        setPendingPhaseTransition(null)
+      }
+    }, 800)
+    
+    setIsGamePaused(false)
+  }, [pendingPhaseTransition])
 
   useEffect(() => {
     if (showTaskNotification) {
@@ -103,32 +123,39 @@ export default function KubeGame() {
         const currentTime = Date.now()
 
         // Only show next task if modal is not currently open
-        if (!isModalOpenRef.current) {
-          const nextTask = currentTasks.find((task: Task) => !notifiedTasksRef.current.has(task.id) && task.isCompleted(next, currentTime))
+        if (!isModalOpenRef.current && !currentlyShowingTaskRef.current) {
+          // Find the first task that hasn't been notified yet
+          let nextTask = null
+          for (const task of currentTasks) {
+            if (!notifiedTasksRef.current.has(task.id)) {
+              // Only show this task if it's completed
+              if (task.isCompleted(next, currentTime)) {
+                nextTask = task
+              }
+              // Stop looking after finding the first non-notified task
+              break
+            }
+          }
 
           if (nextTask) {
+            currentlyShowingTaskRef.current = nextTask.id
             notifiedTasksRef.current.add(nextTask.id)
             setLastCompletedTask(nextTask)
             setShowTaskNotification(true)
           }
         }
 
-        // Check if all tasks for this phase are complete
-        const allPhase1Complete = next.phase === 1 && phase1Tasks.every(t => notifiedTasksRef.current.has(t.id))
-        const allPhase2Complete = next.phase === 2 && phase2Tasks.every(t => notifiedTasksRef.current.has(t.id))
-        const allPhase3Complete = next.phase === 3 && phase3Tasks.every(t => notifiedTasksRef.current.has(t.id))
-        const allPhase4Complete = next.phase === 4 && phase4Tasks.every(t => notifiedTasksRef.current.has(t.id))
         const allPhase5Complete = next.phase === 5 && phase5Tasks.every(t => notifiedTasksRef.current.has(t.id))
 
-        // If all tasks are complete, don't auto-transition here - let the last task modal close trigger it
-        // This ensures the conclusion message is shown before transitioning
-        if (allPhase1Complete || allPhase2Complete || allPhase3Complete || allPhase4Complete || allPhase5Complete) {
-          return next
+        // Phase completion is now handled in handleCloseModal when the final task closes
+        // Just acknowledge the completion state but don't trigger modals here
+        if (allPhase5Complete && !showGameCompletion) {
+          // Final phase complete - this will be handled by handleCloseModal
         }
 
         return next
       })
-    }, 2000)
+    }, 1000)
 
     return () => {
       clearInterval(interval)
@@ -177,7 +204,7 @@ export default function KubeGame() {
   }
 
   function deletePod(podId: string) {
-    setState((prev) => {
+    setState((prev: ActualState) => {
       const newState = {
         ...prev,
         pods: prev.pods.filter(p => p.id !== podId),
@@ -258,7 +285,7 @@ export default function KubeGame() {
             <div className={`${sidebarOpen ? 'flex' : 'hidden'} lg:flex flex-col overflow-hidden flex-1`}>
               {/* Active Task */}
               <div className="p-3 md:p-6 border-b border-border overflow-auto">
-                <ActiveTaskPanel task={activeTask} phase={state.phase} />
+                <ActiveTaskPanel task={activeTask} />
               </div>
 
               {/* Controls */}
@@ -272,7 +299,12 @@ export default function KubeGame() {
 
       {/* Task Completion Notification */}
       {showTaskNotification && lastCompletedTask && (
-        <TaskPanel task={lastCompletedTask} onClose={handleCloseModal} />
+        <TaskPanel task={lastCompletedTask} phase={state.phase} onClose={handleCloseModal} />
+      )}
+
+      {/* Phase Completion Modal */}
+      {showPhaseCompletion && phaseCompletionTask && (
+        <TaskPanel task={phaseCompletionTask} phase={state.phase} onClose={handleClosePhaseCompletion} isPhaseCompletion={true} />
       )}
 
       {/* Final Game Completion Screen */}
