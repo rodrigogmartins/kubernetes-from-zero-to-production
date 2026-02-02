@@ -1,7 +1,7 @@
 'use client';
 
 import { CheckCircle2, X } from 'lucide-react'
-import type { Task } from '../tasks/types';
+import type { Task } from '../types';
 
 type Props = {
   task?: Task

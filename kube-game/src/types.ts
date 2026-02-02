@@ -21,3 +21,11 @@ export type ActualState = {
   controllerActive?: boolean
   lastPodCreatedAt?: number
 }
+
+export type Task = {
+  id: string
+  title: string
+  description: string
+  isCompleted: (state: ActualState, currentTime: number) => boolean
+  summary: string
+}

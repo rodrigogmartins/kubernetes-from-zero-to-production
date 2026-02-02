@@ -1,4 +1,4 @@
-import type { ActualState, Node, Pod } from '../state/types'
+import type { ActualState, Node, Pod } from '../types'
 
 type Props = {
   state: ActualState

@@ -3,21 +3,26 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
-import { createInitialState, createPhase2InitialState, createPhase3InitialState, createPhase4InitialState, createPhase5InitialState } from './state/initialState'
-import type { Task } from './tasks/types'
 import { reconcile } from './engine/reconcile'
-import { phase1Tasks } from './tasks/phase1Tasks'
 import { ClusterView } from './ui/ClusterView'
 import { ActiveTaskPanel } from './ui/ActiveTaskPanel'
 import { Controls } from './ui/Controls'
 import { TaskPanel } from './ui/TaskPanel'
-import { phase2Tasks } from './tasks/phase2Tasks'
-import { phase5Tasks } from './tasks/phase5Tasks'
-import { phase3Tasks } from './tasks/phase3Tasks'
-import { phase4Tasks } from './tasks/phase4Tasks'
+import type { ActualState, Task } from './types'
+import { phase5Tasks } from './phases/phase5/phase5Tasks'
+import { phase2Tasks } from './phases/phase2/phase2Tasks'
+import { phase3Tasks } from './phases/phase3/phase3Tasks'
+import { phase4Tasks } from './phases/phase4/phase4Tasks'
+import { phase1Tasks } from './phases/phase1/phase1Tasks'
+
+import { createPhase1InitialState } from './phases/phase1/initialState'
+import { createPhase2InitialState } from './phases/phase2/initialState'
+import { createPhase3InitialState } from './phases/phase3/initialState'
+import { createPhase4InitialState } from './phases/phase4/initialState'
+import { createPhase5InitialState } from './phases/phase5/initialState'
 
 export default function KubeGame() {
-  const [state, setState] = useState(createInitialState())
+  const [state, setState] = useState(createPhase1InitialState())
   const [lastCompletedTask, setLastCompletedTask] = useState<Task | null>(null)
   const [showTaskNotification, setShowTaskNotification] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -43,7 +48,7 @@ export default function KubeGame() {
     
     // If there's a pending phase transition, execute it after modal closes
     if (pendingPhaseTransition) {
-      setState((prev) => {
+      setState((prev: ActualState) => {
         if (pendingPhaseTransition === 2) {
           return createPhase2InitialState()
         } else if (pendingPhaseTransition === 3) {
@@ -73,7 +78,7 @@ export default function KubeGame() {
         return
       }
 
-      setState((prev) => {
+      setState((prev: ActualState) => {
         const next = reconcile(prev)
 
         // Determine which tasks to use based on phase

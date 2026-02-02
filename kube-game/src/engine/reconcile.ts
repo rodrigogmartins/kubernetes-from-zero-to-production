@@ -1,4 +1,4 @@
-import type { ActualState } from '../state/types'
+import type { ActualState } from '../types'
 
 export function reconcile(state: ActualState): ActualState {
   // Deep copy state properly

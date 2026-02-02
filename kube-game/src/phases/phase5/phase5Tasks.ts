@@ -1,5 +1,4 @@
-import type { ActualState } from '../state/types'
-import type { Task } from './types'
+import type { ActualState, Task } from '../../types'
 
 export const phase5Tasks: Task[] = [
   {
