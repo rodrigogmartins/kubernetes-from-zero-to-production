@@ -33,8 +33,9 @@ export const phase3Tasks: Task[] = [
     description: 'Now simulate a failure by manually deleting one of the running pods. This is the moment the controller will react.',
     summary: 'You deleted a pod, simulating a failure. The current state is now 2 pods, while desired is still 3. The controller is now in reconcile mode and has detected the drift. Watch it react.',
     isCompleted: (state: ActualState, _currentTime: number) => {
-      const runningPods = state.pods.filter(p => p.status === 'Running').length
-      return state.controllerActive === true && state.controllerMode === 'reconcile' && state.podDeletedByUser === true && runningPods === 2 && state.desiredPods === 3
+      // Task completes as soon as the user manually deletes a pod
+      // The action itself is what matters, not the resulting pod count
+      return state.podDeletedByUser === true
     }
   },
   {

@@ -22,6 +22,9 @@ export type ActualState = {
   controllerMode?: 'bootstrap' | 'reconcile'
   lastPodCreatedAt?: number
   podDeletedByUser?: boolean
+  userDeletedRunningPod?: boolean
+  previousPods?: Pod[]
+  pendingPodWasScheduled?: boolean
 }
 
 export type Task = {

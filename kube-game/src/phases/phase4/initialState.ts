@@ -36,6 +36,9 @@ export function createPhase4InitialState(): ActualState {
     desiredPods: 5,
     controllerActive: true,
     podDeletedByUser: false,
+    userDeletedRunningPod: false,
+    previousPods: pods.map(p => ({ ...p })),
+    pendingPodWasScheduled: false,
     lastFeedbackMessage: 'Phase 4 started. 3 nodes with fixed capacity (A:2, B:2, C:1). Controller is ON. Desired state is 5 pods.'
   }
 }

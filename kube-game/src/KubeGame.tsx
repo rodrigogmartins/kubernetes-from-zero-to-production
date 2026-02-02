@@ -205,6 +205,10 @@ export default function KubeGame() {
 
   function deletePod(podId: string) {
     setState((prev: ActualState) => {
+      // Find the pod being deleted to check its status
+      const podBeingDeleted = prev.pods.find(p => p.id === podId)
+      const wasRunning = podBeingDeleted?.status === 'Running'
+
       const newState = {
         ...prev,
         pods: prev.pods.filter(p => p.id !== podId),
@@ -213,10 +217,17 @@ export default function KubeGame() {
           pods: n.pods.filter(id => id !== podId)
         }))
       }
+
       // In Phase 3, mark that a user deleted a pod (triggers reconcile mode)
       if (prev.phase === 3 && prev.controllerActive) {
         newState.podDeletedByUser = true
       }
+      
+      // In Phase 4, mark that a user deleted a running pod (enables rescheduling observation)
+      if (prev.phase === 4 && wasRunning) {
+        newState.userDeletedRunningPod = true
+      }
+      
       return newState
     })
   }

@@ -38,8 +38,9 @@ export const phase4Tasks: Task[] = [
     description: 'You must manually delete one running pod to free capacity on a node.',
     summary: 'You deleted a running pod, freeing capacity on one of the nodes. Now the scheduler can place one of the pending pods.',
     isCompleted: (state: ActualState, _currentTime: number) => {
-      // Only complete when user has explicitly deleted a pod
-      return state.podDeletedByUser === true
+      // Task completes when the user explicitly deletes a running pod
+      // The action itself is what matters, not the scheduler behavior afterward
+      return state.userDeletedRunningPod === true
     }
   },
   {
@@ -48,10 +49,9 @@ export const phase4Tasks: Task[] = [
     description: 'Watch the scheduler automatically place a pending pod on the newly available node.',
     summary: 'The scheduler automatically scheduled a pending pod to the freed node. This is the scheduler in action—it continuously matches pending pods to available capacity. The scheduler reacted to freed capacity created by your deletion.',
     isCompleted: (state: ActualState, _currentTime: number) => {
-      const pendingCount = state.pods.filter(p => p.status === 'Pending').length
-      const runningCount = state.pods.filter(p => p.status === 'Running').length
-      // Complete when: user deleted a pod AND pending pods were scheduled (1 pending became running)
-      return state.podDeletedByUser === true && state.desiredPods === 7 && runningCount === 6 && pendingCount === 1
+      // Task completes when a pending pod was scheduled after user deletion
+      // This is purely event-based, independent of final pod counts or timing
+      return state.pendingPodWasScheduled === true
     }
   }
 ]

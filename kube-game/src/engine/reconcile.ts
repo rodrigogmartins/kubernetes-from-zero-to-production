@@ -185,5 +185,23 @@ export function reconcile(state: ActualState): ActualState {
     }
   }
 
+  // Phase 4: Detect Pending → Running transitions after user deletion
+  if (newState.phase === 4 && newState.userDeletedRunningPod && newState.previousPods) {
+    // Check if any pod transitioned from Pending to Running
+    for (const currentPod of newState.pods) {
+      if (currentPod.status === 'Running') {
+        const previousPod = newState.previousPods.find(p => p.id === currentPod.id)
+        if (previousPod && previousPod.status === 'Pending') {
+          // A pending pod was scheduled! Mark this event
+          newState.pendingPodWasScheduled = true
+          break
+        }
+      }
+    }
+  }
+
+  // Store current pods as previous for next reconciliation
+  newState.previousPods = newState.pods.map(p => ({ ...p }))
+
   return newState
 }
