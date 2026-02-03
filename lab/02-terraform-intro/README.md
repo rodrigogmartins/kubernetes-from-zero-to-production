@@ -66,7 +66,7 @@ docker ps
 Navigate to the lab directory:
 
 ```bash
-cd terraform/localstack
+cd terraform
 ```
 
 Initialize Terraform:
