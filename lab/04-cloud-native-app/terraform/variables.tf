@@ -31,5 +31,5 @@ variable "function_zip_name" {
 variable "table_name" {
   description = "DynamoDB table name"
   type        = string
-  default     = "files"
+  default     = "files-table"
 }

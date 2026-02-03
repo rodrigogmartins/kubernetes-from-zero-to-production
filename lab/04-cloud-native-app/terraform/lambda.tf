@@ -47,6 +47,7 @@ resource "aws_iam_role_policy" "lambda_dynamo" {
 }
 
 # Create lambda function
+# Ao mudar o zip e rodar um TF apply, deve atualizar automaticamente a lambda
 resource "aws_lambda_function" "sqs_consumer" {
   function_name = var.function_name
   filename = format("../%s/%s", var.function_zip_dir, var.function_zip_name)

@@ -13,6 +13,8 @@ resource "aws_s3_bucket" "files_bucket" {
   }
 }
 
+# Precisa de uma role para o S3 enviar eventos para o SQS
+
 # Create notification from S3 to SQS queue
 resource "aws_s3_bucket_notification" "bucket_notification" {
   bucket = aws_s3_bucket.files_bucket.id
@@ -22,5 +24,7 @@ resource "aws_s3_bucket_notification" "bucket_notification" {
     events    = ["s3:ObjectCreated:*"]
   }
 
+  # Normalmente não é necessário.
+  # Terraform tem a dependência implícita com base nas referências entre recursos (id de recurso / arn)
   depends_on = [aws_s3_bucket.files_bucket, aws_sqs_queue.events_queue]
 }

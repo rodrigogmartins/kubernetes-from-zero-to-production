@@ -1,29 +1,21 @@
-# Lab-02 — DynamoDB Local with Terraform
+# Lab-04 — AWS Services integration locally
 
 ## 🎯 Objective
 
-The goal of this lab is to demonstrate how to **provision a DynamoDB table locally using Terraform**, using **LocalStack**, as a foundation for backend development and testing.
+The goal of this lab is to demonstrate how to **provision a more complex infastrucutre locally using Terraform**, using **LocalStack**, as a foundation for backend development and testing.
 
 This lab simulates a real-world Infrastructure as Code (IaC) workflow and allows you to:
 
 - Provision AWS resources locally
 - Manage infrastructure using Terraform
 - Develop and test backend services without using real AWS resources
-- Integrate DynamoDB with a Go-based API
 
-## 🧠 What you will learn
+## App Flow
 
-- How to configure the AWS provider for LocalStack
-- How to create a DynamoDB table using Terraform
-- How to validate DynamoDB resources locally
-- How to prepare infrastructure for consumption by a backend API
-
-## 📦 Resources created
-
-- 1 DynamoDB table
-  - Name: `users` (configurable)
-  - Partition Key: `id` (String)
-  - Billing mode: `PAY_PER_REQUEST`
+1. File uploaded from API
+2. File is saved in S3
+3. S3 triggers event to SQS
+4. Lambda consume SQS message and save the event data in DynamoDB table
 
 ## 📋 Prerequisites
 
@@ -54,13 +46,6 @@ docker run -d \
   localstack/localstack
 ```
 
-docker run --rm -it ^
-  -p 4566:4566 ^
-  -e SERVICES=dynamodb,s3,iam,lambda,sqs ^
-  -e DEBUG=1 ^
-  -v //var/run/docker.sock:/var/run/docker.sock ^
-  localstack/localstack
-
 Verify the container is running:
 
 ```bash
@@ -74,7 +59,7 @@ docker ps
 Navigate to the lab directory:
 
 ```bash
-cd terraform/localstack
+cd terraform
 ```
 
 Initialize Terraform:
@@ -85,7 +70,38 @@ terraform init
 
 ---
 
-### 3. Apply the infrastructure
+### 3. Build Lambda file
+
+Linux:
+
+```bash
+GOOS=linux GOARCH=amd64 && \
+cd lambda-s3-eventsgo && \
+build -o bootstrap && \
+cd ..
+```
+
+Compress the bootstrap file:
+
+```bash
+tar -tf ./lambda-s3-events/lambda.zip
+```
+
+Windows:
+
+```bash
+$env:GOOS="linux"; $env:GOARCH="amd64"; cd lambda-s3-events; go build -o bootstrap ; cd ..
+```
+
+Compress the bootstrap file:
+
+```bash
+Compress-Archive -Path .\lambda-s3-events\bootstrap -DestinationPath .\lambda-s3-events\lambda.zip -Force
+```
+
+---
+
+### 4. Apply the infrastructure
 
 Run:
 
@@ -103,26 +119,10 @@ Once completed, the DynamoDB table will be created in LocalStack.
 
 ---
 
-### 4. Validate the table creation
-
-Use the AWS CLI pointing to the LocalStack endpoint:
-
-```bash
-aws --endpoint-url=http://localhost:4566 dynamodb list-tables
-```
-
-Expected output:
-
-```json
-{
-  "TableNames": ["users"]
-}
-```
-
 ### 5. Build Docker image
 
 ```bash
-docker build -t terraform-intro:v1 .
+docker build -t cloud-app:v1 ./file-upload-api
 ```
 
 ### 6. Run project with Kubernetes
@@ -131,45 +131,29 @@ docker build -t terraform-intro:v1 .
 kubectl apply -f infra
 ```
 
-### 6. Verify result
+### 7. Verify result
 
-#### Create user
+#### Upload file to S3
 
 ```bash
 curl --request POST \
-  --url http://localhost:3000/users \
-  --header 'Content-Type: application/json' \
-  --data '{
-    "id": "user-123",
-    "name": "John Wick",
-    "email": "john@example.com"
-  }'
+  --url http://localhost:8080/upload \
+  --form 'file=@/path/to/file.txt'
 ```
 
-#### Query user
+#### List files in S3 bucket
 
 ```bash
-curl --request GET --url http://localhost:3000/users/user-123
+curl --request GET --url http://localhost:8080/files
 ```
 
-#### Update user
+#### List files in DynamoDB
 
 ```bash
-curl --request PUT \
-  --url http://localhost:3000/users/user-123 \
-  --header 'Content-Type: application/json'
-  --data '{
-    "id": "user-123",
-    "name": "Winston Scott",
-    "email": "winston@continental.com"
-  }'
+curl --request GET --url http://localhost:8080/files-db
 ```
 
-#### Delete user
-
-```bash
-curl --request DELETE --url http://localhost:3000/users/user-123
-```
+> It might take a moment for results to appear in the DynamoDB table, as it's an asynchronous process.
 
 ## 🧹 Destroying resources
 
@@ -182,6 +166,8 @@ kubectl delete -f infra
 To remove the DynamoDB table created by Terraform:
 
 ```bash
+cd terraform
+
 terraform destroy
 ```
 
@@ -208,16 +194,3 @@ It serves as a solid foundation for more advanced studies in:
 - DynamoDB internals
 - Backend platform engineering
 - Kubernetes and cloud-native architectures
-
-build lamdbda:
-
-Linux:
-GOOS=linux GOARCH=amd64 go build -o bootstrap lambda-s3-events/main.go
-
-compress:
-tar -tf lambda.zip
-
-Windows:
-$env:GOOS="linux"; $env:GOARCH="amd64"; cd lambda-s3-events; go build -o bootstrap ; cd ..
-
-Compress-Archive -Path .\lambda-s3-events\bootstrap -DestinationPath .\lambda-s3-events\lambda.zip -Force
