@@ -4,10 +4,10 @@ Running applications in Kubernetes in production introduces new challenges: reli
 
 ## Topics Covered
 
-- [**Autoscaling**](./0001_autoscaling.md) – Scaling Pods automatically based on workload.  
-- [**Resource Requests & Limits**](./0002_resource-requests-limits.md) – Ensuring fair and safe allocation of CPU and memory.  
-- [**Probes**](./0003_probes.md) – Liveness and readiness checks to maintain healthy applications.  
-- [**Failure Scenarios**](./0004_failure-scenarios.md) – Understanding common failures and strategies to mitigate them.
+- [**Autoscaling**](./autoscaling.md) – Scaling Pods automatically based on workload.  
+- [**Resource Requests & Limits**](./resource-requests-limits.md) – Ensuring fair and safe allocation of CPU and memory.  
+- [**Probes**](./probes.md) – Liveness and readiness checks to maintain healthy applications.  
+- [**Failure Scenarios**](./failure-scenarios.md) – Understanding common failures and strategies to mitigate them.
 
 ---
 

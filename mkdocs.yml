@@ -1,5 +1,7 @@
-site_name: "Kubernetes Labs"
+site_name: "Kubernetes Learning"
 site_url: https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/
+site_description: "Interactive Kubernetes documentation with quizzes"
+site_author: "Rodrigo Martins"
 
 theme:
   name: material
@@ -11,41 +13,47 @@ plugins:
   - search
   - mkdocs_quiz
 
+docs_dir: docs
+site_dir: site
+
+use_directory_urls: true
+
 nav:
   - Home: index.md
   - Fundamentals:
-      - Introduction: 01-fundamentals/0000_index.md
-      - What problem Kubernetes solves: 01-fundamentals/0001_what-problem-kubernetes-solves.md
-      - Control Plane vs Data Plane: 01-fundamentals/0002_control-plane-vs-data-plane.md
-      - Reconciliation Loop: 01-fundamentals/0003_reconciliation-loop.md
-      - Kubernetes as a Distributed System: 01-fundamentals/0004_kubernetes-as-a-distributed-system.md
+      - Introduction: 01-fundamentals/index.md
+      - What problem Kubernetes solves: 01-fundamentals/what-problem-kubernetes-solves.md
+      - Control Plane vs Data Plane: 01-fundamentals/control-plane-vs-data-plane.md
+      - Reconciliation Loop: 01-fundamentals/reconciliation-loop.md
+      - Kubernetes as a Distributed System: 01-fundamentals/kubernetes-as-a-distributed-system.md
+      - Pods vs Containers: 01-fundamentals/pods-vs-containers.md
+      - Kubernetes Architecture Overview: 01-fundamentals/kubernetes-architecture-overview.md
   - Core Workloads:
-      - Introduction: 02-core-workloads/0000_index.md
-      - Pods: 02-core-workloads/0001_pods.md
-      - ReplicaSets: 02-core-workloads/0002_replicasets.md
-      - Deployments: 02-core-workloads/0003_deployments.md
-      - Services: 02-core-workloads/0004_services.md
-      - Ingress: 02-core-workloads/0005_ingress.md
+      - Introduction: 02-core-workloads/index.md
+      - Pods: 02-core-workloads/pods.md
+      - ReplicaSets: 02-core-workloads/replicasets.md
+      - Deployments: 02-core-workloads/deployments.md
+      - Services: 02-core-workloads/services.md
+      - Ingress: 02-core-workloads/ingress.md
   - Networking:
-      - Introduction: 03-networking/0000_index.md
-      - Pod Networking: 03-networking/0001_pod-networking.md
-      - Kube Proxy: 03-networking/0002_kube-proxy.md
-      - CNI: 03-networking/0003_cni.md
-      - Services: 03-networking/0004_services.md
-      - DNS & Service Discovery: 03-networking/0005_dns.md
-      - Ingress: 03-networking/0006_ingress.md
-      - Network Policies: 03-networking/0007_network_policies.md
+      - Introduction: 03-networking/index.md
+      - Pod Networking: 03-networking/pod-networking.md
+      - Kube Proxy: 03-networking/kube-proxy.md
+      - CNI: 03-networking/cni.md
+      - Services: 03-networking/services.md
+      - DNS & Service Discovery: 03-networking/dns.md
+      - Ingress: 03-networking/ingress.md
+      - Network Policies: 03-networking/network_policies.md
   - Storage:
-      - Introduction: 04-storage/0000_index.md
-      - Volumes: 04-storage/0001_volumes.md
-      - PV & PVC: 04-storage/0002_pv-pvc.md
-      - Storage Classes: 04-storage/0003_storage-classes.md
-      - StatefulSets: 04-storage/0004_statefulsets.md
+      - Introduction: 04-storage/index.md
+      - Volumes: 04-storage/volumes.md
+      - PV & PVC: 04-storage/pv-pvc.md
+      - Storage Classes: 04-storage/storage-classes.md
+      - StatefulSets: 04-storage/statefulsets.md
   - Production:
-      - Introduction: 05-production/0000_index.md
-      - Autoscaling: 05-production/0001_autoscaling.md
-      - Resource Requests & Limits: 05-production/0002_resource-requests-limits.md
-      - Probes: 05-production/0003_probes.md
-      - Failure Scenarios: 05-production/0004_failure-scenarios.md
+      - Introduction: 05-production/index.md
+      - Autoscaling: 05-production/autoscaling.md
+      - Resource Requests & Limits: 05-production/resource-requests-limits.md
+      - Probes: 05-production/probes.md
+      - Failure Scenarios: 05-production/failure-scenarios.md
 
-docs_dir: docs

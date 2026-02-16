@@ -6,10 +6,10 @@ This chapter covers Kubernetes solutions for persistent storage: Volumes, Persis
 
 ## Topics Covered
 
-- [**Volumes**](./0001_volumes.md) – Local and ephemeral storage inside Pods.
-- [**Persistent Volumes (PV) & Persistent Volume Claims (PVC)**](./0002_pv-pvc.md) – Decoupling storage from Pods, providing durable storage.
-- [**Storage Classes**](./0003_storage-classes.md) – Dynamic provisioning and declarative storage policies.
-- [**StatefulSets**](./0004_statefulsets.md) – Pods that require stable network IDs and persistent storage.
+- [**Volumes**](./volumes.md) – Local and ephemeral storage inside Pods.
+- [**Persistent Volumes (PV) & Persistent Volume Claims (PVC)**](./pv-pvc.md) – Decoupling storage from Pods, providing durable storage.
+- [**Storage Classes**](./storage-classes.md) – Dynamic provisioning and declarative storage policies.
+- [**StatefulSets**](./statefulsets.md) – Pods that require stable network IDs and persistent storage.
 
 ---
 

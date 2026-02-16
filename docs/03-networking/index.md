@@ -4,13 +4,13 @@ Networking in Kubernetes is essential for communication between Pods, Services, 
 
 ## Topics Covered
 
-- [Pod Networking](./0001_pod-networking.md) – Unique IPs per Pod, shared namespaces, cross-node communication.
-- [Kube-Proxy](./0002_kube-proxy.md) – Traffic routing, service IPs, load balancing.
-- [CNI Plugins](./0003_cni.md) – Underlying network implementation, IP allocation, cross-node communication, network isolation.
-- [Services](./0004_services.md) – Stable endpoints, load balancing, decoupling consumers from Pods.
-- [DNS and Service Discovery](./0005_dns.md) – CoreDNS, stable names, intra-cluster discovery.
-- [Ingress](./0006_ingress.md) – HTTP(S) routing, host/path rules, TLS termination.
-- [Network Policies](./0007_network_policies.md) – Traffic control, security, zero-trust policies.
+- [Pod Networking](./pod-networking.md) – Unique IPs per Pod, shared namespaces, cross-node communication.
+- [Kube-Proxy](./kube-proxy.md) – Traffic routing, service IPs, load balancing.
+- [CNI Plugins](./cni.md) – Underlying network implementation, IP allocation, cross-node communication, network isolation.
+- [Services](./services.md) – Stable endpoints, load balancing, decoupling consumers from Pods.
+- [DNS and Service Discovery](./dns.md) – CoreDNS, stable names, intra-cluster discovery.
+- [Ingress](./ingress.md) – HTTP(S) routing, host/path rules, TLS termination.
+- [Network Policies](./network_policies.md) – Traffic control, security, zero-trust policies.
 
 ## Check Your Knowledge
 
