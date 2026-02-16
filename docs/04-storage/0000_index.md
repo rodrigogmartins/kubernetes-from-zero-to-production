@@ -1,4 +1,4 @@
-# Storage in Kubernetes
+# Phase 4 - Storage in Kubernetes
 
 Persistent storage is a core challenge in containerized environments because containers are ephemeral. Without proper storage management, data can be lost whenever a Pod is restarted or rescheduled.
 

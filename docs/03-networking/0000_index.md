@@ -1,4 +1,4 @@
-# Kubernetes Networking
+# Phase 3 - Kubernetes Networking
 
 Networking in Kubernetes is essential for communication between Pods, Services, and external clients. This chapter explains how Kubernetes handles networking challenges, solves service discovery, and enforces security between workloads.
 

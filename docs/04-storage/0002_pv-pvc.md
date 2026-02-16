@@ -1,3 +1,9 @@
+---
+quiz:
+  auto_number: true
+  shuffle_answers: true
+---
+
 # Persistent Volumes (PV) & Persistent Volume Claims (PVC)
 
 ## The Problem
@@ -30,3 +36,45 @@ Kubernetes introduces PVs and PVCs:
 
 1. What happens to data if a Pod using a PVC is deleted?  
 2. How does Kubernetes decide which PV to bind to a PVC?
+
+## Check your knowledge
+
+<quiz>
+What is a PersistentVolume (PV) in Kubernetes?
+
+- [x] A piece of storage in the cluster provisioned by an admin
+- [ ] A container image
+- [ ] A pod scheduling rule
+- [ ] A network policy
+</quiz>
+
+<quiz>
+What is a PersistentVolumeClaim (PVC)?
+
+- [x] A request for storage by a pod
+- [ ] A network access rule
+- [ ] A type of deployment
+- [ ] A pod label
+</quiz>
+
+<quiz>
+Scenario: A PVC is bound to a PV. Later, a new pod requests the same PVC. What happens?
+
+- [x] It uses the same PV if access mode allows
+- [ ] A new PV is automatically created
+- [ ] The pod fails
+- [ ] kube-proxy assigns a different IP
+</quiz>
+
+<quiz>
+Which access modes are supported for PVCs? (Select all that apply)
+
+- [x] ReadWriteOnce
+- [x] ReadOnlyMany
+- [x] ReadWriteMany
+- [ ] ReadWriteAll
+</quiz>
+
+<quiz>
+Fill in the blank: PVCs allow pods to be [[decoupled from the underlying storage]] so they can be rescheduled freely across nodes.
+</quiz>

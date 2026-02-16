@@ -1,4 +1,4 @@
-# Production & Operational Considerations in Kubernetes
+# Phase 5 - Production & Operational Considerations in Kubernetes
 
 Running applications in Kubernetes in production introduces new challenges: reliability, scaling, and resource management. This chapter covers the essential operational practices for production-grade clusters.
 

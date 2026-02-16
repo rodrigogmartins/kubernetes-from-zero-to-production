@@ -1,110 +1,71 @@
+---
+quiz:
+  auto_number: true
+  shuffle_answers: true
+---
+
 # Services
 
-Services provide **stable networking for ephemeral Pods**.
+**Services** provide a stable endpoint and load balancing for Pods.  
+They solve the problem of **ephemeral Pod IPs**, allowing clients to reach the correct backend Pods reliably.
 
-In Kubernetes, Pods come and go, and their IP addresses change frequently. Services solve this problem by offering a **consistent access point** to a dynamic set of Pods.
+Service types include:
 
-According to *The Kubernetes Book*, Services are a core abstraction that decouples **how applications run** from **how they are reached**.
+- ClusterIP: internal access only
+- NodePort: exposes service on each Node's IP at a static port
+- LoadBalancer: integrates with cloud provider to expose externally
+- ExternalName: DNS alias to external service
 
-## What Is a Service
+Services decouple clients from Pods, enabling **scaling and rolling updates** without breaking connectivity.
 
-A Service is a **stable virtual endpoint** that:
+---
 
-- Selects Pods using labels
-- Exposes them through a consistent IP and DNS name
-- Distributes traffic across matching Pods
+## Check your knowledge
 
-A Service does not represent a single Pod — it represents a **logical group** of Pods.
+<quiz>
+What problem do Kubernetes Services solve?
 
-## Why Services Exist
+- [x] Pod IPs are ephemeral, so services provide stable endpoints
+- [ ] Pods cannot communicate with containers
+- [ ] Nodes are replaced automatically
+- [ ] ReplicaSets manage DNS
+</quiz>
 
-Pods are disposable and unpredictable:
+<quiz>
+Fill in the blank: ClusterIP, NodePort, LoadBalancer, and ExternalName are [[types]] of Services.
+</quiz>
 
-- They restart
-- They are rescheduled
-- Their IPs change
+<quiz>
+Scenario: You have multiple Pods behind a service and want traffic balanced automatically. Which resource handles this?
 
-Without Services, applications would need to constantly track Pod IPs.
+- [x] Service
+- [ ] Deployment
+- [ ] ReplicaSet
+- [ ] StatefulSet
+</quiz>
 
-Services exist to provide:
+<quiz>
+Which of these are valid Service types? (multiple correct)
 
-- Stable networking
-- Service discovery
-- Loose coupling between components
+- [x] ClusterIP
+- [x] NodePort
+- [x] LoadBalancer
+- [x] ExternalName
+- [ ] Sidecar
+</quiz>
 
-## The Core Responsibility
+<quiz>
+True or false: Services are required to reach Pods inside the cluster.
 
-A Service answers one question:
+- [ ] True
+- [x] False
+</quiz>
 
-> “How can this application be reached reliably, even as Pods change?”
+<quiz>
+Scenario: You delete a Pod behind a Service. What happens?
 
-It hides Pod churn from consumers.
-
-## How Services Work
-
-Services operate using:
-
-- **Label selectors** to identify target Pods
-- **kube-proxy** to implement traffic routing
-- **Cluster DNS** to provide name resolution
-
-Traffic sent to a Service is transparently forwarded to one of the matching Pods.
-
-## Service Types
-
-Kubernetes provides different Service types for different use cases:
-
-- **ClusterIP** — internal-only access (default)
-- **NodePort** — exposes a port on each node
-- **LoadBalancer** — integrates with cloud load balancers
-- **ExternalName** — maps a Service to an external DNS name
-
-Each type builds on the same core abstraction.
-
-## Services Are Not Load Balancers
-
-A common misconception is that Services are full-featured load balancers.
-
-In reality:
-
-- Services perform basic traffic distribution
-- They do not provide advanced routing
-- They do not terminate TLS
-- They do not understand HTTP semantics
-
-These responsibilities belong to higher-level components.
-
-## Service Discovery
-
-Services integrate with cluster DNS to enable discovery via names instead of IPs.
-
-This allows applications to communicate using **logical identifiers**, not infrastructure details.
-
-Service names are stable even when Pods are replaced.
-
-## Failure Scenarios to Understand
-
-- Services route traffic only to healthy Pods
-- Misconfigured selectors can result in zero endpoints
-- Pods without readiness do not receive traffic
-
-Many connectivity issues are caused by selector mismatches.
-
-## When to Reason About Services Explicitly
-
-You reason about Services when:
-
-- Designing application communication
-- Debugging networking issues
-- Investigating dropped or misrouted traffic
-- Exposing workloads inside the cluster
-
-Services are a foundational networking primitive.
-
-## One-Sentence Mental Model
-
-> “A Service provides a stable network identity that forwards traffic to a changing set of Pods.”
-
-## References
-
-- [**The Kubernetes Book - Nigel-Poulton**](https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000)
+- [x] The Service redirects traffic to the remaining Pods
+- [ ] The Service stops working
+- [ ] The Service creates a new Pod
+- [ ] The Deployment must be updated
+</quiz>

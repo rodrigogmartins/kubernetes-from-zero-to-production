@@ -1,117 +1,66 @@
+---
+quiz:
+  auto_number: true
+  shuffle_answers: true
+---
+
 # ReplicaSets
 
-ReplicaSets are Kubernetes controllers responsible for **maintaining a stable set of identical Pods**.
+A **ReplicaSet** ensures that a specified number of identical Pods are running at any given time.  
+It solves the problem of **maintaining desired state** for Pods, automatically replacing Pods that fail or are deleted.
 
-Their only job is to ensure that the **desired number of Pod replicas is running at all times**.
+ReplicaSets are usually **not created directly**; Deployments manage them.  
+They provide **self-healing and scaling**, making Pods **replaceable** without manual intervention.
 
-According to *The Kubernetes Book*, ReplicaSets are fundamental, but they are **rarely used directly** by humans.
+ReplicaSets ensure a fixed number of Pod replicas are running, but they **do not automatically update Pods** with a new container image. Updates are handled by Deployments.
 
-## What Is a ReplicaSet
+---
 
-A ReplicaSet is a **controller** that:
+## Check your knowledge
 
-- Monitors Pods using label selectors
-- Compares the current number of matching Pods to the desired count
-- Creates or deletes Pods to close the gap
+<quiz>
+What is the main function of a ReplicaSet?
 
-It does not manage updates, rollouts, or application versions.
+- [x] Maintain a specified number of Pod replicas
+- [ ] Manage persistent volumes
+- [ ] Control service routing
+- [ ] Schedule nodes
+</quiz>
 
-## Why ReplicaSets Exist
+<quiz>
+Scenario: A Pod managed by a ReplicaSet crashes. What happens?
 
-Pods are ephemeral and can disappear at any time.
+- [x] The ReplicaSet creates a new Pod
+- [ ] The existing Pod is repaired
+- [ ] All Pods are terminated
+- [ ] Nothing happens automatically
+</quiz>
 
-ReplicaSets exist to:
+<quiz>
+Fill in the blank: ReplicaSets define the [[number]] of Pod [[replicas]] to run.
+</quiz>
 
-- Enforce availability
-- Replace failed Pods automatically
-- Maintain horizontal scale
+<quiz>
+Which of the following are valid ways to scale a ReplicaSet? (multiple correct)
 
-Without a ReplicaSet, every Pod failure would require manual intervention.
+- [x] Manually updating the replica count
+- [x] Via a Deployment
+- [ ] Changing the Pod's container image without updating ReplicaSet
+- [ ] Directly deleting nodes
+</quiz>
 
-## The Core Responsibility
+<quiz>
+True or false: ReplicaSets can self-update Pods automatically.
 
-A ReplicaSet answers exactly one question:
+- [ ] True
+- [x] False
+</quiz>
 
-> “How many Pods should exist right now?”
+<quiz>
+Scenario: You need to maintain exactly 3 identical Pods at all times. Which resource ensures this?
 
-If the answer is “3” and only 2 are running, it creates another.  
-If 4 are running, it deletes one.
-
-Nothing more.
-
-## How ReplicaSets Work
-
-ReplicaSets operate using:
-
-- **Label selectors** to identify managed Pods
-- A **Pod template** to create new Pods
-- A continuous **reconciliation loop**
-
-They do not track Pods individually — they track **counts and labels**.
-
-## ReplicaSets and Self-Healing
-
-If a Pod crashes, is deleted, or the node fails:
-
-- The ReplicaSet detects the mismatch
-- A new Pod is created
-- Scheduling happens automatically
-
-This is Kubernetes’ self-healing behavior in its simplest form.
-
-## What ReplicaSets Do NOT Do
-
-ReplicaSets do not:
-
-- Perform rolling updates
-- Track application versions
-- Support rollbacks
-- Manage deployment strategies
-
-These limitations are intentional.
-
-## ReplicaSets vs Deployments
-
-In practice, ReplicaSets are **managed by Deployments**.
-
-- You create a Deployment
-- Kubernetes creates a ReplicaSet
-- The ReplicaSet creates Pods
-
-When a Deployment is updated, a **new ReplicaSet** is created, and the old one is gradually scaled down.
-
-## Why You Rarely Create ReplicaSets Directly
-
-Directly managing ReplicaSets is discouraged because:
-
-- Updates are manual and risky
-- Rollbacks are not supported
-- Operational complexity increases
-
-Deployments exist to solve these problems on top of ReplicaSets.
-
-## Failure Scenarios to Understand
-
-- Deleting Pods does not reduce availability
-- Deleting a ReplicaSet deletes all managed Pods
-- Incorrect label selectors can orphan or duplicate Pods
-
-Label discipline is critical.
-
-## When ReplicaSets Matter in Practice
-
-You reason about ReplicaSets when:
-
-- Debugging rollout behavior
-- Investigating unexpected Pod counts
-- Understanding how Deployments work internally
-
-They are an implementation detail — but an important one.
-
-## One-Sentence Mental Model
-
-> “A ReplicaSet is a controller that continuously ensures the correct number of identical Pods is running.”
-
-## References
-
-- [**The Kubernetes Book - Nigel-Poulton**](https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000)
+- [x] ReplicaSet
+- [ ] Pod
+- [ ] Deployment
+- [ ] StatefulSet
+</quiz>
