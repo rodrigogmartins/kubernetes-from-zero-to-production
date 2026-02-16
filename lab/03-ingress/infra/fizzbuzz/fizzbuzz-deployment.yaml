@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fizzbuzz-k8s
+  namespace: lab-03
   labels:
     app: fizzbuzz-k8s
 spec:

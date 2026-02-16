@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: terraform-intro
+  namespace: lab-02
   labels:
     app: terraform-intro
 spec:

@@ -2,9 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: greetings-k8s
-  namespace: lab-03
+  namespace: lab-06
   labels:
     app: greetings-k8s
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 2
   selector:
@@ -17,7 +19,19 @@ spec:
     spec:
       containers:
       - name: greetings-k8s-container
-        image: greetings-app-api:v1
+        image: greetings-api:v5
+        env:
+          - name: NAME
+            valueFrom:
+              configMapKeyRef:
+                name: greetings-k8s
+                key: name
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
+
+
+
+# Ler parte de secrets
+# Ler parte de estado do terraform
+

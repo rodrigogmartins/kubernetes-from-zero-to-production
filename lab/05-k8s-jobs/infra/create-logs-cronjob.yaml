@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dynamo-create-logs-cronjob
+  namespace: lab-05
+spec:
+  schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: writer
+              image: dynamo-create-logs-cronjob:v1
+              imagePullPolicy: IfNotPresent
+              env:
+              - name: AWS_REGION
+                value: us-east-1
+              - name: AWS_ACCESS_KEY_ID
+                value: test
+              - name: AWS_SECRET_ACCESS_KEY
+                value: test
+              - name: AWS_ENDPOINT_URL
+                value: http://host.docker.internal:4566

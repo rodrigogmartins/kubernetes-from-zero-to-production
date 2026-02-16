@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: greetings
-  namespace: lab-03
+  name: greetings-k8s
+  namespace: lab-06
 spec:
   selector:
     app: greetings-k8s
@@ -10,4 +10,4 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-  type: ClusterIP
+  type: LoadBalancer

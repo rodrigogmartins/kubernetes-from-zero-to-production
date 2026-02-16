@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: greetings-k8s
-  namespace: lab-03
+  namespace: lab-07
   labels:
     app: greetings-k8s
 spec:
@@ -17,7 +17,13 @@ spec:
     spec:
       containers:
       - name: greetings-k8s-container
-        image: greetings-app-api:v1
+        image: greetings-api:v6
         imagePullPolicy: IfNotPresent
+        env:
+          - name: password
+            valueFrom:
+              secretKeyRef:
+                name: greetings-k8s
+                key: password
         ports:
         - containerPort: 3000
