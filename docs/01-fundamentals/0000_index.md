@@ -55,6 +55,21 @@ By the end of this phase, you should deeply understand:
 
 These concepts are reused everywhere in Kubernetes.
 
+### Expected Outcome
+
+After completing Phase 1, you should be able to:
+
+- Explain Kubernetes **without mentioning Docker**
+- Describe Kubernetes behavior using **system thinking**
+- Predict how Kubernetes will react to failures
+- Answer interview questions about Kubernetes **conceptually**, not operationally
+
+### A good self-test
+
+> *“Explain Kubernetes to a senior engineer without using the words container, pod, or YAML.”*
+
+If you can do that — you are ready for Phase 2.
+
 ## How Kubernetes Thinks
 
 Kubernetes does not:
@@ -88,21 +103,6 @@ You should read these documents **in order**:
    Why latency, failures, and partial truth are normal.
 
 Each document builds on the previous one.
-
-## Expected Outcome
-
-After completing Phase 1, you should be able to:
-
-- Explain Kubernetes **without mentioning Docker**
-- Describe Kubernetes behavior using **system thinking**
-- Predict how Kubernetes will react to failures
-- Answer interview questions about Kubernetes **conceptually**, not operationally
-
-A good self-test:
-
-> *“Explain Kubernetes to a senior engineer without using the words container, pod, or YAML.”*
-
-If you can do that — you are ready for Phase 2.
 
 ## How to Study This Phase
 
