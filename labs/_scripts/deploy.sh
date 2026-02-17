@@ -2,7 +2,7 @@
 set -e
 
 LAB_DIR=$1
-K8S_DIR="labs/${LAB_DIR}/infra"
+K8S_DIR="${LAB_DIR}/infra"
 
 if [ -z "$LAB_DIR" ]; then
   echo "You must provide a LAB directory."

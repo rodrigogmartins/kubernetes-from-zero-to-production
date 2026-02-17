@@ -8,7 +8,7 @@ if [ -z "$LAB_DIR" ]; then
   exit 1
 fi
 
-BASE_DIR="labs/${LAB_DIR}"
+BASE_DIR="${LAB_DIR}"
 
 if [ ! -d "$BASE_DIR" ]; then
   echo "Lab directory not found: $LAB_DIR"

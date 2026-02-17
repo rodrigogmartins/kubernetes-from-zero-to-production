@@ -3,7 +3,7 @@ set -e
 
 echo "Cleaning all labs..."
 
-for LAB_DIR in labs/*; do
+for LAB_DIR in /*; do
   if [ -d "$LAB_DIR" ]; then
     LAB_NAME=$(basename "$LAB_DIR")
     echo "Processing $LAB_NAME..."
