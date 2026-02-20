@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: greetings-k8s-container
-        image: greetings-api:v1
+        image: 01-hello-world:dev
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000

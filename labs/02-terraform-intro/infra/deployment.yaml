@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: terraform-intro-container
-        image: terraform-intro:v1
+        image: 02-terraform-intro:dev
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
