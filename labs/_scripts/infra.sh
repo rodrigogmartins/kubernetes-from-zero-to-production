@@ -5,7 +5,7 @@ LAB=$1
 
 if [ ! -d "$LAB/terraform" ]; then
   echo "Terraform directory not found for $LAB"
-  exit 1
+  exit 0
 fi
 
 echo "Provisioning infrastructure for $LAB..."
