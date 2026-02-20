@@ -29,3 +29,8 @@ module "lab_07" {
   source = "../../07-secrets/terraform"
   count  = var.lab == "lab-07" ? 1 : 0
 }
+
+module "lab_08" {
+  source = "../../08-keda-scaling/terraform"
+  count  = var.lab == "lab-08" ? 1 : 0
+}

@@ -53,7 +53,14 @@ Terraform **cannot create its own backend bucket**.
 Create it manually (AWS CLI or LocalStack):
 
 ```bash
-aws --endpoint-url=http://localhost:4566 s3 mb s3://terraform-state
+aws --endpoint-url=http://localhost:4566 s3 mb s3://terraform-state --profile=localstack
+
+aws --endpoint-url=http://localhost:4566 dynamodb create-table `
+  --table-name terraform-lock `
+  --attribute-definitions AttributeName=LockID,AttributeType=S `
+  --key-schema AttributeName=LockID,KeyType=HASH `
+  --billing-mode PAY_PER_REQUEST  --profile=localstack
+
 ```
 
 ### 3. Initialize Terraform
