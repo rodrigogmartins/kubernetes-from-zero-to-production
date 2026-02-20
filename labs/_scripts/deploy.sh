@@ -3,6 +3,7 @@ set -e
 
 LAB_DIR=$1
 K8S_DIR="${LAB_DIR}/infra"
+NAMESPACE="${LAB_DIR}"
 
 if [ -z "$LAB_DIR" ]; then
   echo "You must provide a LAB directory."
@@ -14,14 +15,19 @@ if [ ! -d "$K8S_DIR" ]; then
   exit 1
 fi
 
-echo "Deploying $LAB_DIR..."
+echo "Ensuring namespace $NAMESPACE exists..."
+kubectl create namespace "$NAMESPACE" --dry-run=client -o yaml | kubectl apply -f -
 
-kubectl apply -f "$K8S_DIR"
+echo "Deploying manifests from $K8S_DIR into namespace $NAMESPACE..."
+kubectl apply -f "$K8S_DIR" -n "$NAMESPACE" --recursive
 
-echo "Restarting deployments..."
-for DEPLOY in $(kubectl get deployments -o name | grep "${LAB_DIR}-"); do
-  kubectl rollout restart "$DEPLOY"
-  kubectl rollout status "$DEPLOY"
+echo "Restarting deployments in namespace $NAMESPACE..."
+
+DEPLOYMENTS=$(kubectl get deployments -n "$NAMESPACE" -o name)
+
+for DEPLOY in $DEPLOYMENTS; do
+  kubectl rollout restart "$DEPLOY" -n "$NAMESPACE"
+  kubectl rollout status "$DEPLOY" -n "$NAMESPACE"
 done
 
 echo "Deploy complete."
