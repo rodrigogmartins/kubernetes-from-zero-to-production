@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: greetings-k8s
-  namespace: lab-01
+  namespace: 01-hello-world
   labels:
     app: greetings-k8s
 spec:

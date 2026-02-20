@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fizzbuzz
-  namespace: lab-03
+  namespace: 03-ingress
 spec:
   selector:
     app: fizzbuzz-k8s

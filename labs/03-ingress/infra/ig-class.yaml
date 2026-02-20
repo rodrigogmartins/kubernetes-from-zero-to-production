@@ -2,5 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: IngressClass
 metadata:
   name: igc-nginx
+  namespace: 03-ingress
 spec:
   controller: nginx.org/ingress-controller

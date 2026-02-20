@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: lab-02
+  name: 02-terraform-intro
   labels:
-    lab: lab-02
+    lab: 02-terraform-intro
     purpose: learning

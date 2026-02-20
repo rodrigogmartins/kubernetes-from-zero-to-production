@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: greetings
-  namespace: lab-03
+  namespace: 03-ingress
 spec:
   selector:
     app: greetings-k8s

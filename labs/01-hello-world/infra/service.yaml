@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: greetings-k8s
-  namespace: lab-01
+  namespace: 01-hello-world
 spec:
   selector:
     app: greetings-k8s

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fizzbuzz-k8s
-  namespace: lab-03
+  namespace: 03-ingress
   labels:
     app: fizzbuzz-k8s
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: fizzbuzz-k8s-container
-        image: fizzbuzz-app-api:v1
+        image: 03-ingress-fizzbuzz-app:dev
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
