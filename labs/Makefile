@@ -23,6 +23,7 @@ check-lab:
 
 start: check-lab
 	./_scripts/build.sh $(LAB_DIR)
+	./_scripts/infra.sh $(LAB_DIR)
 	./_scripts/deploy.sh $(LAB_DIR)
 
 destroy: check-lab
