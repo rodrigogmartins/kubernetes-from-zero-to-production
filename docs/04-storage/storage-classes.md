@@ -6,71 +6,198 @@ quiz:
 
 # Storage Classes
 
-## The Problem
+## What Problem StorageClasses Solve
 
-Manually creating PVs for each application is tedious and error-prone. Clusters may have different storage backends, and teams want declarative, dynamic provisioning.
+Manually managing PersistentVolumes does not scale.
 
-## Solution
+Problems with static provisioning:
 
-**Storage Classes** define a policy for dynamically provisioning PVs:
+- Admin must pre-create PVs
+- Hard to predict storage demand
+- Waste of unused capacity
+- Tight coupling between apps and infrastructure
 
-- Define the **provisioner** (e.g., AWS EBS, GCE PD, NFS).  
-- Specify **parameters** like volume type, replication, or IOPS.  
-- Allow Pods to request storage via PVC without knowing the backend details.  
+Teams need:
 
-Dynamic provisioning ensures new PVCs automatically get a PV created matching the StorageClass rules.
+- Self-service storage
+- Declarative provisioning
+- Backend abstraction
 
-## Example Parameters
+StorageClasses solve this by enabling dynamic provisioning.
 
-| Parameter   | Description                       |
-| ----------- | --------------------------------- |
-| type        | Disk type (SSD, HDD, gp2, etc.)   |
-| fsType      | Filesystem type (ext4, xfs)       |
-| replication | Number of replicas for the volume |
+## The Solution
+
+A StorageClass defines:
+
+- The provisioner (who creates the volume)
+- Backend-specific parameters
+- Reclaim policy
+- Volume binding behavior
+
+When a PVC references a StorageClass:
+
+- Kubernetes automatically provisions a PV
+- The PV matches the defined rules
+- No manual PV creation required
+
+This is the standard production pattern.
+
+## Core Components
+
+### 1. Provisioner
+
+Defines which storage system is used.
+
+Examples:
+
+- AWS EBS
+- GCE Persistent Disk
+- Azure Disk
+- NFS provisioner
+- CSI drivers
+
+The provisioner is responsible for actually creating the volume.
+
+---
+
+### 2. Parameters
+
+StorageClasses can define backend-specific settings:
+
+- Disk type (SSD, HDD)
+- IOPS
+- Replication level
+- Filesystem type
+- Encryption options
+
+This enables multiple performance tiers in one cluster.
+
+Example tiers:
+
+- `fast` → SSD
+- `standard` → balanced disk
+- `archive` → low-cost storage
+
+---
+
+### 3. Reclaim Policy
+
+Determines what happens when a PVC is deleted.
+
+Common values:
+
+- Delete → Underlying storage is removed
+- Retain → Volume remains for manual recovery
+
+This is critical for data protection.
+
+Be deliberate here. Mistakes are expensive.
+
+---
+
+### 4. Default StorageClass
+
+A cluster can mark one StorageClass as:
+
+- Default
+
+If a PVC does not specify a class:
+
+- The default StorageClass is used
+
+Only one should be default.
+
+## Volume Binding Mode
+
+Some StorageClasses support:
+
+- Immediate binding
+- WaitForFirstConsumer
+
+WaitForFirstConsumer delays provisioning until:
+
+- A Pod using the PVC is scheduled
+
+This ensures zone-aware storage allocation.
+
+Important in multi-zone clusters.
+
+## Mental Model
+
+StorageClass = Storage blueprint  
+PVC = Storage request  
+PV = Actual storage resource  
+
+Applications should not care about:
+
+- Cloud provider
+- Disk type
+- Replication method
+
+That belongs in the StorageClass.
+
+## Common Failure Scenarios
+
+- PVC stuck Pending → no matching StorageClass
+- Wrong zone provisioned → scheduling conflict
+- Incorrect reclaimPolicy → accidental data deletion
+- Multiple defaults → unpredictable behavior
+- Provisioner not installed → dynamic provisioning fails
+
+Debug path:
+
+1. Check PVC events
+2. Verify StorageClass exists
+3. Confirm provisioner is running
+4. Validate default annotation
 
 ## Check Your Knowledge
 
-1. Why are Storage Classes preferred over manually creating PVs?  
-2. Can multiple StorageClasses coexist in a cluster? How would a PVC select one?
-
-## Check your knowledge
-
 <quiz>
-What is the purpose of a StorageClass in Kubernetes?
-
-- [x] Define how dynamic volumes are provisioned
-- [ ] Set pod CPU and memory limits
-- [ ] Control network policies
-- [ ] Configure Ingress routing
+Why are StorageClasses preferred over manually creating PVs?
+- [x] They enable dynamic provisioning
+- [x] They reduce manual administrative work
+- [ ] They eliminate PVCs
+- [ ] They replace StatefulSets
 </quiz>
 
 <quiz>
-Which of the following parameters can a StorageClass define? (Select all that apply)
-
-- [x] provisioner
-- [x] parameters (e.g., type of disk)
-- [x] reclaimPolicy
-- [ ] podSelector
+Can multiple StorageClasses exist in a cluster?
+- [x] Yes, and PVC selects one using storageClassName
+- [ ] No, only one is allowed
+- [ ] Only in cloud environments
+- [ ] Only for StatefulSets
 </quiz>
 
 <quiz>
-Scenario: You want a dynamically provisioned PV using AWS EBS. What must you create first?
-
-- [x] A StorageClass pointing to the EBS provisioner
-- [ ] A Deployment
-- [ ] A ConfigMap
-- [ ] A NetworkPolicy
+Scenario: A PVC specifies `storageClassName: fast`. What happens?
+- [x] Kubernetes provisions a PV using the fast StorageClass rules
+- [ ] It binds to any available PV randomly
+- [ ] It ignores the StorageClass
+- [ ] It fails automatically
 </quiz>
 
 <quiz>
-Fill in the blank: The [[reclaimPolicy]] in a StorageClass determines what happens to a PV after its [[PVC]] is deleted.
+What happens if a PVC does not specify a StorageClass?
+- [x] The default StorageClass is used
+- [ ] The PVC fails immediately
+- [ ] The largest PV is selected
+- [ ] A manual PV must be created first
 </quiz>
 
 <quiz>
-Scenario: You have multiple storage classes: `fast`, `standard`. A PVC does not specify a class. Which StorageClass is used?
-
-- [x] The one marked as [[default]]
-- [ ] The largest capacity one
-- [ ] Randomly chosen
-- [ ] The first created in the cluster
+Scenario: A PVC is deleted and the underlying disk is automatically removed. What likely caused this?
+- [x] The reclaimPolicy was set to Delete
+- [ ] The provisioner crashed
+- [ ] The Pod was rescheduled
+- [ ] The StatefulSet scaled down
 </quiz>
+
+<quiz>
+Fill in the blank: StorageClasses abstract the [[underlying storage backend]] and enable [[dynamic provisioning]] of volumes.
+</quiz>
+
+## References
+
+- Kubernetes Documentation – Storage Classes  
+- The Kubernetes Book – Nigel Poulton

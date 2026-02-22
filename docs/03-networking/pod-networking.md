@@ -6,99 +6,217 @@ quiz:
 
 # Pod Networking
 
-## Problem
+## What Problem Pod Networking Solves
 
-Containers are ephemeral and may move between nodes. How can they reliably communicate with each other without knowing each other's IPs?
+Containers are ephemeral.
 
-## Solution
+Pods:
 
-Kubernetes assigns a unique IP to each Pod, allowing direct Pod-to-Pod communication across nodes. Containers in the same Pod share networking, so they can communicate via localhost.
+- Get recreated
+- Move between nodes
+- Receive new IPs
 
-## Components / Key Concepts
+Yet applications must communicate reliably.
 
-- **Pod IPs:** ephemeral, unique per Pod
-- **Shared Namespace:** containers in the same Pod share IP, ports, and network namespace
-- **Flat Network Model:** no NAT between Pods
-- **Cross-node communication:** handled by CNI plugins and routing rules
+Kubernetes solves this by enforcing a **cluster-wide networking model** where:
 
-## Check your knowledge
+- Every Pod gets its own IP
+- All Pods can communicate directly
+- No NAT is required between Pods
+
+This removes the need for service discovery via IP tracking.
+
+## How Pod Networking Works
+
+Kubernetes assumes a **flat network model**:
+
+1. Every Pod receives a unique IP
+2. All Pods can reach each other directly
+3. Containers inside the same Pod share networking
+
+Networking is implemented by a **CNI plugin**, which configures:
+
+- Interfaces
+- Routes
+- Overlay or underlay networking
+- Cross-node connectivity
+
+## Core Concepts
+
+### 1. Unique Pod IP
+
+Each Pod gets:
+
+- A unique IP across the cluster
+- Ephemeral assignment
+- No port mapping required
+
+Pod-to-Pod communication uses direct IP routing.
+
+If a Pod is recreated:
+
+- Its IP changes
+- Higher-level abstractions (like Services) provide stability
+
+---
+
+### 2. Shared Network Namespace
+
+Containers in the same Pod:
+
+- Share the same IP
+- Share the same port space
+- Communicate via `localhost`
+
+This enables sidecar patterns and tightly coupled containers.
+
+Within a Pod:
+
+- Two containers cannot bind to the same port
+- Loopback communication is native
+
+---
+
+### 3. Flat Network Model
+
+Kubernetes requires:
+
+- No NAT between Pods
+- No port translation
+- No node-local IP isolation
+
+This ensures:
+
+- Simpler service discovery
+- Predictable communication
+- Reduced complexity
+
+---
+
+### 4. Cross-Node Communication
+
+When Pods are on different nodes:
+
+- The CNI plugin configures routing
+- Overlay or routing rules forward traffic
+- The network remains logically flat
+
+If cross-node traffic fails:
+
+- CNI configuration is the first suspect
+- Routing tables or encapsulation may be broken
+
+---
+
+### 5. hostNetwork Mode
+
+If a Pod runs with:
+
+`hostNetwork: true`
+
+It:
+
+- Shares the node’s IP
+- Bypasses the Pod network
+- Uses the host network namespace
+
+Implications:
+
+- No isolation from node ports
+- Possible port conflicts
+- Higher security risk
+
+Use only when required.
+
+## Mental Model
+
+Think of the cluster as:
+
+- One big flat LAN
+- Every Pod behaves like a machine on that LAN
+- CNI is the invisible network engineer wiring everything together
+
+Services provide stability.
+Networking provides reachability.
+
+## Common Failure Scenarios
+
+- Pods on different nodes cannot communicate → CNI misconfiguration
+- Duplicate IP conflicts → IPAM issue
+- hostNetwork pods causing port conflicts
+- NetworkPolicies unintentionally blocking traffic
+- Overlay network MTU mismatch causing packet drops
+
+Always debug from:
+
+1. Pod IP reachability
+2. Routing
+3. CNI logs
+4. Policy enforcement
+
+## Check Your Knowledge
 
 <quiz>
-    What is the main purpose of the Pod network in Kubernetes?
-
-    - [x] Allow all pods to communicate with each other across nodes
-    - [ ] Isolate pods from each other
-    - [ ] Manage persistent storage
-    - [ ] Load balance external traffic
+What guarantees pod-to-pod communication across nodes?
+- [x] A flat cluster-wide networking model
+- [ ] NodePort services
+- [ ] Ingress controllers
+- [ ] Persistent volumes
 </quiz>
 
 <quiz>
-    In Kubernetes, each Pod gets:
-
-    - [ ] Shared IP with other pods on the same node
-    - [x] A unique IP across the cluster
-    - [ ] An IP only valid inside the node
-    - [ ] No IP, only DNS name
-</quiz>
-
-<quiz>  
-    What allows pods to communicate without NAT or port mapping?
-
-    - [x] The flat pod network model
-    - [ ] Ingress controllers
-    - [ ] NodePort services
-    - [ ] Persistent volumess
+Why can containers in the same Pod communicate via localhost?
+- [x] They share the same network namespace
+- [ ] They use the same DNS entry
+- [ ] kube-proxy forwards traffic internally
+- [ ] Services redirect traffic
 </quiz>
 
 <quiz>
-Which networking model does Kubernetes assume for pods by default?
-
-- [ ] NAT per pod
-- [x] Flat network where each pod has a unique IP
-- [ ] Only node-local IPs
-- [ ] DNS-based networking only
+Scenario: Pods on different nodes cannot reach each other. What is the most likely cause?
+- [x] CNI plugin misconfiguration
+- [ ] etcd corruption
+- [ ] Scheduler failure
+- [ ] Service account misconfiguration
 </quiz>
 
 <quiz>
-You notice pods on different nodes cannot reach each other. Which component is most likely misconfigured?
-
-- [x] CNI plugin
-- [ ] kubelet
-- [ ] etcd
-- [ ] kube-apiserver
+Which statement about Pod IPs is correct?
+- [x] They are unique across the cluster
+- [ ] They are shared between Pods on the same node
+- [ ] They are static and never change
+- [ ] They require NAT for cross-node traffic
 </quiz>
 
 <quiz>
-In a multi-node cluster, pod A needs to send traffic to pod B. Which mechanism ensures this traffic is routed correctly?
-- [x] CNI networking plugin
-- [ ] kube-proxy in userspace mode
-- [ ] NodePort service only
-- [ ] Host networking
+Why does Kubernetes avoid NAT between Pods?
+- [x] To allow direct communication without port mapping
+- [ ] To simplify storage management
+- [ ] To reduce DNS queries
+- [ ] To eliminate Services
 </quiz>
 
 <quiz>
-You deploy a network policy restricting ingress to certain pods. After deployment, some pods can't communicate even though they’re in the same namespace. What might be the cause?
-
-- [x] The network plugin is enforcing policies at the pod level
-- [ ] kube-proxy failed to create iptables rules
-- [ ] The pods have duplicate IPs
-- [ ] Service type ClusterIP is disabled
+Scenario: A Pod using hostNetwork fails to start due to a port conflict. Why?
+- [x] It shares the node’s port space
+- [ ] It gets multiple IP addresses
+- [ ] It bypasses kubelet
+- [ ] It disables CNI
 </quiz>
 
 <quiz>
-Why does Kubernetes not allow multiple pods to share the same IP address across nodes?
-
-- [x] To ensure direct pod-to-pod communication without NAT or port mapping
-- [ ] Because it requires external load balancers
-- [ ] To simplify DNS resolution only
-- [ ] Because CNI plugins don’t support it
+Fill in the blank: Containers inside a Pod share the same [[network namespace]] and communicate via [[localhost]].
 </quiz>
 
 <quiz>
-    A pod is running with hostNetwork: true. What is the implication for network isolation?
-
-    - [x] Pod shares the node’s network namespace and IP, bypassing the pod network
-    - [ ] Pod is isolated and cannot communicate externally
-    - [ ] Pod gets a unique cluster-wide IP like other pods
-    - [ ] Pod cannot reach services on the same node
+In Kubernetes, reliable service access despite Pod IP changes is typically handled by:
+- [x] Services
+- [ ] Direct Pod IP references
+- [ ] Manual route configuration
+- [ ] Static IP assignment
 </quiz>
+
+## References
+
+- Kubernetes Networking Documentation  
+- The Kubernetes Book – Nigel Poulton

@@ -6,61 +6,190 @@ quiz:
 
 # Volumes
 
-## The Problem
+## What Problem Volumes Solve
 
-Containers are ephemeral by default: when a Pod is deleted or restarted, any data stored inside the container filesystem is lost.
+Containers are ephemeral.
 
-## Solution
+If a container:
 
-Kubernetes Volumes provide a way for containers in a Pod to persist data during the Pod's lifecycle. Volumes are created per Pod and can be shared among containers inside the Pod.
+- Crashes
+- Restarts
+- Is recreated
+
+Its writable layer is lost.
+
+Inside a Pod:
+
+- Multiple containers may need shared data
+- Applications may need temporary storage
+- Configuration must be injected at runtime
+
+Kubernetes Volumes solve this by attaching storage to the Pod itself.
+
+Important distinction:
+
+Volumes persist for the lifetime of the Pod —  
+not beyond it (unless backed by a PVC).
+
+## How Volumes Work
+
+A Volume:
+
+- Is defined in the Pod spec
+- Is mounted into one or more containers
+- Exists as long as the Pod exists
+
+Containers in the same Pod:
+
+- Share access to the Volume
+- Can read/write depending on mount settings
+
+If the Pod dies:
+
+- The Volume is deleted (except persistent-backed volumes)
 
 ## Key Volume Types
 
-| Type      | Use Case                                                                            |
-| --------- | ----------------------------------------------------------------------------------- |
-| emptyDir  | Temporary scratch space shared by all containers in the Pod. Deleted when Pod dies. |
-| hostPath  | Access host machine filesystem. Useful for debugging or privileged workloads.       |
-| configMap | Provide configuration data as files inside Pods.                                    |
-| secret    | Store sensitive information as files inside Pods.                                   |
+### emptyDir
+
+- Created when Pod is scheduled
+- Lives as long as the Pod runs
+- Deleted when Pod terminates
+- Shared across containers in the Pod
+
+Use cases:
+
+- Temporary logs
+- Scratch processing space
+- Caching within a Pod
+
+Not suitable for durable data.
+
+---
+
+### hostPath
+
+- Mounts a directory from the node’s filesystem
+- Breaks portability across nodes
+- Tightly couples Pod to specific host
+
+Use cases:
+
+- Debugging
+- Node-level agents
+- Special workloads
+
+Avoid for general application storage.
+
+---
+
+### configMap
+
+- Injects configuration data as files
+- Non-sensitive data only
+- Managed independently from the Pod image
+
+Good for:
+
+- Application config files
+- Feature flags
+- Environment-specific settings
+
+---
+
+### secret
+
+- Similar to configMap
+- Designed for sensitive data
+- Base64 encoded and stored securely in etcd
+
+Used for:
+
+- API keys
+- Passwords
+- TLS certificates
+
+Never use configMap for secrets.
+
+---
+
+### persistentVolumeClaim
+
+- Connects Pod to a PersistentVolume
+- Enables storage beyond Pod lifecycle
+- Required for durable data
+
+Used for:
+
+- Databases
+- Stateful applications
+- Long-term storage needs
+
+## Mental Model
+
+Volume = Pod-level storage  
+PVC-backed volume = Durable storage  
+
+emptyDir = Temporary scratchpad  
+hostPath = Direct host access  
+configMap/secret = Configuration injection  
+
+Choose based on lifecycle requirements.
+
+## Common Failure Scenarios
+
+- Data lost after Pod restart → using emptyDir instead of PVC
+- Pod fails on new node → hostPath dependency
+- Sensitive data exposed → used configMap instead of secret
+- Volume mount path conflicts inside container
+
+Always ask:
+
+Does this data need to survive Pod deletion?
+
+If yes → use PVC.
+
+If no → emptyDir may be enough.
 
 ## Check Your Knowledge
 
-1. Which volume type would you use for temporary logs inside a Pod?  
-2. How does configMap volume differ from secret volume?
-
-## Check your knowledge
-
 <quiz>
-What is the primary purpose of a Kubernetes volume?
-
-- [x] Provide persistent storage to pods
-- [ ] Assign network IPs to pods
-- [ ] Load balance services
-- [ ] Schedule pods to nodes
+If a Pod restarts but remains on the same node, what happens to emptyDir data?
+- [x] It remains available
+- [ ] It is deleted immediately
+- [ ] It is converted to a PVC
+- [ ] It moves to another node
 </quiz>
 
 <quiz>
-Which of the following are valid types of Kubernetes volumes? (Select all that apply)
-
-- [x] emptyDir
-- [x] hostPath
-- [x] configMap
-- [ ] persistentNode
-</quiz>
-
-<quiz>
-Fill in the blank: An [[emptyDir]] volume is created when a pod is scheduled and deleted when the pod [[terminates]].
-</quiz>
-
-<quiz>
-Scenario: A pod crashes and is rescheduled to another node. Which volume type will retain its data?
-
-- [x] persistentVolumeClaim
+Which volume type is appropriate for injecting TLS certificates?
+- [x] secret
 - [ ] emptyDir
-- [ ] configMap
+- [ ] hostPath
 - [ ] downwardAPI
 </quiz>
 
 <quiz>
-Fill in the blank: Use [[configMap]] volumes to provide non-sensitive configuration files to pods at runtime.
+Scenario: Your application requires durable storage across Pod rescheduling. What should you use?
+- [x] persistentVolumeClaim
+- [ ] emptyDir
+- [ ] configMap
+- [ ] hostPath
 </quiz>
+
+<quiz>
+Why is hostPath generally discouraged for application workloads?
+- [x] It ties Pods to specific nodes
+- [ ] It encrypts data automatically
+- [ ] It scales automatically
+- [ ] It creates dynamic PVs
+</quiz>
+
+<quiz>
+Fill in the blank: Volumes exist for the lifetime of the [[Pod]], unless backed by a [[PersistentVolumeClaim]].
+</quiz>
+
+## References
+
+- Kubernetes Documentation – Volumes  
+- The Kubernetes Book – Nigel Poulton

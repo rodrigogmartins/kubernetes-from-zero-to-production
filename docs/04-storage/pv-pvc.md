@@ -6,75 +6,180 @@ quiz:
 
 # Persistent Volumes (PV) & Persistent Volume Claims (PVC)
 
-## The Problem
+## What Problem Persistent Storage Solves
 
-Pods are ephemeral. If they are deleted or rescheduled, any data stored inside them is lost. Applications like databases require durable storage that survives Pod lifecycle events.
+Pods are ephemeral:
 
-## Solution
+- They can be deleted
+- They can be rescheduled
+- They can move to another node
 
-Kubernetes introduces PVs and PVCs:
+When a Pod disappears:
 
-- **Persistent Volume (PV):** A piece of storage in the cluster provisioned manually or dynamically.  
-- **Persistent Volume Claim (PVC):** A request for storage by a Pod. PVCs bind to matching PVs, allowing Pods to use durable storage without knowing the underlying storage details.
+- Its container filesystem disappears
+- Any locally stored data is lost
+
+Stateless apps are fine.
+
+Stateful apps (databases, message brokers, file storage) are not.
+
+Kubernetes separates:
+
+- Compute (Pods)
+- Storage (Volumes)
+
+This decoupling ensures durability.
+
+## The Solution
+
+Kubernetes introduces two abstractions:
+
+### PersistentVolume (PV)
+
+- A cluster storage resource
+- Provisioned manually or dynamically
+- Backed by NFS, cloud disks, SAN, etc.
+- Independent of Pods
+
+### PersistentVolumeClaim (PVC)
+
+- A request for storage
+- Declares:
+  - Size
+  - Access mode
+  - StorageClass
+- Binds to a matching PV
+
+Pods consume PVCs.
+PVCs bind to PVs.
+PVs represent real storage.
 
 ## Lifecycle
 
-1. Admin creates PV or a StorageClass handles dynamic provisioning.  
-2. User creates PVC requesting size, access mode, and storage class.  
-3. Kubernetes binds PVC to a suitable PV.  
-4. Pod mounts PVC to access persistent storage.  
+1. Admin creates a PV  
+   OR a StorageClass enables dynamic provisioning  
 
-## Key Access Modes
+2. User creates a PVC specifying:
+   - Requested storage
+   - Access mode
+   - Storage class  
 
-| Mode          | Meaning                                |
-| ------------- | -------------------------------------- |
-| ReadWriteOnce | Single node can mount as read-write    |
-| ReadOnlyMany  | Multiple nodes can mount as read-only  |
-| ReadWriteMany | Multiple nodes can mount as read-write |
+3. Kubernetes finds a matching PV  
+
+4. PVC binds to that PV  
+
+5. Pod mounts the PVC  
+
+If the Pod is deleted:
+
+- The PVC remains
+- The PV remains
+- The data persists
+
+## Access Modes
+
+| Mode          | Meaning                              |
+| ------------- | ------------------------------------ |
+| ReadWriteOnce | Mounted read-write by a single node  |
+| ReadOnlyMany  | Mounted read-only by multiple nodes  |
+| ReadWriteMany | Mounted read-write by multiple nodes |
+
+Important:
+
+Access mode depends on the storage backend.
+
+Not all backends support RWX.
+
+## StorageClass & Dynamic Provisioning
+
+Modern clusters use StorageClasses:
+
+- Define storage type
+- Define provisioner
+- Enable automatic PV creation
+
+When a PVC references a StorageClass:
+
+- Kubernetes automatically provisions storage
+- No manual PV creation required
+
+This is the standard production pattern.
+
+## Mental Model
+
+Think of it like this:
+
+- Pod = Application process
+- PVC = Storage contract
+- PV = Actual disk
+
+Pods are replaceable.
+Storage must not be.
+
+PVC decouples application from infrastructure.
+
+## Common Failure Scenarios
+
+- PVC stuck in Pending → no matching PV
+- StorageClass misconfigured
+- Access mode mismatch
+- Pod scheduled to node that cannot mount the volume
+- Underlying storage backend unavailable
+
+Debug path:
+
+1. Check PVC status
+2. Check PV availability
+3. Verify StorageClass
+4. Inspect access mode compatibility
 
 ## Check Your Knowledge
 
-1. What happens to data if a Pod using a PVC is deleted?  
-2. How does Kubernetes decide which PV to bind to a PVC?
-
-## Check your knowledge
-
 <quiz>
-What is a PersistentVolume (PV) in Kubernetes?
-
-- [x] A piece of storage in the cluster provisioned by an admin
-- [ ] A container image
-- [ ] A pod scheduling rule
-- [ ] A network policy
+If a Pod using a PVC is deleted, what happens to the data?
+- [x] The data remains on the PV
+- [ ] The data is deleted immediately
+- [ ] The PVC is automatically removed
+- [ ] The storage shrinks to zero
 </quiz>
 
 <quiz>
-What is a PersistentVolumeClaim (PVC)?
-
-- [x] A request for storage by a pod
-- [ ] A network access rule
-- [ ] A type of deployment
-- [ ] A pod label
+How does Kubernetes decide which PV binds to a PVC?
+- [x] It matches size, access mode, and storage class
+- [ ] It randomly assigns a PV
+- [ ] It binds to the newest PV
+- [ ] It binds to the smallest PV
 </quiz>
 
 <quiz>
-Scenario: A PVC is bound to a PV. Later, a new pod requests the same PVC. What happens?
-
-- [x] It uses the same PV if access mode allows
-- [ ] A new PV is automatically created
-- [ ] The pod fails
-- [ ] kube-proxy assigns a different IP
+Scenario: A PVC requests 10Gi storage but only a 5Gi PV exists. What happens?
+- [x] The PVC remains Pending
+- [ ] The PV resizes automatically
+- [ ] The Pod still runs without storage
+- [ ] kubelet ignores the size requirement
 </quiz>
 
 <quiz>
-Which access modes are supported for PVCs? (Select all that apply)
-
-- [x] ReadWriteOnce
-- [x] ReadOnlyMany
-- [x] ReadWriteMany
-- [ ] ReadWriteAll
+Which statement about dynamic provisioning is correct?
+- [x] StorageClass can automatically create PVs
+- [ ] PVC must always bind to a manually created PV
+- [ ] kube-proxy provisions volumes
+- [ ] Services manage persistent storage
 </quiz>
 
 <quiz>
-Fill in the blank: PVCs allow pods to be [[decoupled from the underlying storage]] so they can be rescheduled freely across nodes.
+Scenario: Two Pods use the same PVC with ReadWriteOnce mode. What determines if this works?
+- [x] Whether both Pods are scheduled on the same node
+- [ ] The number of replicas in the Deployment
+- [ ] The Service type
+- [ ] kube-scheduler configuration
 </quiz>
+
+<quiz>
+Fill in the blank: Persistent storage allows applications to remain [[stateful]] even when Pods are recreated.
+</quiz>
+
+## References
+
+- Kubernetes Documentation – Persistent Volumes  
+- The Kubernetes Book – Nigel Poulton

@@ -1,37 +1,141 @@
+---
+quiz:
+  auto_number: true
+  shuffle_answers: true
+---
+
 # Phase 4 - Storage in Kubernetes
 
-Persistent storage is a core challenge in containerized environments because containers are ephemeral. Without proper storage management, data can be lost whenever a Pod is restarted or rescheduled.
+This phase focuses on **how Kubernetes handles persistent data in a world of ephemeral containers**.
 
-This chapter covers Kubernetes solutions for persistent storage: Volumes, Persistent Volumes (PV) and Persistent Volume Claims (PVC), Storage Classes, and dynamic provisioning.
+While previous phases explained how workloads run and communicate, this phase explains **how data survives Pod restarts, rescheduling, and scaling events**.
 
-## Topics Covered
+Containers are disposable by design. Storage is not.  
+This phase bridges that gap.
 
-- [**Volumes**](./volumes.md) – Local and ephemeral storage inside Pods.
-- [**Persistent Volumes (PV) & Persistent Volume Claims (PVC)**](./pv-pvc.md) – Decoupling storage from Pods, providing durable storage.
-- [**Storage Classes**](./storage-classes.md) – Dynamic provisioning and declarative storage policies.
-- [**StatefulSets**](./statefulsets.md) – Pods that require stable network IDs and persistent storage.
+## What This Phase Covers
 
----
+This phase introduces the primitives responsible for:
+
+- Providing data persistence beyond container lifecycle
+- Decoupling storage from individual Pods
+- Dynamically provisioning storage resources
+- Supporting stateful workloads with stable identities
+
+The main primitives covered are:
+
+- **Volumes** — storage attached directly to Pods
+- **Persistent Volumes (PV)** — cluster-level storage resources
+- **Persistent Volume Claims (PVC)** — requests for persistent storage
+- **Storage Classes** — declarative dynamic provisioning policies
+- **StatefulSets** — workload controller for stateful applications
+
+These primitives enable Kubernetes to support databases, message queues, and other stateful systems reliably.
+
+## Why Storage Primitives Exist
+
+Containers are ephemeral:
+
+- Files inside a container disappear when it restarts
+- Pods can be rescheduled to different nodes
+- Local disk is not portable across nodes
+
+Without abstraction, this leads to:
+
+- Data loss
+- Tight coupling between compute and storage
+- Manual infrastructure management
+- Fragile stateful deployments
+
+Kubernetes solves this by separating **compute lifecycle** from **storage lifecycle**.
+
+Persistent storage becomes an independent resource that Pods can attach to, detach from, and reattach when rescheduled.
+
+This preserves durability while maintaining Kubernetes’ declarative model.
+
+## The Core Mental Model
+
+Storage in Kubernetes follows a layered abstraction:
+
+1. **Volumes** attach storage to a Pod.
+2. **Persistent Volumes (PV)** represent real storage resources in the cluster.
+3. **Persistent Volume Claims (PVC)** request and bind storage declaratively.
+4. **Storage Classes** define how storage is dynamically provisioned.
+5. **StatefulSets** coordinate stable identity and persistent storage for Pods.
+
+The key principle is:
+
+> Storage should outlive the Pod that uses it.
+
+Compute is ephemeral.  
+Storage is durable.  
+Kubernetes ensures they interact safely.
+
+## How These Primitives Fit Together
+
+At a high level:
+
+- A **PVC** declares a storage requirement
+- Kubernetes binds the PVC to a **PV**
+- A Pod mounts the PVC as a **Volume**
+- If the Pod is rescheduled, it reattaches the same persistent storage
+- A **Storage Class** can automatically provision new PVs
+- A **StatefulSet** ensures each Pod gets its own stable volume and identity
+
+These components cooperate to support stateful workloads without sacrificing declarative control.
+
+## Scope and Intent
+
+Following the same structured approach:
+
+- Emphasis is placed on mental models over configuration syntax
+- Storage behavior is explained before YAML details
+- Dynamic provisioning is introduced conceptually before implementation
+
+Hands-on labs will reinforce how storage binding, provisioning, and reattachment work in practice.
 
 ## Check Your Knowledge
 
-1. **Volumes:**  
-   - What problem do Volumes solve in ephemeral containers?  
-   - When should you use emptyDir vs hostPath vs configMap volumes?
+<quiz>
+Why are Volumes necessary?
+- [x] Containers lose data when they restart
+- [x] Pods are ephemeral
+- [ ] Volumes schedule Pods to nodes
+- [ ] Volumes replace Deployments
+</quiz>
 
-2. **PV & PVC:**  
-   - How do Persistent Volumes decouple storage from Pods?  
-   - What happens if a Pod is deleted but the PVC is still bound?
+<quiz>
+Persistent Volumes (PV) and Persistent Volume Claims (PVC) allow:
+- [x] Decoupling storage from Pod lifecycle
+- [x] Durable storage across restarts
+- [ ] Automatic Pod scaling
+- [ ] Service load balancing
+</quiz>
 
-3. **Storage Classes:**  
-   - Why are Storage Classes important for dynamic provisioning?  
-   - What parameters can be customized in a Storage Class?
+<quiz>
+What happens if a Pod using a PVC is deleted?
+- [x] The PVC can remain bound to the PV
+- [x] A new Pod can reattach to the same storage
+- [ ] The data is automatically erased
+- [ ] The PV is always deleted immediately
+</quiz>
 
-4. **StatefulSets:**  
-   - Why would you use a StatefulSet instead of a Deployment?  
-   - How does a StatefulSet ensure stable storage and network identity?
+<quiz>
+Storage Classes are important because:
+- [x] They enable dynamic provisioning
+- [x] They define storage policies declaratively
+- [ ] They manage container networking
+- [ ] They expose Pods externally
+</quiz>
 
----
+<quiz>
+StatefulSets are used when:
+- [x] Pods require stable network identity
+- [x] Each replica needs persistent storage
+- [ ] Stateless applications need scaling
+- [ ] You only need rolling updates
+</quiz>
 
-**Next Steps:**  
-After understanding the concepts in this chapter, apply them in labs by creating PVCs, using different volume types, and experimenting with dynamic provisioning to solidify your knowledge.
+## References
+
+- [**The Kubernetes Book - Nigel-Poulton**](https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000)

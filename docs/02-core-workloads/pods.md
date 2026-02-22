@@ -56,7 +56,7 @@ Scenario: You need a container that logs metrics for another container running i
 </quiz>
 
 <quiz>
-Most Pods run a [[single]] container. Why?
+Most Pods run a single container. Why?
 
 - [x] Simplifies lifecycle and scaling
 - [ ] Reduces network usage

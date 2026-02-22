@@ -6,74 +6,193 @@ quiz:
 
 # Autoscaling
 
-## The Problem
+## What Problem Autoscaling Solves
 
-Manual scaling of applications is slow and error-prone. Traffic spikes or sudden load can overwhelm Pods, leading to poor performance or outages.
+Workloads are rarely constant.
 
-## Solution
+Traffic can:
 
-Kubernetes **Horizontal Pod Autoscaler (HPA)** automatically adjusts the number of replicas of a Deployment or StatefulSet based on observed metrics:
+- Spike suddenly
+- Drop during off-hours
+- Grow gradually over time
 
-- CPU utilization (default)  
-- Custom metrics (e.g., requests per second, memory usage)
+Manual scaling is:
 
-The controller constantly monitors the metrics and increases or decreases replicas as needed.
+- Reactive
+- Slow
+- Error-prone
 
-## Components
+Too few replicas → performance issues  
+Too many replicas → wasted resources  
 
-| Component      | Role                                         |
-| -------------- | -------------------------------------------- |
-| HPA            | Watches metrics and scales target workloads. |
-| Metrics Server | Provides metrics to HPA for decision making. |
+Autoscaling makes scaling automatic and responsive.
+
+## The Solution: Horizontal Pod Autoscaler (HPA)
+
+The Horizontal Pod Autoscaler:
+
+- Monitors metrics
+- Adjusts replica count
+- Scales up or down automatically
+
+It works with:
+
+- Deployments
+- StatefulSets
+- ReplicaSets
+
+HPA changes the **desired replica count** of the target resource.
+
+The workload controller then creates or deletes Pods to match that number.
+
+## How HPA Works
+
+1. Metrics are collected (via Metrics Server or custom metrics API)
+2. HPA compares current usage to target utilization
+3. It calculates required replicas
+4. It updates the workload’s replica count
+
+This loop runs continuously.
+
+Scaling decisions are based on formulas, not guesses.
+
+## Default Metric
+
+By default, HPA uses:
+
+- CPU utilization percentage
+
+Example:
+
+If target CPU is 60% and current usage averages 90%:
+
+- HPA increases replicas
+
+If usage drops below target:
+
+- HPA scales down
+
+## Custom & Advanced Metrics
+
+HPA can also use:
+
+- Memory utilization
+- Requests per second
+- Queue length
+- External metrics (via adapters)
+
+This enables scaling based on business metrics, not just CPU.
+
+Production systems often use custom metrics.
+
+## Metrics Server
+
+HPA depends on:
+
+- metrics-server
+
+It provides:
+
+- Pod CPU usage
+- Pod memory usage
+
+If metrics-server is missing:
+
+- HPA cannot function properly
+
+Always verify it's installed.
+
+## Can HPA Scale to Zero?
+
+By default:
+
+- HPA does not scale below 1 replica
+
+Scaling to zero requires:
+
+- External metrics
+- Specialized configurations (e.g., KEDA)
+
+Do not assume zero scaling unless explicitly configured.
+
+## Mental Model
+
+HPA adjusts quantity.  
+It does not:
+
+- Change Pod resource limits
+- Resize volumes
+- Modify Services
+
+It only changes:
+
+- Replica count
+
+More replicas = more capacity  
+Fewer replicas = resource savings
+
+## Common Failure Scenarios
+
+- HPA not scaling → metrics-server missing
+- Pods not scaling down → minReplicas too high
+- Oscillating replicas → unstable metric targets
+- High load but no scaling → resource requests misconfigured
+- StatefulSet slow scaling → ordered startup behavior
+
+Debug path:
+
+1. Check `kubectl describe hpa`
+2. Verify metrics-server
+3. Confirm resource requests exist
+4. Inspect scaling thresholds
 
 ## Check Your Knowledge
 
-1. What metric does HPA use by default?  
-2. Can HPA scale down to zero replicas?  
-3. How does HPA interact with Deployments and StatefulSets?
-
-## Check your knowledge
-
 <quiz>
-What does the Horizontal Pod Autoscaler (HPA) do in Kubernetes?
-
-- [x] Automatically scales the number of pod replicas based on CPU/memory usage
-- [ ] Assigns pods to nodes
-- [ ] Manages persistent volumes
-- [ ] Monitors service endpoints
-</quiz>
-
-<quiz>
-Scenario: A web application experiences sudden traffic spikes. Which configuration will help maintain performance?
-
-- [x] HPA with target CPU utilization
-- [ ] Static Deployment with 3 replicas
-- [ ] StatefulSet without PVC
-- [ ] ConfigMap for environment variables
-</quiz>
-
-<quiz>
-Fill in the blank: HPA adjusts the [[replica count]] of a deployment based on metrics from the [[metrics server]].
-</quiz>
-
-<quiz>
-Which metrics can HPA use for scaling? (Select all that apply)
-
-- [x] CPU utilization
-- [x] Memory utilization
-- [x] Custom metrics (e.g., request rate)
-- [ ] Node labels
-</quiz>
-
-<quiz>
-Scenario: A Deployment scales from 3 to 6 replicas due to HPA. Which of the following is true?
-
-- [x] New pods are created to match the desired replica count
-- [ ] Existing pods are deleted
-- [ ] PVCs are automatically resized
+What happens when CPU usage exceeds the target defined in HPA?
+- [x] Replica count increases
+- [ ] Pods restart
 - [ ] Service IP changes
+- [ ] Nodes are added automatically
 </quiz>
 
 <quiz>
-Fill in the blank: HPA requires the [[metrics-server]] to be installed in the cluster to collect pod [[resource usage]].
+Why are resource requests important for HPA?
+- [x] CPU utilization is calculated based on requests
+- [ ] They determine Service routing
+- [ ] They create PVCs
+- [ ] They configure Ingress rules
 </quiz>
+
+<quiz>
+Scenario: HPA is configured but replicas never change. What is a likely cause?
+- [x] metrics-server is not installed
+- [ ] kube-proxy is disabled
+- [ ] PVC is not bound
+- [ ] NetworkPolicy blocks scaling
+</quiz>
+
+<quiz>
+If load drops significantly, what does HPA do?
+- [x] Reduces replica count (respecting minReplicas)
+- [ ] Deletes the Deployment
+- [ ] Changes Pod IPs
+- [ ] Resizes storage volumes
+</quiz>
+
+<quiz>
+Which workloads can HPA scale? (Select all that apply)
+- [x] Deployment
+- [x] StatefulSet
+- [ ] PersistentVolume
+- [ ] Service
+</quiz>
+
+<quiz>
+Fill in the blank: HPA modifies the [[replica count]] of a workload based on observed [[resource utilization]].
+</quiz>
+
+## References
+
+- Kubernetes Documentation – Horizontal Pod Autoscaler  
+- The Kubernetes Book – Nigel Poulton

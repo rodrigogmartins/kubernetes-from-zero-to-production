@@ -6,69 +6,185 @@ quiz:
 
 # Resource Requests & Limits
 
-## The Problem
+## Why This Matters
 
-Pods competing for CPU and memory on a node can cause instability. Without proper limits, a single Pod can starve others or crash the node.
+In a shared node:
 
-## Solution
+- Containers compete for CPU
+- Memory pressure can crash workloads
+- One misbehaving Pod can destabilize everything
 
-Kubernetes allows setting **requests** and **limits** for CPU and memory:
+Production clusters fail more from poor resource configuration than from Kubernetes itself.
 
-- **Requests:** Guaranteed resources for scheduling the Pod on a node.  
-- **Limits:** Maximum resources a Pod can use. Exceeding limits can throttle CPU or terminate the Pod if it exceeds memory.
+Resource management is not optional.
 
-## Components
+## The Core Concepts
 
-| Component | Role                                              |
-| --------- | ------------------------------------------------- |
-| PodSpec   | Defines requests and limits in container spec.    |
-| Scheduler | Uses requests to place Pods on appropriate nodes. |
-| Kubelet   | Enforces resource limits at runtime.              |
+Kubernetes defines two key values per container:
+
+- Request
+- Limit
+
+They solve different problems.
+
+Understand the difference or you will create instability.
+
+## Requests
+
+Definition:
+
+Minimum guaranteed resources.
+
+Used by:
+
+- Scheduler to decide Pod placement.
+
+If a node does not have enough available requested resources:
+
+- The Pod will not be scheduled there.
+
+Requests define:
+
+“Can this node safely host this Pod?”
+
+Without requests:
+
+- Scheduler guesses
+- Nodes get overpacked
+- Performance becomes unpredictable
+
+## Limits
+
+Definition:
+
+Maximum resources a container can use.
+
+Enforced by:
+
+- Kubelet at runtime.
+
+Behavior:
+
+- CPU: throttled if exceeded
+- Memory: container is killed (OOMKilled)
+
+Limits protect the node.
+
+No limits means one container can consume everything.
+
+## CPU vs Memory Behavior
+
+CPU:
+
+- Compressible resource
+- Throttled when over limit
+
+Memory:
+
+- Not compressible
+- Exceeding limit → container terminated
+
+Memory misconfiguration is far more dangerous.
+
+## Scheduling Logic
+
+Scheduler uses:
+
+Requests only.
+
+It does NOT consider limits for placement.
+
+If you set:
+
+High limit + low request
+
+You risk:
+
+Node overcommit and runtime contention.
+
+## Best Practice Pattern
+
+For most workloads:
+
+- Request = realistic baseline usage
+- Limit = reasonable maximum
+
+Avoid:
+
+- Leaving both empty
+- Setting request too low
+- Setting limit unrealistically high
+
+Measure first. Then tune.
+
+## Common Failure Patterns
+
+- No limits → node memory exhaustion
+- No requests → noisy neighbor problem
+- Requests too high → unschedulable Pods
+- Limit lower than real usage → OOM crash loops
+
+Resource configuration is capacity planning.
+
+Treat it seriously.
+
+## Mental Model
+
+Request = reservation  
+Limit = enforcement  
+
+Scheduler trusts requests.  
+Node enforces limits.
+
+They serve different layers of control.
 
 ## Check Your Knowledge
 
-1. What is the difference between request and limit?  
-2. What happens if a Pod exceeds its memory limit?  
-3. How do requests influence the Kubernetes scheduler?
-
-## Check your knowledge
-
 <quiz>
-Why are resource requests important in Kubernetes?
-
-- [x] They define the minimum CPU/memory guaranteed to a container
-- [ ] They schedule pods to specific nodes
-- [ ] They configure network policies
-- [ ] They automatically scale pods
+Which component uses resource requests to schedule Pods?
+- [x] Scheduler
+- [ ] Kube-proxy
+- [ ] CoreDNS
+- [ ] Ingress Controller
 </quiz>
 
 <quiz>
-What happens if a pod exceeds its resource limit?
-
-- [x] It may be throttled (CPU) or killed (memory)
-- [ ] It is automatically moved to another node
-- [ ] It will scale horizontally
-- [ ] Nothing; Kubernetes ignores limits
+What happens when a container exceeds its memory limit?
+- [x] It is terminated with OOMKilled
+- [ ] It is throttled temporarily
+- [ ] It is rescheduled automatically
+- [ ] It ignores the limit
 </quiz>
 
 <quiz>
-Scenario: You have a high-memory application. How should you configure resources?
-
-- [x] Set request to minimum required and limit to max expected memory
-- [ ] Set request equal to limit
-- [ ] Leave requests and limits empty
-- [ ] Use only CPU limits
+If CPU limit is exceeded, what occurs?
+- [x] The container is throttled
+- [ ] The node reboots
+- [ ] The Pod is deleted permanently
+- [ ] The Deployment scales automatically
 </quiz>
 
 <quiz>
-Which of the following are valid Kubernetes resource types for requests and limits? (Select all that apply)
-
-- [x] cpu
-- [x] memory
-- [ ] storageClass
-- [ ] networkPolicy
+Why should requests not be set too low?
+- [x] It can cause resource contention and unpredictable performance
+- [ ] It increases cluster security
+- [ ] It improves DNS resolution
+- [ ] It enables autoscaling
 </quiz>
 
 <quiz>
-Fill in the blank: Proper resource requests and limits prevent [[resource contention]] and improve [[cluster stability]].
+Which resources are commonly configured with requests and limits?
+- [x] CPU and memory
+- [ ] Ingress rules
+- [ ] Services
+- [ ] ConfigMaps
 </quiz>
+
+<quiz>
+Fill in the blank: Resource requests influence [[pod scheduling]], while limits enforce [[runtime resource control]].
+</quiz>
+
+## References
+
+- Kubernetes Documentation – Resource Management  
+- Kubernetes Best Practices – O’Reilly
