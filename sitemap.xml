@@ -2,134 +2,134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/mkdocs/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/01-fundamentals/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/01-fundamentals/control-plane-vs-data-plane/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/01-fundamentals/kubernetes-architecture-overview/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/01-fundamentals/kubernetes-as-a-distributed-system/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/01-fundamentals/pods-vs-containers/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/01-fundamentals/reconciliation-loop/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/01-fundamentals/what-problem-kubernetes-solves/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/02-core-workloads/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/02-core-workloads/deployments/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/02-core-workloads/ingress/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/02-core-workloads/pods/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/02-core-workloads/replicasets/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/02-core-workloads/services/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/cni/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/dns/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/ingress/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/kube-proxy/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/network_policies/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/pod-networking/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/03-networking/services/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/04-storage/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/04-storage/pv-pvc/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/04-storage/statefulsets/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/04-storage/storage-classes/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/04-storage/volumes/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/05-production/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/05-production/autoscaling/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/05-production/failure-scenarios/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/05-production/probes/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
     <url>
          <loc>https://rodrigogmartins.github.io/kubernetes-from-zero-to-production/05-production/resource-requests-limits/</loc>
-         <lastmod>2026-02-17</lastmod>
+         <lastmod>2026-02-22</lastmod>
     </url>
 </urlset>

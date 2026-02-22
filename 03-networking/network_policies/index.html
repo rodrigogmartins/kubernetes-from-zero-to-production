@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -1053,10 +1053,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-networkpolicies-solve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem NetworkPolicies Solve
       
     </span>
   </a>
@@ -1064,10 +1064,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-networkpolicies-work" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How NetworkPolicies Work
       
     </span>
   </a>
@@ -1075,10 +1075,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-default-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Default Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pod-and-namespace-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pod and Namespace Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ingress-vs-egress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ingress vs Egress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-zero-trust-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Zero-Trust Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-cni-enforcement-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. CNI Enforcement Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -1089,7 +1172,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1527,10 +1621,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-networkpolicies-solve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem NetworkPolicies Solve
       
     </span>
   </a>
@@ -1538,10 +1632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-networkpolicies-work" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How NetworkPolicies Work
       
     </span>
   </a>
@@ -1549,10 +1643,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-default-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Default Behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pod-and-namespace-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pod and Namespace Selection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ingress-vs-egress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ingress vs Egress
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-zero-trust-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Zero-Trust Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-cni-enforcement-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. CNI Enforcement Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -1563,7 +1740,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1625,36 +1813,138 @@
 
 
 <h1 id="network-policies">Network Policies</h1>
-<h2 id="problem">Problem</h2>
-<p>By default, all Pods can communicate freely. In multi-tenant or production clusters, unrestricted communication is a security risk.</p>
-<h2 id="solution">Solution</h2>
-<p>Network Policies enforce rules about which Pods can communicate, restricting ingress and egress traffic.</p>
-<h2 id="components-key-concepts">Components / Key Concepts</h2>
+<h2 id="what-problem-networkpolicies-solve">What Problem NetworkPolicies Solve</h2>
+<p>By default, Kubernetes networking is <strong>fully open</strong>:</p>
 <ul>
-<li><strong>Policy scope:</strong> can be applied per Pod or namespace</li>
-<li><strong>Rules:</strong> define allowed traffic for ingress and egress</li>
-<li><strong>CNI enforcement:</strong> policies are implemented by the network plugin</li>
-<li><strong>Zero-trust model:</strong> deny-by-default unless explicitly allowed</li>
+<li>Any Pod can communicate with any other Pod</li>
+<li>Pods can send traffic to external endpoints</li>
+<li>There is no built-in microsegmentation</li>
 </ul>
-<h2 id="check-your-knowledge">Check your knowledge</h2>
+<p>In development environments this is convenient.</p>
+<p>In production or multi-tenant clusters, it is a serious security risk.</p>
+<p>Without restrictions:</p>
+<ul>
+<li>Compromised Pods can laterally move across the cluster</li>
+<li>Sensitive workloads can be accessed unintentionally</li>
+<li>Regulatory requirements may be violated</li>
+</ul>
+<p>NetworkPolicies introduce <strong>controlled traffic boundaries</strong>.</p>
+<h2 id="how-networkpolicies-work">How NetworkPolicies Work</h2>
+<p>A NetworkPolicy defines <strong>allowed traffic</strong> to and/or from selected Pods.</p>
+<p>Important behavior:</p>
+<ul>
+<li>When a Pod is selected by a NetworkPolicy, it becomes <strong>isolated</strong></li>
+<li>Only traffic explicitly allowed by rules is permitted</li>
+<li>Everything else is denied (for the selected direction)</li>
+</ul>
+<p>NetworkPolicies can define:</p>
+<ul>
+<li>Ingress rules (incoming traffic)</li>
+<li>Egress rules (outgoing traffic)</li>
+<li>Both</li>
+</ul>
+<p>Enforcement is handled by the CNI plugin.<br />
+If the CNI does not support policy enforcement, the rules will not apply.</p>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="1-default-behavior">1. Default Behavior</h3>
+<p>Pods are:</p>
+<ul>
+<li><strong>Non-isolated by default</strong></li>
+<li>Able to communicate freely</li>
+</ul>
+<p>Once a Pod is selected by a NetworkPolicy:</p>
+<ul>
+<li>It becomes isolated for the specified direction (ingress/egress)</li>
+<li>Traffic must match an allow rule</li>
+</ul>
+<p>There is no explicit "deny" rule.<br />
+Policies are additive allow lists.</p>
+<hr />
+<h3 id="2-pod-and-namespace-selection">2. Pod and Namespace Selection</h3>
+<p>NetworkPolicies use selectors:</p>
+<ul>
+<li><code>podSelector</code> — target Pods within a namespace</li>
+<li><code>namespaceSelector</code> — target namespaces</li>
+<li><code>ipBlock</code> — allow specific CIDR ranges</li>
+</ul>
+<p>Selectors enable fine-grained segmentation between workloads.</p>
+<hr />
+<h3 id="3-ingress-vs-egress">3. Ingress vs Egress</h3>
+<ul>
+<li><strong>Ingress rules</strong> control who can talk <em>to</em> the Pod</li>
+<li><strong>Egress rules</strong> control where the Pod can talk <em>to</em></li>
+</ul>
+<p>If only ingress is defined:</p>
+<ul>
+<li>Egress remains unrestricted</li>
+</ul>
+<p>If egress is defined:</p>
+<ul>
+<li>Only specified outbound traffic is allowed</li>
+</ul>
+<hr />
+<h3 id="4-zero-trust-model">4. Zero-Trust Model</h3>
+<p>NetworkPolicies support a <strong>deny-by-default model</strong>:</p>
+<ol>
+<li>Select sensitive workloads</li>
+<li>Define explicit allow rules</li>
+<li>Deny all other traffic implicitly</li>
+</ol>
+<p>This reduces blast radius during compromise.</p>
+<hr />
+<h3 id="5-cni-enforcement-requirement">5. CNI Enforcement Requirement</h3>
+<p>NetworkPolicies require:</p>
+<ul>
+<li>A policy-aware CNI (e.g., Calico, Cilium)</li>
+</ul>
+<p>If using a basic CNI without enforcement:</p>
+<ul>
+<li>Policies exist in the API</li>
+<li>But traffic is not restricted</li>
+</ul>
+<p>Policy behavior depends entirely on the CNI data plane.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Think in terms of <strong>traffic whitelisting</strong>.</p>
+<p>When you apply a NetworkPolicy:</p>
+<ul>
+<li>You are not blocking traffic directly.</li>
+<li>You are defining what is allowed.</li>
+<li>Everything else becomes implicitly denied.</li>
+</ul>
+<p>Segmentation is workload-driven, not network-device-driven.</p>
+<h2 id="common-failure-scenarios">Common Failure Scenarios</h2>
+<ul>
+<li>Pods lose external internet access after adding egress rules</li>
+<li>DNS traffic blocked (UDP/TCP 53 not allowed)</li>
+<li>Cross-namespace communication unexpectedly denied</li>
+<li>Monitoring agents cannot reach application Pods</li>
+<li>Policies applied but ineffective (CNI limitation)</li>
+</ul>
+<p>Operational debugging requires:</p>
+<ul>
+<li>Verifying selectors</li>
+<li>Checking CNI enforcement</li>
+<li>Inspecting effective rules</li>
+<li>Testing both ingress and egress paths</li>
+</ul>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-What is the main function of a NetworkPolicy?
-
-- [x] Restrict traffic to/from pods
-- [ ] Assign static IPs
-- [ ] Load balance services
-- [ ] Monitor pod health
+What happens when a Pod is selected by a NetworkPolicy with ingress rules defined?
+- [x] Only allowed ingress traffic is permitted
+- [ ] All ingress traffic is automatically allowed
+- [ ] The Pod becomes inaccessible permanently
+- [ ] kube-proxy disables routing
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What is the main function of a NetworkPolicy?</p>
+        <p>What happens when a Pod is selected by a NetworkPolicy with ingress rules defined?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Restrict traffic to/from pods</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Assign static IPs</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Load balance services</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Monitor pod health</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Only allowed ingress traffic is permitted</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">All ingress traffic is automatically allowed</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">The Pod becomes inaccessible permanently</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">kube-proxy disables routing</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1663,40 +1953,44 @@ What is the main function of a NetworkPolicy?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: By default, pods are [[non-isolated]] and can communicate with all other pods in the namespace.
+Which statement about default Pod communication is correct?
+- [x] Pods are non-isolated by default
+- [ ] Pods are isolated by default
+- [ ] Pods require explicit allow rules to communicate
+- [ ] DNS access is denied by default
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-1">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        Fill in the blank: By default, pods are <input type="text" class="quiz-blank-input" id="quiz-1-blank-0" data-answer="non-isolated" autocomplete="off" size="14"> and can communicate with all other pods in the namespace.
+        <p>Which statement about default Pod communication is correct?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Pods are non-isolated by default</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">Pods are isolated by default</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">Pods require explicit allow rules to communicate</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">DNS access is denied by default</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: You create a NetworkPolicy allowing only specific pod selectors. Other pods still cannot reach it. Why?
-
-- [x] CNI plugin enforces policy
-- [ ] kube-proxy blocks traffic
-- [ ] DNS failed
-- [ ] NodePort service missing
+Scenario: After applying a NetworkPolicy with only ingress rules, a Pod can still reach the internet. Why?
+- [x] Egress traffic is not restricted
+- [ ] kube-proxy bypasses the policy
+- [ ] CoreDNS overrides the policy
+- [ ] The scheduler disabled enforcement
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        <p>Scenario: You create a NetworkPolicy allowing only specific pod selectors. Other pods still cannot reach it. Why?</p>
+        <p>Scenario: After applying a NetworkPolicy with only ingress rules, a Pod can still reach the internet. Why?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">CNI plugin enforces policy</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">kube-proxy blocks traffic</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">DNS failed</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">NodePort service missing</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">Egress traffic is not restricted</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">kube-proxy bypasses the policy</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">CoreDNS overrides the policy</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">The scheduler disabled enforcement</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1705,12 +1999,10 @@ Scenario: You create a NetworkPolicy allowing only specific pod selectors. Other
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which fields can you define in a NetworkPolicy? (Select all that apply)
-
+Which selectors can be used in a NetworkPolicy? (Select all that apply)
 - [x] podSelector
 - [x] namespaceSelector
-- [x] ingress rules
-- [x] egress rules
+- [x] ipBlock
 - [ ] storageClass
 </quiz>
 -->
@@ -1718,10 +2010,10 @@ Which fields can you define in a NetworkPolicy? (Select all that apply)
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which fields can you define in a NetworkPolicy? (Select all that apply)</p>
+        <p>Which selectors can be used in a NetworkPolicy? (Select all that apply)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">podSelector</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">namespaceSelector</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" correct><label for="quiz-3-2">ingress rules</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" correct><label for="quiz-3-3">egress rules</label></div><div><input type="checkbox" name="answer" value="4" id="quiz-3-4" ><label for="quiz-3-4">storageClass</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">podSelector</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">namespaceSelector</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" correct><label for="quiz-3-2">ipBlock</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">storageClass</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1730,22 +2022,21 @@ Which fields can you define in a NetworkPolicy? (Select all that apply)
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: After applying a NetworkPolicy, some pods lose connectivity to external endpoints. Why?
-
-- [x] Egress rules block traffic
-- [x] CNI plugin configuration restricts outgoing traffic
-- [ ] Service type NodePort changed
-- [ ] Pod CPU limits too low
+Scenario: You apply a NetworkPolicy allowing traffic from a specific namespace, but communication still fails. What is the most likely cause?
+- [x] The CNI plugin does not support policy enforcement
+- [x] The namespace labels do not match the selector
+- [ ] The Service ClusterIP changed
+- [ ] kubelet restarted
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>Scenario: After applying a NetworkPolicy, some pods lose connectivity to external endpoints. Why?</p>
+        <p>Scenario: You apply a NetworkPolicy allowing traffic from a specific namespace, but communication still fails. What is the most likely cause?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Egress rules block traffic</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">CNI plugin configuration restricts outgoing traffic</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">Service type NodePort changed</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">Pod CPU limits too low</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">The CNI plugin does not support policy enforcement</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">The namespace labels do not match the selector</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">The Service ClusterIP changed</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">kubelet restarted</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1754,21 +2045,72 @@ Scenario: After applying a NetworkPolicy, some pods lose connectivity to externa
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: NetworkPolicies only work if the CNI plugin supports [[policy enforcement]] (e.g., Calico, Cilium).
+To implement a zero-trust model in Kubernetes, you should:
+- [x] Select Pods with a NetworkPolicy
+- [x] Explicitly allow only required traffic
+- [ ] Remove kube-proxy
+- [ ] Disable DNS resolution
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-5">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 6</h4>
     <div class="quiz-question">
-        Fill in the blank: NetworkPolicies only work if the CNI plugin supports <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="policy enforcement" autocomplete="off" size="20"> (e.g., Calico, Cilium).
+        <p>To implement a zero-trust model in Kubernetes, you should:</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">Select Pods with a NetworkPolicy</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-5-1" correct><label for="quiz-5-1">Explicitly allow only required traffic</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">Remove kube-proxy</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">Disable DNS resolution</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Scenario: After implementing egress restrictions, Pods cannot resolve internal Service names. What rule is likely missing?
+- [x] Allowing outbound traffic to CoreDNS (port 53)
+- [ ] Allowing NodePort access
+- [ ] Allowing PersistentVolume traffic
+- [ ] Allowing kube-scheduler traffic
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+    <a href="#quiz-6" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 7</h4>
+    <div class="quiz-question">
+        <p>Scenario: After implementing egress restrictions, Pods cannot resolve internal Service names. What rule is likely missing?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">Allowing outbound traffic to CoreDNS (port 53)</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1" ><label for="quiz-6-1">Allowing NodePort access</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">Allowing PersistentVolume traffic</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3" ><label for="quiz-6-3">Allowing kube-scheduler traffic</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Fill in the blank: NetworkPolicies are enforced by the [[CNI plugin]] and operate on a [[deny-by-default]] model once applied.
+</quiz>
+-->
+<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-7">
+    <a href="#quiz-7" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 8</h4>
+    <div class="quiz-question">
+        Fill in the blank: NetworkPolicies are enforced by the <input type="text" class="quiz-blank-input" id="quiz-7-blank-0" data-answer="CNI plugin" autocomplete="off" size="12"> and operate on a <input type="text" class="quiz-blank-input" id="quiz-7-blank-1" data-answer="deny-by-default" autocomplete="off" size="17"> model once applied.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000"><strong>The Kubernetes Book - Nigel Poulton</strong></a></li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

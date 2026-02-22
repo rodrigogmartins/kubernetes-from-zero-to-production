@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -1357,10 +1357,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#what-problem-autoscaling-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Problem
+        What Problem Autoscaling Solves
       
     </span>
   </a>
@@ -1368,10 +1368,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#the-solution-horizontal-pod-autoscaler-hpa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        The Solution: Horizontal Pod Autoscaler (HPA)
       
     </span>
   </a>
@@ -1379,10 +1379,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+  <a href="#how-hpa-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components
+        How HPA Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default Metric
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-advanced-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom &amp; Advanced Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-hpa-scale-to-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can HPA Scale to Zero?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -1401,10 +1467,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge_1" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        References
       
     </span>
   </a>
@@ -1538,10 +1604,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#what-problem-autoscaling-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Problem
+        What Problem Autoscaling Solves
       
     </span>
   </a>
@@ -1549,10 +1615,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#the-solution-horizontal-pod-autoscaler-hpa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        The Solution: Horizontal Pod Autoscaler (HPA)
       
     </span>
   </a>
@@ -1560,10 +1626,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+  <a href="#how-hpa-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components
+        How HPA Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-metric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default Metric
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-advanced-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom &amp; Advanced Metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metrics Server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#can-hpa-scale-to-zero" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Can HPA Scale to Zero?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -1582,10 +1714,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge_1" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        References
       
     </span>
   </a>
@@ -1647,59 +1779,144 @@
 
 
 <h1 id="autoscaling">Autoscaling</h1>
-<h2 id="the-problem">The Problem</h2>
-<p>Manual scaling of applications is slow and error-prone. Traffic spikes or sudden load can overwhelm Pods, leading to poor performance or outages.</p>
-<h2 id="solution">Solution</h2>
-<p>Kubernetes <strong>Horizontal Pod Autoscaler (HPA)</strong> automatically adjusts the number of replicas of a Deployment or StatefulSet based on observed metrics:</p>
+<h2 id="what-problem-autoscaling-solves">What Problem Autoscaling Solves</h2>
+<p>Workloads are rarely constant.</p>
+<p>Traffic can:</p>
 <ul>
-<li>CPU utilization (default)  </li>
-<li>Custom metrics (e.g., requests per second, memory usage)</li>
+<li>Spike suddenly</li>
+<li>Drop during off-hours</li>
+<li>Grow gradually over time</li>
 </ul>
-<p>The controller constantly monitors the metrics and increases or decreases replicas as needed.</p>
-<h2 id="components">Components</h2>
-<table>
-<thead>
-<tr>
-<th>Component</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HPA</td>
-<td>Watches metrics and scales target workloads.</td>
-</tr>
-<tr>
-<td>Metrics Server</td>
-<td>Provides metrics to HPA for decision making.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="check-your-knowledge">Check Your Knowledge</h2>
+<p>Manual scaling is:</p>
+<ul>
+<li>Reactive</li>
+<li>Slow</li>
+<li>Error-prone</li>
+</ul>
+<p>Too few replicas → performance issues<br />
+Too many replicas → wasted resources  </p>
+<p>Autoscaling makes scaling automatic and responsive.</p>
+<h2 id="the-solution-horizontal-pod-autoscaler-hpa">The Solution: Horizontal Pod Autoscaler (HPA)</h2>
+<p>The Horizontal Pod Autoscaler:</p>
+<ul>
+<li>Monitors metrics</li>
+<li>Adjusts replica count</li>
+<li>Scales up or down automatically</li>
+</ul>
+<p>It works with:</p>
+<ul>
+<li>Deployments</li>
+<li>StatefulSets</li>
+<li>ReplicaSets</li>
+</ul>
+<p>HPA changes the <strong>desired replica count</strong> of the target resource.</p>
+<p>The workload controller then creates or deletes Pods to match that number.</p>
+<h2 id="how-hpa-works">How HPA Works</h2>
 <ol>
-<li>What metric does HPA use by default?  </li>
-<li>Can HPA scale down to zero replicas?  </li>
-<li>How does HPA interact with Deployments and StatefulSets?</li>
+<li>Metrics are collected (via Metrics Server or custom metrics API)</li>
+<li>HPA compares current usage to target utilization</li>
+<li>It calculates required replicas</li>
+<li>It updates the workload’s replica count</li>
 </ol>
-<h2 id="check-your-knowledge_1">Check your knowledge</h2>
+<p>This loop runs continuously.</p>
+<p>Scaling decisions are based on formulas, not guesses.</p>
+<h2 id="default-metric">Default Metric</h2>
+<p>By default, HPA uses:</p>
+<ul>
+<li>CPU utilization percentage</li>
+</ul>
+<p>Example:</p>
+<p>If target CPU is 60% and current usage averages 90%:</p>
+<ul>
+<li>HPA increases replicas</li>
+</ul>
+<p>If usage drops below target:</p>
+<ul>
+<li>HPA scales down</li>
+</ul>
+<h2 id="custom-advanced-metrics">Custom &amp; Advanced Metrics</h2>
+<p>HPA can also use:</p>
+<ul>
+<li>Memory utilization</li>
+<li>Requests per second</li>
+<li>Queue length</li>
+<li>External metrics (via adapters)</li>
+</ul>
+<p>This enables scaling based on business metrics, not just CPU.</p>
+<p>Production systems often use custom metrics.</p>
+<h2 id="metrics-server">Metrics Server</h2>
+<p>HPA depends on:</p>
+<ul>
+<li>metrics-server</li>
+</ul>
+<p>It provides:</p>
+<ul>
+<li>Pod CPU usage</li>
+<li>Pod memory usage</li>
+</ul>
+<p>If metrics-server is missing:</p>
+<ul>
+<li>HPA cannot function properly</li>
+</ul>
+<p>Always verify it's installed.</p>
+<h2 id="can-hpa-scale-to-zero">Can HPA Scale to Zero?</h2>
+<p>By default:</p>
+<ul>
+<li>HPA does not scale below 1 replica</li>
+</ul>
+<p>Scaling to zero requires:</p>
+<ul>
+<li>External metrics</li>
+<li>Specialized configurations (e.g., KEDA)</li>
+</ul>
+<p>Do not assume zero scaling unless explicitly configured.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>HPA adjusts quantity.<br />
+It does not:</p>
+<ul>
+<li>Change Pod resource limits</li>
+<li>Resize volumes</li>
+<li>Modify Services</li>
+</ul>
+<p>It only changes:</p>
+<ul>
+<li>Replica count</li>
+</ul>
+<p>More replicas = more capacity<br />
+Fewer replicas = resource savings</p>
+<h2 id="common-failure-scenarios">Common Failure Scenarios</h2>
+<ul>
+<li>HPA not scaling → metrics-server missing</li>
+<li>Pods not scaling down → minReplicas too high</li>
+<li>Oscillating replicas → unstable metric targets</li>
+<li>High load but no scaling → resource requests misconfigured</li>
+<li>StatefulSet slow scaling → ordered startup behavior</li>
+</ul>
+<p>Debug path:</p>
+<ol>
+<li>Check <code>kubectl describe hpa</code></li>
+<li>Verify metrics-server</li>
+<li>Confirm resource requests exist</li>
+<li>Inspect scaling thresholds</li>
+</ol>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-What does the Horizontal Pod Autoscaler (HPA) do in Kubernetes?
-
-- [x] Automatically scales the number of pod replicas based on CPU/memory usage
-- [ ] Assigns pods to nodes
-- [ ] Manages persistent volumes
-- [ ] Monitors service endpoints
+What happens when CPU usage exceeds the target defined in HPA?
+- [x] Replica count increases
+- [ ] Pods restart
+- [ ] Service IP changes
+- [ ] Nodes are added automatically
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What does the Horizontal Pod Autoscaler (HPA) do in Kubernetes?</p>
+        <p>What happens when CPU usage exceeds the target defined in HPA?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Automatically scales the number of pod replicas based on CPU/memory usage</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Assigns pods to nodes</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Manages persistent volumes</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Monitors service endpoints</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Replica count increases</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Pods restart</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Service IP changes</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Nodes are added automatically</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1708,22 +1925,21 @@ What does the Horizontal Pod Autoscaler (HPA) do in Kubernetes?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: A web application experiences sudden traffic spikes. Which configuration will help maintain performance?
-
-- [x] HPA with target CPU utilization
-- [ ] Static Deployment with 3 replicas
-- [ ] StatefulSet without PVC
-- [ ] ConfigMap for environment variables
+Why are resource requests important for HPA?
+- [x] CPU utilization is calculated based on requests
+- [ ] They determine Service routing
+- [ ] They create PVCs
+- [ ] They configure Ingress rules
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Scenario: A web application experiences sudden traffic spikes. Which configuration will help maintain performance?</p>
+        <p>Why are resource requests important for HPA?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">HPA with target CPU utilization</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">Static Deployment with 3 replicas</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">StatefulSet without PVC</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">ConfigMap for environment variables</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">CPU utilization is calculated based on requests</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">They determine Service routing</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">They create PVCs</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">They configure Ingress rules</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1732,87 +1948,96 @@ Scenario: A web application experiences sudden traffic spikes. Which configurati
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: HPA adjusts the [[replica count]] of a deployment based on metrics from the [[metrics server]].
+Scenario: HPA is configured but replicas never change. What is a likely cause?
+- [x] metrics-server is not installed
+- [ ] kube-proxy is disabled
+- [ ] PVC is not bound
+- [ ] NetworkPolicy blocks scaling
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-2">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        Fill in the blank: HPA adjusts the <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="replica count" autocomplete="off" size="15"> of a deployment based on metrics from the <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="metrics server" autocomplete="off" size="16">.
+        <p>Scenario: HPA is configured but replicas never change. What is a likely cause?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">metrics-server is not installed</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">kube-proxy is disabled</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">PVC is not bound</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">NetworkPolicy blocks scaling</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which metrics can HPA use for scaling? (Select all that apply)
-
-- [x] CPU utilization
-- [x] Memory utilization
-- [x] Custom metrics (e.g., request rate)
-- [ ] Node labels
+If load drops significantly, what does HPA do?
+- [x] Reduces replica count (respecting minReplicas)
+- [ ] Deletes the Deployment
+- [ ] Changes Pod IPs
+- [ ] Resizes storage volumes
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which metrics can HPA use for scaling? (Select all that apply)</p>
+        <p>If load drops significantly, what does HPA do?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">CPU utilization</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Memory utilization</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" correct><label for="quiz-3-2">Custom metrics (e.g., request rate)</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">Node labels</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Reduces replica count (respecting minReplicas)</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">Deletes the Deployment</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">Changes Pod IPs</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">Resizes storage volumes</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: A Deployment scales from 3 to 6 replicas due to HPA. Which of the following is true?
-
-- [x] New pods are created to match the desired replica count
-- [ ] Existing pods are deleted
-- [ ] PVCs are automatically resized
-- [ ] Service IP changes
+Which workloads can HPA scale? (Select all that apply)
+- [x] Deployment
+- [x] StatefulSet
+- [ ] PersistentVolume
+- [ ] Service
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>Scenario: A Deployment scales from 3 to 6 replicas due to HPA. Which of the following is true?</p>
+        <p>Which workloads can HPA scale? (Select all that apply)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">New pods are created to match the desired replica count</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">Existing pods are deleted</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">PVCs are automatically resized</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">Service IP changes</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Deployment</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">StatefulSet</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">PersistentVolume</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">Service</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Submit</button>
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: HPA requires the [[metrics-server]] to be installed in the cluster to collect pod [[resource usage]].
+Fill in the blank: HPA modifies the [[replica count]] of a workload based on observed [[resource utilization]].
 </quiz>
 -->
 <div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 6</h4>
     <div class="quiz-question">
-        Fill in the blank: HPA requires the <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="metrics-server" autocomplete="off" size="16"> to be installed in the cluster to collect pod <input type="text" class="quiz-blank-input" id="quiz-5-blank-1" data-answer="resource usage" autocomplete="off" size="16">.
+        Fill in the blank: HPA modifies the <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="replica count" autocomplete="off" size="15"> of a workload based on observed <input type="text" class="quiz-blank-input" id="quiz-5-blank-1" data-answer="resource utilization" autocomplete="off" size="22">.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li>Kubernetes Documentation – Horizontal Pod Autoscaler  </li>
+<li>The Kubernetes Book – Nigel Poulton</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

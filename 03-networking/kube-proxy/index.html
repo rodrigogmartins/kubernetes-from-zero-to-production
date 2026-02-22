@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -913,10 +913,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-kube-proxy-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem kube-proxy Solves
       
     </span>
   </a>
@@ -924,10 +924,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-kube-proxy-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How kube-proxy Works
       
     </span>
   </a>
@@ -935,10 +935,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clusterip-virtual-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ClusterIP Virtual IPs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Load Balancing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-operating-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Operating Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-interaction-with-other-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Interaction with Other Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-flow-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traffic Flow Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure Characteristics
       
     </span>
   </a>
@@ -949,7 +1021,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1527,10 +1610,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-kube-proxy-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem kube-proxy Solves
       
     </span>
   </a>
@@ -1538,10 +1621,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-kube-proxy-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How kube-proxy Works
       
     </span>
   </a>
@@ -1549,10 +1632,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-clusterip-virtual-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. ClusterIP Virtual IPs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Load Balancing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-operating-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Operating Modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-interaction-with-other-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Interaction with Other Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-flow-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traffic Flow Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure Characteristics
       
     </span>
   </a>
@@ -1563,7 +1718,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1624,37 +1790,124 @@
 
 
 
-<h1 id="kube-proxy">Kube-Proxy</h1>
-<h2 id="problem">Problem</h2>
-<p>Pods are ephemeral. If a Service points to individual Pods by IP, the endpoints would constantly break as Pods are recreated.</p>
-<h2 id="solution">Solution</h2>
-<p>Kube-proxy maintains network rules on each node to route traffic from Services to the correct backend Pods, enabling stable access and load balancing.</p>
-<h2 id="components-key-concepts">Components / Key Concepts</h2>
+<h1 id="kube-proxy">kube-proxy</h1>
+<h2 id="what-problem-kube-proxy-solves">What Problem kube-proxy Solves</h2>
+<p>Pods are ephemeral:</p>
 <ul>
-<li><strong>iptables mode:</strong> routes traffic using Linux iptables</li>
-<li><strong>IPVS mode:</strong> high-performance routing with IP Virtual Server</li>
-<li><strong>Cluster IPs:</strong> kube-proxy ensures Service IPs always reach the right Pods</li>
-<li><strong>Load balancing:</strong> automatically distributes traffic across healthy Pods</li>
+<li>They are created and destroyed dynamically</li>
+<li>Their IP addresses change</li>
+<li>They scale up and down</li>
+<li>They may move across nodes</li>
 </ul>
-<h2 id="check-your-knowledge">Check your knowledge</h2>
+<p>If a Service pointed directly to Pod IPs without an abstraction layer, traffic would constantly break.</p>
+<p>kube-proxy ensures that <strong>Service virtual IPs (ClusterIPs) reliably route traffic to healthy backend Pods</strong>, even as Pods change.</p>
+<h2 id="how-kube-proxy-works">How kube-proxy Works</h2>
+<p>kube-proxy runs on <strong>every worker node</strong>.</p>
+<p>It watches the Kubernetes API for:</p>
+<ul>
+<li>Service objects</li>
+<li>Endpoint updates</li>
+</ul>
+<p>When changes occur, kube-proxy updates local networking rules so that traffic destined for a Service IP is forwarded to one of its backend Pods.</p>
+<p>It does not proxy traffic at the application level.<br />
+It programs the kernel’s networking stack.</p>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="1-clusterip-virtual-ips">1. ClusterIP Virtual IPs</h3>
+<p>Each Service receives a virtual IP address (ClusterIP).</p>
+<p>This IP:</p>
+<ul>
+<li>Is stable</li>
+<li>Does not belong to a specific Pod</li>
+<li>Is implemented via node-level routing rules</li>
+</ul>
+<p>kube-proxy ensures that traffic sent to the ClusterIP is distributed to the correct backend Pods.</p>
+<hr />
+<h3 id="2-load-balancing">2. Load Balancing</h3>
+<p>kube-proxy distributes traffic across healthy Pods.</p>
+<p>Load balancing behavior depends on:</p>
+<ul>
+<li>The selected mode (iptables, IPVS, userspace)</li>
+<li>Session affinity settings</li>
+<li>Readiness probe status of Pods</li>
+</ul>
+<p>If a Pod fails readiness checks, it is removed from the Service endpoints list.</p>
+<hr />
+<h3 id="3-operating-modes">3. Operating Modes</h3>
+<p>kube-proxy can operate in three modes:</p>
+<ul>
+<li><strong>iptables (default in many clusters)</strong></li>
+<li>Uses Linux iptables rules</li>
+<li>Simple and widely supported</li>
+<li>
+<p>Can become inefficient at very large scale</p>
+</li>
+<li>
+<p><strong>IPVS</strong></p>
+</li>
+<li>Uses Linux IP Virtual Server</li>
+<li>More scalable and performant</li>
+<li>
+<p>Better for large clusters with many Services</p>
+</li>
+<li>
+<p><strong>userspace (legacy)</strong></p>
+</li>
+<li>Older, less efficient</li>
+<li>Rarely used in modern clusters</li>
+</ul>
+<p>IPVS is generally preferred for high-scale production environments.</p>
+<hr />
+<h3 id="4-interaction-with-other-components">4. Interaction with Other Components</h3>
+<p>kube-proxy:</p>
+<ul>
+<li>Depends on CNI for Pod networking</li>
+<li>Works with CoreDNS indirectly (DNS resolves Service → ClusterIP)</li>
+<li>Operates independently per cluster</li>
+<li>Does not perform cross-cluster routing</li>
+</ul>
+<p>It is a data-plane component.</p>
+<h2 id="traffic-flow-mental-model">Traffic Flow Mental Model</h2>
+<ol>
+<li>A Pod sends traffic to a Service DNS name.</li>
+<li>CoreDNS resolves the name to a ClusterIP.</li>
+<li>The packet reaches the node’s networking stack.</li>
+<li>kube-proxy rules intercept the traffic.</li>
+<li>Traffic is forwarded to one of the backend Pods.</li>
+</ol>
+<p>kube-proxy maintains the translation layer between:</p>
+<p>Stable virtual IP → Dynamic backend Pods</p>
+<h2 id="failure-characteristics">Failure Characteristics</h2>
+<p>Common kube-proxy issues include:</p>
+<ul>
+<li>Services unreachable internally</li>
+<li>Traffic not balanced correctly</li>
+<li>High CPU usage at scale (iptables mode)</li>
+<li>Stale endpoint rules after rapid scaling events</li>
+</ul>
+<p>If kube-proxy crashes:</p>
+<ul>
+<li>Existing rules may still function temporarily</li>
+<li>When restarted, it reconciles rules with the API state</li>
+</ul>
+<p>It is part of Kubernetes’ reconciliation model.</p>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-What is the main responsibility of kube-proxy?
-
-- [x] Handle network traffic to services and implement load balancing
-- [ ] Store cluster state in etcd
-- [ ] Schedule pods to nodes
-- [ ] Monitor pod health
+What is kube-proxy’s primary function?
+- [x] Program node-level networking rules for Services
+- [ ] Assign Pod IP addresses
+- [ ] Schedule Pods to nodes
+- [ ] Store cluster configuration
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What is the main responsibility of kube-proxy?</p>
+        <p>What is kube-proxy’s primary function?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Handle network traffic to services and implement load balancing</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Store cluster state in etcd</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Schedule pods to nodes</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Monitor pod health</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Program node-level networking rules for Services</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Assign Pod IP addresses</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Schedule Pods to nodes</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Store cluster configuration</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1663,22 +1916,21 @@ What is the main responsibility of kube-proxy?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Kube-proxy runs on:
-
-- [x] Every worker node
-- [ ] Only the master node
-- [ ] Only nodes with ingress enabled
-- [ ] External load balancers
+kube-proxy runs:
+- [x] On every worker node
+- [ ] Only on control plane nodes
+- [ ] Only where Ingress is installed
+- [ ] Inside CoreDNS Pods
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Kube-proxy runs on:</p>
+        <p>kube-proxy runs:</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Every worker node</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">Only the master node</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">Only nodes with ingress enabled</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">External load balancers</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">On every worker node</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">Only on control plane nodes</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">Only where Ingress is installed</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Inside CoreDNS Pods</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1687,22 +1939,21 @@ Kube-proxy runs on:
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which traffic does kube-proxy handle?
-
-- [x] Pod-to-service traffic
-- [ ] DNS resolution
-- [ ] Persistent volume mounts
-- [ ] API server requests
+Scenario: A Service ClusterIP is reachable on one node but not another. What is the most likely cause?
+- [x] kube-proxy rules are not correctly applied on that node
+- [ ] CoreDNS misconfiguration
+- [ ] PersistentVolume binding failure
+- [ ] Horizontal Pod Autoscaler misconfiguration
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        <p>Which traffic does kube-proxy handle?</p>
+        <p>Scenario: A Service ClusterIP is reachable on one node but not another. What is the most likely cause?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">Pod-to-service traffic</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">DNS resolution</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">Persistent volume mounts</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">API server requests</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">kube-proxy rules are not correctly applied on that node</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">CoreDNS misconfiguration</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">PersistentVolume binding failure</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">Horizontal Pod Autoscaler misconfiguration</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1711,22 +1962,21 @@ Which traffic does kube-proxy handle?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which modes can kube-proxy run in?
-
-- [x] iptables, ipvs, userspace
-- [ ] NAT, bridge, overlay
-- [ ] Calico, Flannel, Weave
-- [ ] DNS, ingress, egress
+Which kube-proxy mode is typically more scalable for clusters with thousands of Services?
+- [x] IPVS
+- [ ] userspace
+- [ ] iptables
+- [ ] hostNetwork
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which modes can kube-proxy run in?</p>
+        <p>Which kube-proxy mode is typically more scalable for clusters with thousands of Services?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">iptables, ipvs, userspace</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">NAT, bridge, overlay</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">Calico, Flannel, Weave</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">DNS, ingress, egress</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">IPVS</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">userspace</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">iptables</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">hostNetwork</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1735,22 +1985,21 @@ Which modes can kube-proxy run in?
 
 <!-- mkdocs-quiz-source
 <quiz>
-You deploy a Service of type ClusterIP, but pods can't reach it. What should you check first?
-
-- [x] kube-proxy rules
-- [ ] PersistentVolumeClaim
-- [ ] kube-scheduler
-- [ ] ConfigMap
+When a Pod backing a Service fails readiness checks:
+- [x] kube-proxy removes it from the Service endpoints
+- [ ] The ClusterIP changes
+- [ ] DNS deletes the Service record
+- [ ] The node is cordoned
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>You deploy a Service of type ClusterIP, but pods can't reach it. What should you check first?</p>
+        <p>When a Pod backing a Service fails readiness checks:</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">kube-proxy rules</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">PersistentVolumeClaim</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">kube-scheduler</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">ConfigMap</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">kube-proxy removes it from the Service endpoints</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">The ClusterIP changes</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">DNS deletes the Service record</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">The node is cordoned</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1759,22 +2008,21 @@ You deploy a Service of type ClusterIP, but pods can't reach it. What should you
 
 <!-- mkdocs-quiz-source
 <quiz>
-In iptables mode, what happens when a pod backing a Service dies?
-
-- [x] kube-proxy updates iptables rules to remove the dead pod
-- [ ] DNS records are deleted
-- [ ] ClusterIP changes
-- [ ] kubelet recreates the pod automatically
+Scenario: kube-proxy crashes during operation. What ensures eventual recovery?
+- [x] kube-proxy reconciles and reapplies rules when restarted
+- [ ] Services regenerate new ClusterIPs
+- [ ] Pods automatically switch to host networking
+- [ ] The scheduler recreates all Services
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 6</h4>
     <div class="quiz-question">
-        <p>In iptables mode, what happens when a pod backing a Service dies?</p>
+        <p>Scenario: kube-proxy crashes during operation. What ensures eventual recovery?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">kube-proxy updates iptables rules to remove the dead pod</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" ><label for="quiz-5-1">DNS records are deleted</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">ClusterIP changes</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">kubelet recreates the pod automatically</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">kube-proxy reconciles and reapplies rules when restarted</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" ><label for="quiz-5-1">Services regenerate new ClusterIPs</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">Pods automatically switch to host networking</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">The scheduler recreates all Services</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1783,22 +2031,21 @@ In iptables mode, what happens when a pod backing a Service dies?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Your cluster has thousands of services and pods. You notice high CPU usage by kube-proxy. Which mode could improve performance?
-
-- [x] ipvs
-- [ ] userspace
-- [ ] iptables
-- [ ] hostNetwork
+kube-proxy does NOT:
+- [x] Route traffic across clusters
+- [ ] Implement Service load balancing
+- [ ] Watch Service and Endpoint objects
+- [ ] Update routing rules dynamically
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
     <a href="#quiz-6" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 7</h4>
     <div class="quiz-question">
-        <p>Your cluster has thousands of services and pods. You notice high CPU usage by kube-proxy. Which mode could improve performance?</p>
+        <p>kube-proxy does NOT:</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">ipvs</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1" ><label for="quiz-6-1">userspace</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">iptables</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3" ><label for="quiz-6-3">hostNetwork</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">Route traffic across clusters</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1" ><label for="quiz-6-1">Implement Service load balancing</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">Watch Service and Endpoint objects</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3" ><label for="quiz-6-3">Update routing rules dynamically</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1807,51 +2054,26 @@ Your cluster has thousands of services and pods. You notice high CPU usage by ku
 
 <!-- mkdocs-quiz-source
 <quiz>
-In a multi-cluster scenario, you notice a Service accessible within one cluster but not across clusters. What is the likely limitation?
-
-- [x] kube-proxy operates per cluster and doesn’t handle cross-cluster routing
-- [ ] CNI plugin doesn’t support multiple namespaces
-- [ ] PersistentVolume is missing
-- [ ] kube-scheduler misassigned pods
+Fill in the blank: kube-proxy maps a stable [[ClusterIP]] to dynamic [[backend Pods]].
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-7">
+<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-7">
     <a href="#quiz-7" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 8</h4>
     <div class="quiz-question">
-        <p>In a multi-cluster scenario, you notice a Service accessible within one cluster but not across clusters. What is the likely limitation?</p>
+        Fill in the blank: kube-proxy maps a stable <input type="text" class="quiz-blank-input" id="quiz-7-blank-0" data-answer="ClusterIP" autocomplete="off" size="11"> to dynamic <input type="text" class="quiz-blank-input" id="quiz-7-blank-1" data-answer="backend Pods" autocomplete="off" size="14">.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-7-0" correct><label for="quiz-7-0">kube-proxy operates per cluster and doesn’t handle cross-cluster routing</label></div><div><input type="radio" name="answer" value="1" id="quiz-7-1" ><label for="quiz-7-1">CNI plugin doesn’t support multiple namespaces</label></div><div><input type="radio" name="answer" value="2" id="quiz-7-2" ><label for="quiz-7-2">PersistentVolume is missing</label></div><div><input type="radio" name="answer" value="3" id="quiz-7-3" ><label for="quiz-7-3">kube-scheduler misassigned pods</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Submit</button>
     </form>
     <section class="content hidden"></section>
 </div>
 
-<!-- mkdocs-quiz-source
-<quiz>
-During an upgrade, kube-proxy crashes and pods temporarily lose access to services. What mechanism ensures traffic recovers automatically?
-
-- [x] kube-proxy restarting and reapplying rules
-- [ ] Services automatically change ClusterIP
-- [ ] Pods switch to hostNetwork
-- [ ] API server reroutes traffic
-</quiz>
--->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-8">
-    <a href="#quiz-8" class="quiz-header-link">#</a>
-    <h4 class="quiz-number">Question 9</h4>
-    <div class="quiz-question">
-        <p>During an upgrade, kube-proxy crashes and pods temporarily lose access to services. What mechanism ensures traffic recovers automatically?</p>
-    </div>
-    <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-8-0" correct><label for="quiz-8-0">kube-proxy restarting and reapplying rules</label></div><div><input type="radio" name="answer" value="1" id="quiz-8-1" ><label for="quiz-8-1">Services automatically change ClusterIP</label></div><div><input type="radio" name="answer" value="2" id="quiz-8-2" ><label for="quiz-8-2">Pods switch to hostNetwork</label></div><div><input type="radio" name="answer" value="3" id="quiz-8-3" ><label for="quiz-8-3">API server reroutes traffic</label></div></fieldset>
-        <div class="quiz-feedback hidden"></div>
-
-    </form>
-    <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000"><strong>The Kubernetes Book - Nigel Poulton</strong></a></li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -997,10 +997,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-dns-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem DNS Solves
       
     </span>
   </a>
@@ -1008,10 +1008,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-kubernetes-implements-service-discovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How Kubernetes Implements Service Discovery
       
     </span>
   </a>
@@ -1019,10 +1019,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-stable-service-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Stable Service Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-automatic-endpoint-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Automatic Endpoint Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dns-record-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DNS Record Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dns-resolution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DNS Resolution Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-namespace-scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Namespace Scoping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Considerations
       
     </span>
   </a>
@@ -1033,7 +1116,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1527,10 +1621,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-dns-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem DNS Solves
       
     </span>
   </a>
@@ -1538,10 +1632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-kubernetes-implements-service-discovery" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How Kubernetes Implements Service Discovery
       
     </span>
   </a>
@@ -1549,10 +1643,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-stable-service-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Stable Service Names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-automatic-endpoint-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Automatic Endpoint Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dns-record-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DNS Record Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dns-resolution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. DNS Resolution Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-namespace-scoping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Namespace Scoping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operational-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational Considerations
       
     </span>
   </a>
@@ -1563,7 +1740,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1625,36 +1813,133 @@
 
 
 <h1 id="dns-and-service-discovery">DNS and Service Discovery</h1>
-<h2 id="problem">Problem</h2>
-<p>Pods and Services are dynamic; IPs change frequently. How can applications find and communicate with each other reliably?</p>
-<h2 id="solution">Solution</h2>
-<p>Kubernetes provides DNS via CoreDNS. Each Service receives a stable DNS name, so Pods can use it to locate endpoints regardless of changing IPs.</p>
-<h2 id="components-key-concepts">Components / Key Concepts</h2>
+<h2 id="what-problem-dns-solves">What Problem DNS Solves</h2>
+<p>In Kubernetes, workloads are dynamic:</p>
 <ul>
-<li><strong>CoreDNS:</strong> cluster DNS server</li>
-<li><strong>Service names:</strong> <code>my-service.my-namespace.svc.cluster.local</code></li>
-<li><strong>Automatic updates:</strong> DNS entries update as Pods scale or move</li>
-<li><strong>Decoupled architecture:</strong> applications reference Services, not Pod IPs</li>
+<li>Pods are ephemeral</li>
+<li>IP addresses change frequently</li>
+<li>Pods scale up and down</li>
+<li>Pods can move between nodes</li>
 </ul>
-<h2 id="check-your-knowledge">Check your knowledge</h2>
+<p>If applications relied on static IP addresses, communication would constantly break.</p>
+<p>Kubernetes solves this with <strong>built-in DNS-based service discovery</strong>, allowing workloads to locate each other using stable names instead of IP addresses.</p>
+<h2 id="how-kubernetes-implements-service-discovery">How Kubernetes Implements Service Discovery</h2>
+<p>Kubernetes deploys <strong>CoreDNS</strong> as the cluster DNS server.</p>
+<p>When a Service is created:</p>
+<ul>
+<li>It receives a stable virtual IP (ClusterIP)</li>
+<li>CoreDNS automatically creates DNS records for it</li>
+<li>Pods can resolve the Service using its DNS name</li>
+</ul>
+<p>Applications communicate using:</p>
+<pre><code class="language-md">service-name.namespace.svc.cluster.local
+</code></pre>
+<p>This decouples consumers from the lifecycle of Pods behind the Service.</p>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="1-stable-service-names">1. Stable Service Names</h3>
+<p>Each Service receives:</p>
+<ul>
+<li>Short name (within same namespace): <code>my-service</code></li>
+<li>Fully qualified domain name (FQDN):<br />
+<code>my-service.my-namespace.svc.cluster.local</code></li>
+</ul>
+<p>As Pods scale or are replaced:</p>
+<ul>
+<li>The DNS name remains stable</li>
+<li>The endpoints behind it update automatically</li>
+</ul>
+<hr />
+<h3 id="2-automatic-endpoint-updates">2. Automatic Endpoint Updates</h3>
+<p>CoreDNS integrates with the Kubernetes API.</p>
+<p>When:</p>
+<ul>
+<li>Pods are added</li>
+<li>Pods are removed</li>
+<li>Pods are rescheduled</li>
+</ul>
+<p>The Service’s endpoints are updated, and DNS continues resolving to the Service IP.</p>
+<p>Clients never need to know individual Pod IPs.</p>
+<hr />
+<h3 id="3-dns-record-types">3. DNS Record Types</h3>
+<p>CoreDNS typically provides:</p>
+<ul>
+<li><strong>A records</strong> — resolve Service name to ClusterIP</li>
+<li><strong>SRV records</strong> — provide port and protocol information</li>
+<li>Optional headless Service records — resolve directly to Pod IPs</li>
+</ul>
+<p>Headless Services (<code>clusterIP: None</code>) allow direct Pod-level discovery.</p>
+<hr />
+<h3 id="4-dns-resolution-flow">4. DNS Resolution Flow</h3>
+<ol>
+<li>Pod sends DNS query.</li>
+<li>Request goes to the cluster DNS Service.</li>
+<li>CoreDNS resolves based on Service definitions.</li>
+<li>The Pod receives the ClusterIP.</li>
+<li>kube-proxy routes traffic to a backend Pod.</li>
+</ol>
+<p>DNS provides discovery.<br />
+Services provide stable access.<br />
+kube-proxy provides routing.</p>
+<hr />
+<h3 id="5-namespace-scoping">5. Namespace Scoping</h3>
+<p>DNS resolution is namespace-aware.</p>
+<p>From within the same namespace:</p>
+<pre><code class="language-md">my-service
+</code></pre>
+<p>From another namespace:</p>
+<pre><code class="language-md">my-service.other-namespace
+</code></pre>
+<p>Fully qualified domain names always work cluster-wide.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Pods should <strong>never depend on Pod IP addresses</strong>.</p>
+<p>Applications communicate using:</p>
+<ul>
+<li>Service names</li>
+<li>Stable DNS records</li>
+<li>Cluster-level abstractions</li>
+</ul>
+<p>DNS enables a loosely coupled, dynamic architecture.</p>
+<p>If Service discovery fails, the issue is typically:</p>
+<ul>
+<li>CoreDNS malfunction</li>
+<li>NetworkPolicy blocking DNS traffic</li>
+<li>Misconfigured Service</li>
+<li>Incorrect namespace usage</li>
+</ul>
+<h2 id="operational-considerations">Operational Considerations</h2>
+<p>Common DNS-related failure scenarios:</p>
+<ul>
+<li>CoreDNS Pods not running</li>
+<li>CoreDNS crash loops</li>
+<li>High latency from DNS caching issues</li>
+<li>Misconfigured stub domains or conditional forwarding</li>
+<li>NetworkPolicies blocking UDP/TCP 53</li>
+</ul>
+<p>Production clusters often monitor:</p>
+<ul>
+<li>CoreDNS Pod health</li>
+<li>DNS latency</li>
+<li>Error rate in DNS queries</li>
+</ul>
+<p>DNS is a critical control-plane dependency.</p>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-What is CoreDNS used for in Kubernetes?
-
-- [x] Service discovery and DNS resolution
-- [ ] Pod IP assignment
-- [ ] Enforcing network policies
-- [ ] Load balancing HTTP traffic
+What is the primary function of CoreDNS in Kubernetes?
+- [x] Provide DNS-based service discovery
+- [ ] Assign Pod IP addresses
+- [ ] Perform traffic load balancing
+- [ ] Enforce resource limits
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What is CoreDNS used for in Kubernetes?</p>
+        <p>What is the primary function of CoreDNS in Kubernetes?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Service discovery and DNS resolution</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Pod IP assignment</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Enforcing network policies</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Load balancing HTTP traffic</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Provide DNS-based service discovery</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Assign Pod IP addresses</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Perform traffic load balancing</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Enforce resource limits</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1663,40 +1948,44 @@ What is CoreDNS used for in Kubernetes?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: A pod can reach a service using [[service-name.namespace.svc.cluster.local]] instead of IP.
+Which DNS name format is fully qualified in Kubernetes?
+- [x] service.namespace.svc.cluster.local
+- [ ] service.cluster.local
+- [ ] namespace.service.local
+- [ ] pod.service.node.local
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-1">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        Fill in the blank: A pod can reach a service using <input type="text" class="quiz-blank-input" id="quiz-1-blank-0" data-answer="service-name.namespace.svc.cluster.local" autocomplete="off" size="42"> instead of IP.
+        <p>Which DNS name format is fully qualified in Kubernetes?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">service.namespace.svc.cluster.local</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">service.cluster.local</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">namespace.service.local</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">pod.service.node.local</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: You create a new Service but pods cannot resolve its DNS name. What should you check? (Select all that apply)
-
-- [x] CoreDNS pods are running
-- [x] CoreDNS configuration is correct
-- [ ] kube-proxy version
-- [ ] Node CPU usage
+Scenario: A Service scales from 2 Pods to 5 Pods. What happens to the DNS name?
+- [x] The DNS name remains the same
+- [x] The Service endpoints update automatically
+- [ ] A new DNS name is generated
+- [ ] Clients must restart to resolve new Pods
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        <p>Scenario: You create a new Service but pods cannot resolve its DNS name. What should you check? (Select all that apply)</p>
+        <p>Scenario: A Service scales from 2 Pods to 5 Pods. What happens to the DNS name?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">CoreDNS pods are running</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-2-1" correct><label for="quiz-2-1">CoreDNS configuration is correct</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">kube-proxy version</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">Node CPU usage</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">The DNS name remains the same</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-2-1" correct><label for="quiz-2-1">The Service endpoints update automatically</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">A new DNS name is generated</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">Clients must restart to resolve new Pods</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1705,22 +1994,21 @@ Scenario: You create a new Service but pods cannot resolve its DNS name. What sh
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which DNS records does CoreDNS provide for services? (Select all that apply)
-
-- [x] A record for pod IP
-- [x] SRV record for service ports
-- [ ] PTR record for node memory
-- [ ] MX record for external mail
+Which DNS records are commonly provided for Kubernetes Services? (Select all that apply)
+- [x] A records
+- [x] SRV records
+- [ ] MX records
+- [ ] TXT records for Pod logs
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which DNS records does CoreDNS provide for services? (Select all that apply)</p>
+        <p>Which DNS records are commonly provided for Kubernetes Services? (Select all that apply)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">A record for pod IP</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">SRV record for service ports</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">PTR record for node memory</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">MX record for external mail</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">A records</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">SRV records</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">MX records</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">TXT records for Pod logs</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1729,16 +2017,21 @@ Which DNS records does CoreDNS provide for services? (Select all that apply)
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: CoreDNS supports plugins for [[caching]], [[logging]], and [[conditional routing]].
+Scenario: Pods cannot resolve any internal Service names. What should you investigate first?
+- [x] CoreDNS Pods are running and healthy
+- [x] NetworkPolicies blocking port 53
+- [ ] Horizontal Pod Autoscaler settings
+- [ ] Persistent Volume binding
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-4">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        Fill in the blank: CoreDNS supports plugins for <input type="text" class="quiz-blank-input" id="quiz-4-blank-0" data-answer="caching" autocomplete="off" size="9">, <input type="text" class="quiz-blank-input" id="quiz-4-blank-1" data-answer="logging" autocomplete="off" size="9">, and <input type="text" class="quiz-blank-input" id="quiz-4-blank-2" data-answer="conditional routing" autocomplete="off" size="21">.
+        <p>Scenario: Pods cannot resolve any internal Service names. What should you investigate first?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">CoreDNS Pods are running and healthy</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">NetworkPolicies blocking port 53</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">Horizontal Pod Autoscaler settings</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">Persistent Volume binding</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1747,27 +2040,49 @@ Fill in the blank: CoreDNS supports plugins for [[caching]], [[logging]], and [[
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: Pods in different namespaces cannot resolve each other’s services. Likely cause?
-
-- [x] NetworkPolicy or RBAC restricting DNS access
-- [x] Node disk space low
-- [ ] kube-proxy crashed
-- [ ] Pod resource requests missing
+Headless Services differ because:
+- [x] They do not allocate a ClusterIP
+- [x] DNS resolves directly to Pod IPs
+- [ ] They bypass CoreDNS
+- [ ] They automatically enable Ingress
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 6</h4>
     <div class="quiz-question">
-        <p>Scenario: Pods in different namespaces cannot resolve each other’s services. Likely cause?</p>
+        <p>Headless Services differ because:</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">NetworkPolicy or RBAC restricting DNS access</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-5-1" correct><label for="quiz-5-1">Node disk space low</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">kube-proxy crashed</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">Pod resource requests missing</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">They do not allocate a ClusterIP</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-5-1" correct><label for="quiz-5-1">DNS resolves directly to Pod IPs</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">They bypass CoreDNS</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">They automatically enable Ingress</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Fill in the blank: Applications should reference [[Service names]] instead of [[Pod IP addresses]].
+</quiz>
+-->
+<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-6">
+    <a href="#quiz-6" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 7</h4>
+    <div class="quiz-question">
+        Fill in the blank: Applications should reference <input type="text" class="quiz-blank-input" id="quiz-6-blank-0" data-answer="Service names" autocomplete="off" size="15"> instead of <input type="text" class="quiz-blank-input" id="quiz-6-blank-1" data-answer="Pod IP addresses" autocomplete="off" size="18">.
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000"><strong>The Kubernetes Book - Nigel Poulton</strong></a></li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -885,10 +885,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-pod-networking-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem Pod Networking Solves
       
     </span>
   </a>
@@ -896,10 +896,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-pod-networking-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How Pod Networking Works
       
     </span>
   </a>
@@ -907,10 +907,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-unique-pod-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Unique Pod IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-shared-network-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Shared Network Namespace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flat-network-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Flat Network Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cross-node-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cross-Node Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-hostnetwork-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. hostNetwork Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -921,7 +1004,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1527,10 +1621,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-pod-networking-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem Pod Networking Solves
       
     </span>
   </a>
@@ -1538,10 +1632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#how-pod-networking-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        How Pod Networking Works
       
     </span>
   </a>
@@ -1549,10 +1643,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-unique-pod-ip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Unique Pod IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-shared-network-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Shared Network Namespace
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flat-network-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Flat Network Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cross-node-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Cross-Node Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-hostnetwork-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. hostNetwork Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -1563,7 +1740,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1625,36 +1813,150 @@
 
 
 <h1 id="pod-networking">Pod Networking</h1>
-<h2 id="problem">Problem</h2>
-<p>Containers are ephemeral and may move between nodes. How can they reliably communicate with each other without knowing each other's IPs?</p>
-<h2 id="solution">Solution</h2>
-<p>Kubernetes assigns a unique IP to each Pod, allowing direct Pod-to-Pod communication across nodes. Containers in the same Pod share networking, so they can communicate via localhost.</p>
-<h2 id="components-key-concepts">Components / Key Concepts</h2>
+<h2 id="what-problem-pod-networking-solves">What Problem Pod Networking Solves</h2>
+<p>Containers are ephemeral.</p>
+<p>Pods:</p>
 <ul>
-<li><strong>Pod IPs:</strong> ephemeral, unique per Pod</li>
-<li><strong>Shared Namespace:</strong> containers in the same Pod share IP, ports, and network namespace</li>
-<li><strong>Flat Network Model:</strong> no NAT between Pods</li>
-<li><strong>Cross-node communication:</strong> handled by CNI plugins and routing rules</li>
+<li>Get recreated</li>
+<li>Move between nodes</li>
+<li>Receive new IPs</li>
 </ul>
-<h2 id="check-your-knowledge">Check your knowledge</h2>
+<p>Yet applications must communicate reliably.</p>
+<p>Kubernetes solves this by enforcing a <strong>cluster-wide networking model</strong> where:</p>
+<ul>
+<li>Every Pod gets its own IP</li>
+<li>All Pods can communicate directly</li>
+<li>No NAT is required between Pods</li>
+</ul>
+<p>This removes the need for service discovery via IP tracking.</p>
+<h2 id="how-pod-networking-works">How Pod Networking Works</h2>
+<p>Kubernetes assumes a <strong>flat network model</strong>:</p>
+<ol>
+<li>Every Pod receives a unique IP</li>
+<li>All Pods can reach each other directly</li>
+<li>Containers inside the same Pod share networking</li>
+</ol>
+<p>Networking is implemented by a <strong>CNI plugin</strong>, which configures:</p>
+<ul>
+<li>Interfaces</li>
+<li>Routes</li>
+<li>Overlay or underlay networking</li>
+<li>Cross-node connectivity</li>
+</ul>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="1-unique-pod-ip">1. Unique Pod IP</h3>
+<p>Each Pod gets:</p>
+<ul>
+<li>A unique IP across the cluster</li>
+<li>Ephemeral assignment</li>
+<li>No port mapping required</li>
+</ul>
+<p>Pod-to-Pod communication uses direct IP routing.</p>
+<p>If a Pod is recreated:</p>
+<ul>
+<li>Its IP changes</li>
+<li>Higher-level abstractions (like Services) provide stability</li>
+</ul>
+<hr />
+<h3 id="2-shared-network-namespace">2. Shared Network Namespace</h3>
+<p>Containers in the same Pod:</p>
+<ul>
+<li>Share the same IP</li>
+<li>Share the same port space</li>
+<li>Communicate via <code>localhost</code></li>
+</ul>
+<p>This enables sidecar patterns and tightly coupled containers.</p>
+<p>Within a Pod:</p>
+<ul>
+<li>Two containers cannot bind to the same port</li>
+<li>Loopback communication is native</li>
+</ul>
+<hr />
+<h3 id="3-flat-network-model">3. Flat Network Model</h3>
+<p>Kubernetes requires:</p>
+<ul>
+<li>No NAT between Pods</li>
+<li>No port translation</li>
+<li>No node-local IP isolation</li>
+</ul>
+<p>This ensures:</p>
+<ul>
+<li>Simpler service discovery</li>
+<li>Predictable communication</li>
+<li>Reduced complexity</li>
+</ul>
+<hr />
+<h3 id="4-cross-node-communication">4. Cross-Node Communication</h3>
+<p>When Pods are on different nodes:</p>
+<ul>
+<li>The CNI plugin configures routing</li>
+<li>Overlay or routing rules forward traffic</li>
+<li>The network remains logically flat</li>
+</ul>
+<p>If cross-node traffic fails:</p>
+<ul>
+<li>CNI configuration is the first suspect</li>
+<li>Routing tables or encapsulation may be broken</li>
+</ul>
+<hr />
+<h3 id="5-hostnetwork-mode">5. hostNetwork Mode</h3>
+<p>If a Pod runs with:</p>
+<p><code>hostNetwork: true</code></p>
+<p>It:</p>
+<ul>
+<li>Shares the node’s IP</li>
+<li>Bypasses the Pod network</li>
+<li>Uses the host network namespace</li>
+</ul>
+<p>Implications:</p>
+<ul>
+<li>No isolation from node ports</li>
+<li>Possible port conflicts</li>
+<li>Higher security risk</li>
+</ul>
+<p>Use only when required.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Think of the cluster as:</p>
+<ul>
+<li>One big flat LAN</li>
+<li>Every Pod behaves like a machine on that LAN</li>
+<li>CNI is the invisible network engineer wiring everything together</li>
+</ul>
+<p>Services provide stability.
+Networking provides reachability.</p>
+<h2 id="common-failure-scenarios">Common Failure Scenarios</h2>
+<ul>
+<li>Pods on different nodes cannot communicate → CNI misconfiguration</li>
+<li>Duplicate IP conflicts → IPAM issue</li>
+<li>hostNetwork pods causing port conflicts</li>
+<li>NetworkPolicies unintentionally blocking traffic</li>
+<li>Overlay network MTU mismatch causing packet drops</li>
+</ul>
+<p>Always debug from:</p>
+<ol>
+<li>Pod IP reachability</li>
+<li>Routing</li>
+<li>CNI logs</li>
+<li>Policy enforcement</li>
+</ol>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-    What is the main purpose of the Pod network in Kubernetes?
-
-    - [x] Allow all pods to communicate with each other across nodes
-    - [ ] Isolate pods from each other
-    - [ ] Manage persistent storage
-    - [ ] Load balance external traffic
+What guarantees pod-to-pod communication across nodes?
+- [x] A flat cluster-wide networking model
+- [ ] NodePort services
+- [ ] Ingress controllers
+- [ ] Persistent volumes
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What is the main purpose of the Pod network in Kubernetes?</p>
+        <p>What guarantees pod-to-pod communication across nodes?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Allow all pods to communicate with each other across nodes</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Isolate pods from each other</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Manage persistent storage</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Load balance external traffic</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">A flat cluster-wide networking model</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">NodePort services</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Ingress controllers</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Persistent volumes</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1663,22 +1965,21 @@
 
 <!-- mkdocs-quiz-source
 <quiz>
-    In Kubernetes, each Pod gets:
-
-    - [ ] Shared IP with other pods on the same node
-    - [x] A unique IP across the cluster
-    - [ ] An IP only valid inside the node
-    - [ ] No IP, only DNS name
+Why can containers in the same Pod communicate via localhost?
+- [x] They share the same network namespace
+- [ ] They use the same DNS entry
+- [ ] kube-proxy forwards traffic internally
+- [ ] Services redirect traffic
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>In Kubernetes, each Pod gets:</p>
+        <p>Why can containers in the same Pod communicate via localhost?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" ><label for="quiz-1-0">Shared IP with other pods on the same node</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">A unique IP across the cluster</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">An IP only valid inside the node</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">No IP, only DNS name</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">They share the same network namespace</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">They use the same DNS entry</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">kube-proxy forwards traffic internally</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Services redirect traffic</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1686,23 +1987,22 @@
 </div>
 
 <!-- mkdocs-quiz-source
-<quiz>  
-    What allows pods to communicate without NAT or port mapping?
-
-    - [x] The flat pod network model
-    - [ ] Ingress controllers
-    - [ ] NodePort services
-    - [ ] Persistent volumess
+<quiz>
+Scenario: Pods on different nodes cannot reach each other. What is the most likely cause?
+- [x] CNI plugin misconfiguration
+- [ ] etcd corruption
+- [ ] Scheduler failure
+- [ ] Service account misconfiguration
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        <p>What allows pods to communicate without NAT or port mapping?</p>
+        <p>Scenario: Pods on different nodes cannot reach each other. What is the most likely cause?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">The flat pod network model</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">Ingress controllers</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">NodePort services</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">Persistent volumess</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">CNI plugin misconfiguration</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">etcd corruption</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">Scheduler failure</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">Service account misconfiguration</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1711,22 +2011,21 @@
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which networking model does Kubernetes assume for pods by default?
-
-- [ ] NAT per pod
-- [x] Flat network where each pod has a unique IP
-- [ ] Only node-local IPs
-- [ ] DNS-based networking only
+Which statement about Pod IPs is correct?
+- [x] They are unique across the cluster
+- [ ] They are shared between Pods on the same node
+- [ ] They are static and never change
+- [ ] They require NAT for cross-node traffic
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which networking model does Kubernetes assume for pods by default?</p>
+        <p>Which statement about Pod IPs is correct?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" ><label for="quiz-3-0">NAT per pod</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Flat network where each pod has a unique IP</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">Only node-local IPs</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">DNS-based networking only</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">They are unique across the cluster</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">They are shared between Pods on the same node</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">They are static and never change</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">They require NAT for cross-node traffic</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1735,22 +2034,21 @@ Which networking model does Kubernetes assume for pods by default?
 
 <!-- mkdocs-quiz-source
 <quiz>
-You notice pods on different nodes cannot reach each other. Which component is most likely misconfigured?
-
-- [x] CNI plugin
-- [ ] kubelet
-- [ ] etcd
-- [ ] kube-apiserver
+Why does Kubernetes avoid NAT between Pods?
+- [x] To allow direct communication without port mapping
+- [ ] To simplify storage management
+- [ ] To reduce DNS queries
+- [ ] To eliminate Services
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>You notice pods on different nodes cannot reach each other. Which component is most likely misconfigured?</p>
+        <p>Why does Kubernetes avoid NAT between Pods?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">CNI plugin</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">kubelet</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">etcd</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">kube-apiserver</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">To allow direct communication without port mapping</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">To simplify storage management</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">To reduce DNS queries</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">To eliminate Services</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1759,21 +2057,21 @@ You notice pods on different nodes cannot reach each other. Which component is m
 
 <!-- mkdocs-quiz-source
 <quiz>
-In a multi-node cluster, pod A needs to send traffic to pod B. Which mechanism ensures this traffic is routed correctly?
-- [x] CNI networking plugin
-- [ ] kube-proxy in userspace mode
-- [ ] NodePort service only
-- [ ] Host networking
+Scenario: A Pod using hostNetwork fails to start due to a port conflict. Why?
+- [x] It shares the node’s port space
+- [ ] It gets multiple IP addresses
+- [ ] It bypasses kubelet
+- [ ] It disables CNI
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 6</h4>
     <div class="quiz-question">
-        <p>In a multi-node cluster, pod A needs to send traffic to pod B. Which mechanism ensures this traffic is routed correctly?</p>
+        <p>Scenario: A Pod using hostNetwork fails to start due to a port conflict. Why?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">CNI networking plugin</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" ><label for="quiz-5-1">kube-proxy in userspace mode</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">NodePort service only</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">Host networking</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">It shares the node’s port space</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" ><label for="quiz-5-1">It gets multiple IP addresses</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">It bypasses kubelet</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">It disables CNI</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1782,75 +2080,50 @@ In a multi-node cluster, pod A needs to send traffic to pod B. Which mechanism e
 
 <!-- mkdocs-quiz-source
 <quiz>
-You deploy a network policy restricting ingress to certain pods. After deployment, some pods can't communicate even though they’re in the same namespace. What might be the cause?
-
-- [x] The network plugin is enforcing policies at the pod level
-- [ ] kube-proxy failed to create iptables rules
-- [ ] The pods have duplicate IPs
-- [ ] Service type ClusterIP is disabled
+Fill in the blank: Containers inside a Pod share the same [[network namespace]] and communicate via [[localhost]].
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-6">
     <a href="#quiz-6" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 7</h4>
     <div class="quiz-question">
-        <p>You deploy a network policy restricting ingress to certain pods. After deployment, some pods can't communicate even though they’re in the same namespace. What might be the cause?</p>
+        Fill in the blank: Containers inside a Pod share the same <input type="text" class="quiz-blank-input" id="quiz-6-blank-0" data-answer="network namespace" autocomplete="off" size="19"> and communicate via <input type="text" class="quiz-blank-input" id="quiz-6-blank-1" data-answer="localhost" autocomplete="off" size="11">.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">The network plugin is enforcing policies at the pod level</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1" ><label for="quiz-6-1">kube-proxy failed to create iptables rules</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">The pods have duplicate IPs</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3" ><label for="quiz-6-3">Service type ClusterIP is disabled</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-
+        <button type="submit" class="quiz-button">Submit</button>
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Why does Kubernetes not allow multiple pods to share the same IP address across nodes?
-
-- [x] To ensure direct pod-to-pod communication without NAT or port mapping
-- [ ] Because it requires external load balancers
-- [ ] To simplify DNS resolution only
-- [ ] Because CNI plugins don’t support it
+In Kubernetes, reliable service access despite Pod IP changes is typically handled by:
+- [x] Services
+- [ ] Direct Pod IP references
+- [ ] Manual route configuration
+- [ ] Static IP assignment
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-7">
     <a href="#quiz-7" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 8</h4>
     <div class="quiz-question">
-        <p>Why does Kubernetes not allow multiple pods to share the same IP address across nodes?</p>
+        <p>In Kubernetes, reliable service access despite Pod IP changes is typically handled by:</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-7-0" correct><label for="quiz-7-0">To ensure direct pod-to-pod communication without NAT or port mapping</label></div><div><input type="radio" name="answer" value="1" id="quiz-7-1" ><label for="quiz-7-1">Because it requires external load balancers</label></div><div><input type="radio" name="answer" value="2" id="quiz-7-2" ><label for="quiz-7-2">To simplify DNS resolution only</label></div><div><input type="radio" name="answer" value="3" id="quiz-7-3" ><label for="quiz-7-3">Because CNI plugins don’t support it</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-7-0" correct><label for="quiz-7-0">Services</label></div><div><input type="radio" name="answer" value="1" id="quiz-7-1" ><label for="quiz-7-1">Direct Pod IP references</label></div><div><input type="radio" name="answer" value="2" id="quiz-7-2" ><label for="quiz-7-2">Manual route configuration</label></div><div><input type="radio" name="answer" value="3" id="quiz-7-3" ><label for="quiz-7-3">Static IP assignment</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
     <section class="content hidden"></section>
 </div>
 
-<!-- mkdocs-quiz-source
-<quiz>
-    A pod is running with hostNetwork: true. What is the implication for network isolation?
-
-    - [x] Pod shares the node’s network namespace and IP, bypassing the pod network
-    - [ ] Pod is isolated and cannot communicate externally
-    - [ ] Pod gets a unique cluster-wide IP like other pods
-    - [ ] Pod cannot reach services on the same node
-</quiz>
--->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-8">
-    <a href="#quiz-8" class="quiz-header-link">#</a>
-    <h4 class="quiz-number">Question 9</h4>
-    <div class="quiz-question">
-        <p>A pod is running with hostNetwork: true. What is the implication for network isolation?</p>
-    </div>
-    <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-8-0" correct><label for="quiz-8-0">Pod shares the node’s network namespace and IP, bypassing the pod network</label></div><div><input type="radio" name="answer" value="1" id="quiz-8-1" ><label for="quiz-8-1">Pod is isolated and cannot communicate externally</label></div><div><input type="radio" name="answer" value="2" id="quiz-8-2" ><label for="quiz-8-2">Pod gets a unique cluster-wide IP like other pods</label></div><div><input type="radio" name="answer" value="3" id="quiz-8-3" ><label for="quiz-8-3">Pod cannot reach services on the same node</label></div></fieldset>
-        <div class="quiz-feedback hidden"></div>
-
-    </form>
-    <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+<h2 id="references">References</h2>
+<ul>
+<li>Kubernetes Networking Documentation  </li>
+<li>The Kubernetes Book – Nigel Poulton</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

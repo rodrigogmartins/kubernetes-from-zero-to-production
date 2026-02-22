@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -941,10 +941,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-cni-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem CNI Solves
       
     </span>
   </a>
@@ -952,10 +952,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#why-kubernetes-delegates-networking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        Why Kubernetes Delegates Networking
       
     </span>
   </a>
@@ -963,10 +963,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-flat-pod-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Flat Pod Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ip-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. IP Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cross-node-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cross-Node Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network Isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-popular-cni-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Popular CNI Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure Characteristics
       
     </span>
   </a>
@@ -977,7 +1060,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1527,10 +1621,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
+  <a href="#what-problem-cni-solves" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem
+        What Problem CNI Solves
       
     </span>
   </a>
@@ -1538,10 +1632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#why-kubernetes-delegates-networking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        Why Kubernetes Delegates Networking
       
     </span>
   </a>
@@ -1549,10 +1643,93 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#components-key-concepts" class="md-nav__link">
+  <a href="#core-concepts" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components / Key Concepts
+        Core Concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-flat-pod-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Flat Pod Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-ip-allocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. IP Allocation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cross-node-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Cross-Node Communication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network Isolation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-popular-cni-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Popular CNI Plugins
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#failure-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Failure Characteristics
       
     </span>
   </a>
@@ -1563,7 +1740,18 @@
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1625,36 +1813,129 @@
 
 
 <h1 id="container-network-interface-cni">Container Network Interface (CNI)</h1>
-<h2 id="problem">Problem</h2>
-<p>Kubernetes itself does not implement networking. Without an underlying network layer, Pods cannot communicate across nodes.</p>
-<h2 id="solution">Solution</h2>
-<p>CNI plugins provide networking for Pods: assigning IPs, enabling cross-node communication, and implementing network policies.</p>
-<h2 id="components-key-concepts">Components / Key Concepts</h2>
+<h2 id="what-problem-cni-solves">What Problem CNI Solves</h2>
+<p>Kubernetes defines <strong>how networking should behave</strong>, but it does not implement networking itself.</p>
+<p>Without a networking layer:</p>
 <ul>
-<li><strong>IP allocation:</strong> each Pod gets a unique IP</li>
-<li><strong>Cross-node networking:</strong> enables Pods on different nodes to communicate</li>
-<li><strong>Network isolation:</strong> CNI can enforce network policies</li>
-<li><strong>Popular plugins:</strong> Calico, Flannel, Weave Net</li>
+<li>Pods on different nodes cannot communicate</li>
+<li>IP addresses cannot be assigned consistently</li>
+<li>Services cannot route traffic correctly</li>
+<li>Network Policies cannot be enforced</li>
 </ul>
-<h2 id="check-your-knowledge">Check your knowledge</h2>
+<p>Kubernetes delegates networking implementation to the <strong>Container Network Interface (CNI)</strong> specification.</p>
+<p>CNI enables Kubernetes to maintain a <strong>flat, cluster-wide Pod network</strong>.</p>
+<h2 id="why-kubernetes-delegates-networking">Why Kubernetes Delegates Networking</h2>
+<p>Networking is environment-specific:</p>
+<ul>
+<li>Cloud providers offer VPC-native routing</li>
+<li>On-prem clusters may require overlay networks</li>
+<li>Some environments require advanced network policy enforcement</li>
+<li>Performance requirements vary</li>
+</ul>
+<p>Rather than embedding a single networking solution, Kubernetes uses a pluggable model.</p>
+<p>The CNI plugin is responsible for:</p>
+<ul>
+<li>Assigning IP addresses to Pods</li>
+<li>Configuring routing rules</li>
+<li>Enabling cross-node Pod communication</li>
+<li>Enforcing Network Policies (if supported)</li>
+</ul>
+<p>This separation keeps Kubernetes portable and infrastructure-agnostic.</p>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="1-flat-pod-network">1. Flat Pod Network</h3>
+<p>Kubernetes requires:</p>
+<ul>
+<li>Every Pod gets a unique IP address</li>
+<li>Pods can communicate across nodes without NAT</li>
+<li>Nodes can communicate with Pods</li>
+</ul>
+<p>This is known as the <strong>flat networking model</strong>.</p>
+<hr />
+<h3 id="2-ip-allocation">2. IP Allocation</h3>
+<p>When a Pod is created:</p>
+<ol>
+<li>The kubelet calls the configured CNI plugin.</li>
+<li>The CNI assigns an IP address.</li>
+<li>Routing rules are configured.</li>
+<li>The Pod joins the cluster network.</li>
+</ol>
+<p>If IP allocation fails, the Pod will not reach a Running state.</p>
+<hr />
+<h3 id="3-cross-node-communication">3. Cross-Node Communication</h3>
+<p>CNI plugins implement one of the following strategies:</p>
+<ul>
+<li>
+<p><strong>Overlay networks (VXLAN, IP-in-IP)</strong><br />
+  Encapsulate packets between nodes.</p>
+</li>
+<li>
+<p><strong>Native cloud routing</strong><br />
+  Use cloud VPC networking directly (e.g., AWS VPC CNI).</p>
+</li>
+</ul>
+<p>Overlay networks simplify setup but may introduce overhead.<br />
+Native routing improves performance but depends on infrastructure support.</p>
+<hr />
+<h3 id="4-network-isolation">4. Network Isolation</h3>
+<p>Some CNI plugins (e.g., Calico) enforce <strong>Network Policies</strong>.</p>
+<p>Without a policy-aware CNI:</p>
+<ul>
+<li>NetworkPolicy resources exist</li>
+<li>But traffic is not actually restricted</li>
+</ul>
+<p>Network enforcement depends entirely on the CNI implementation.</p>
+<hr />
+<h3 id="5-popular-cni-plugins">5. Popular CNI Plugins</h3>
+<ul>
+<li><strong>Calico</strong> — Policy enforcement + routing (BGP or VXLAN)</li>
+<li><strong>Flannel</strong> — Simple overlay networking</li>
+<li><strong>Weave Net</strong> — Overlay with encryption</li>
+<li><strong>AWS VPC CNI</strong> — Native AWS VPC integration</li>
+</ul>
+<p>Each has trade-offs in performance, complexity, and policy support.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Kubernetes defines <strong>what networking must guarantee</strong>.</p>
+<p>CNI plugins implement <strong>how those guarantees are achieved</strong>.</p>
+<p>Think of it this way:</p>
+<ul>
+<li>Kubernetes = Networking contract</li>
+<li>CNI = Networking implementation</li>
+</ul>
+<p>If networking breaks in a cluster, the issue is often in the CNI layer.</p>
+<h2 id="failure-characteristics">Failure Characteristics</h2>
+<p>Common CNI-related failure scenarios include:</p>
+<ul>
+<li>Pods stuck in <code>ContainerCreating</code></li>
+<li>Pods without IP addresses</li>
+<li>Cross-node traffic failing</li>
+<li>Network Policies not being enforced</li>
+<li>Node-to-Pod traffic asymmetry</li>
+</ul>
+<p>Operational debugging often involves:</p>
+<ul>
+<li>Inspecting CNI logs</li>
+<li>Checking routing tables</li>
+<li>Verifying encapsulation tunnels</li>
+<li>Validating NetworkPolicy enforcement</li>
+</ul>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-What does CNI stand for in Kubernetes?
-
-- [x] Container Network Interface
-- [ ] Cluster Network Integration
-- [ ] Cluster Node Interface
-- [ ] Container Namespace Isolation
+What is the primary responsibility of a CNI plugin?
+- [x] Implement Pod networking
+- [ ] Schedule Pods to nodes
+- [ ] Manage container images
+- [ ] Perform rolling updates
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What does CNI stand for in Kubernetes?</p>
+        <p>What is the primary responsibility of a CNI plugin?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Container Network Interface</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Cluster Network Integration</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Cluster Node Interface</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Container Namespace Isolation</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Implement Pod networking</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Schedule Pods to nodes</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Manage container images</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Perform rolling updates</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1663,22 +1944,21 @@ What does CNI stand for in Kubernetes?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which tasks are typically handled by a CNI plugin? (Select all that apply)
-
-- [x] Assign IP addresses to pods
-- [x] Configure routing for pod traffic
-- [x] Enforce network policies
-- [ ] Schedule pods to nodes
+Which are Kubernetes networking requirements? (Select all that apply)
+- [x] Each Pod receives a unique IP
+- [x] Pods can communicate across nodes without NAT
+- [x] Nodes can reach Pods
+- [ ] Pods must share the node IP
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Which tasks are typically handled by a CNI plugin? (Select all that apply)</p>
+        <p>Which are Kubernetes networking requirements? (Select all that apply)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Assign IP addresses to pods</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">Configure routing for pod traffic</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" correct><label for="quiz-1-2">Enforce network policies</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Schedule pods to nodes</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Each Pod receives a unique IP</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">Pods can communicate across nodes without NAT</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" correct><label for="quiz-1-2">Nodes can reach Pods</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Pods must share the node IP</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1687,64 +1967,85 @@ Which tasks are typically handled by a CNI plugin? (Select all that apply)
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: A CNI plugin allows Kubernetes to implement a [[flat pod network]] where each pod receives a unique IP address.
+Scenario: You deploy NetworkPolicy resources but traffic is not restricted. What is the most likely cause?
+- [x] The CNI plugin does not support policy enforcement
+- [ ] kube-proxy is misconfigured
+- [ ] The scheduler failed
+- [ ] Pods lack resource limits
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-2">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        Fill in the blank: A CNI plugin allows Kubernetes to implement a <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="flat pod network" autocomplete="off" size="18"> where each pod receives a unique IP address.
+        <p>Scenario: You deploy NetworkPolicy resources but traffic is not restricted. What is the most likely cause?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">The CNI plugin does not support policy enforcement</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">kube-proxy is misconfigured</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">The scheduler failed</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">Pods lack resource limits</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-You deploy Calico as your CNI plugin. Which of these statements are true? (Select all that apply)
-
-- [x] Pods on different nodes can communicate directly
-- [x] Network policies can restrict pod-to-pod communication
-- [ ] kube-proxy is completely unnecessary
-- [ ] Pod IP addresses are assigned manually
+Which networking strategy typically introduces encapsulation overhead?
+- [x] Overlay networking (VXLAN, IP-in-IP)
+- [ ] Native cloud routing
+- [ ] Host networking only
+- [ ] NodePort Services
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>You deploy Calico as your CNI plugin. Which of these statements are true? (Select all that apply)</p>
+        <p>Which networking strategy typically introduces encapsulation overhead?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Pods on different nodes can communicate directly</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Network policies can restrict pod-to-pod communication</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">kube-proxy is completely unnecessary</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">Pod IP addresses are assigned manually</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Overlay networking (VXLAN, IP-in-IP)</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">Native cloud routing</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">Host networking only</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">NodePort Services</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: A pod cannot reach another pod on a different node. What could be the cause?
-
-- [x] The CNI plugin is misconfigured
-- [x] Network policy blocks the traffic
-- [ ] The pod is missing a PersistentVolumeClaim
-- [ ] kubelet version mismatch
+Scenario: Pods on Node A cannot reach Pods on Node B. However, Pods on the same node communicate successfully. Which component is most likely responsible?
+- [x] The CNI plugin configuration
+- [ ] Deployment controller
+- [ ] Horizontal Pod Autoscaler
+- [ ] CoreDNS
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>Scenario: A pod cannot reach another pod on a different node. What could be the cause?</p>
+        <p>Scenario: Pods on Node A cannot reach Pods on Node B. However, Pods on the same node communicate successfully. Which component is most likely responsible?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">The CNI plugin is misconfigured</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">Network policy blocks the traffic</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">The pod is missing a PersistentVolumeClaim</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">kubelet version mismatch</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">The CNI plugin configuration</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">Deployment controller</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">Horizontal Pod Autoscaler</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">CoreDNS</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Fill in the blank: Kubernetes defines networking behavior, but the [[CNI plugin]] implements the underlying network configuration.
+</quiz>
+-->
+<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-5">
+    <a href="#quiz-5" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 6</h4>
+    <div class="quiz-question">
+        Fill in the blank: Kubernetes defines networking behavior, but the <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="CNI plugin" autocomplete="off" size="12"> implements the underlying network configuration.
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1753,21 +2054,31 @@ Scenario: A pod cannot reach another pod on a different node. What could be the 
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: Overlay networks like [[Flannel]] or [[Calico VXLAN]] simplify multi-node pod networking by encapsulating packets.
+In a cloud-native environment using AWS VPC CNI, Pod IPs are typically:
+- [x] Allocated from the VPC subnet
+- [ ] Manually configured per Pod
+- [ ] Assigned by kube-proxy
+- [ ] Shared across multiple Pods
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-5">
-    <a href="#quiz-5" class="quiz-header-link">#</a>
-    <h4 class="quiz-number">Question 6</h4>
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+    <a href="#quiz-6" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 7</h4>
     <div class="quiz-question">
-        Fill in the blank: Overlay networks like <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="Flannel" autocomplete="off" size="9"> or <input type="text" class="quiz-blank-input" id="quiz-5-blank-1" data-answer="Calico VXLAN" autocomplete="off" size="14"> simplify multi-node pod networking by encapsulating packets.
+        <p>In a cloud-native environment using AWS VPC CNI, Pod IPs are typically:</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">Allocated from the VPC subnet</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1" ><label for="quiz-6-1">Manually configured per Pod</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">Assigned by kube-proxy</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3" ><label for="quiz-6-3">Shared across multiple Pods</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000"><strong>The Kubernetes Book - Nigel Poulton</strong></a></li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

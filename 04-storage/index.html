@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -1135,10 +1135,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#topics-covered" class="md-nav__link">
+  <a href="#what-this-phase-covers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Topics Covered
+        What This Phase Covers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-storage-primitives-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Storage Primitives Exist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Core Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-these-primitives-fit-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How These Primitives Fit Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and Intent
       
     </span>
   </a>
@@ -1150,6 +1194,17 @@
     <span class="md-ellipsis">
       
         Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1505,10 +1560,54 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#topics-covered" class="md-nav__link">
+  <a href="#what-this-phase-covers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Topics Covered
+        What This Phase Covers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-storage-primitives-exist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why Storage Primitives Exist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Core Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-these-primitives-fit-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How These Primitives Fit Together
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scope-and-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scope and Intent
       
     </span>
   </a>
@@ -1520,6 +1619,17 @@
     <span class="md-ellipsis">
       
         Check Your Knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1581,46 +1691,199 @@
 
 
 <h1 id="phase-4-storage-in-kubernetes">Phase 4 - Storage in Kubernetes</h1>
-<p>Persistent storage is a core challenge in containerized environments because containers are ephemeral. Without proper storage management, data can be lost whenever a Pod is restarted or rescheduled.</p>
-<p>This chapter covers Kubernetes solutions for persistent storage: Volumes, Persistent Volumes (PV) and Persistent Volume Claims (PVC), Storage Classes, and dynamic provisioning.</p>
-<h2 id="topics-covered">Topics Covered</h2>
+<p>This phase focuses on <strong>how Kubernetes handles persistent data in a world of ephemeral containers</strong>.</p>
+<p>While previous phases explained how workloads run and communicate, this phase explains <strong>how data survives Pod restarts, rescheduling, and scaling events</strong>.</p>
+<p>Containers are disposable by design. Storage is not.<br />
+This phase bridges that gap.</p>
+<h2 id="what-this-phase-covers">What This Phase Covers</h2>
+<p>This phase introduces the primitives responsible for:</p>
 <ul>
-<li><a href="volumes/"><strong>Volumes</strong></a> – Local and ephemeral storage inside Pods.</li>
-<li><a href="pv-pvc/"><strong>Persistent Volumes (PV) &amp; Persistent Volume Claims (PVC)</strong></a> – Decoupling storage from Pods, providing durable storage.</li>
-<li><a href="storage-classes/"><strong>Storage Classes</strong></a> – Dynamic provisioning and declarative storage policies.</li>
-<li><a href="statefulsets/"><strong>StatefulSets</strong></a> – Pods that require stable network IDs and persistent storage.</li>
+<li>Providing data persistence beyond container lifecycle</li>
+<li>Decoupling storage from individual Pods</li>
+<li>Dynamically provisioning storage resources</li>
+<li>Supporting stateful workloads with stable identities</li>
 </ul>
-<hr />
-<h2 id="check-your-knowledge">Check Your Knowledge</h2>
+<p>The main primitives covered are:</p>
+<ul>
+<li><strong>Volumes</strong> — storage attached directly to Pods</li>
+<li><strong>Persistent Volumes (PV)</strong> — cluster-level storage resources</li>
+<li><strong>Persistent Volume Claims (PVC)</strong> — requests for persistent storage</li>
+<li><strong>Storage Classes</strong> — declarative dynamic provisioning policies</li>
+<li><strong>StatefulSets</strong> — workload controller for stateful applications</li>
+</ul>
+<p>These primitives enable Kubernetes to support databases, message queues, and other stateful systems reliably.</p>
+<h2 id="why-storage-primitives-exist">Why Storage Primitives Exist</h2>
+<p>Containers are ephemeral:</p>
+<ul>
+<li>Files inside a container disappear when it restarts</li>
+<li>Pods can be rescheduled to different nodes</li>
+<li>Local disk is not portable across nodes</li>
+</ul>
+<p>Without abstraction, this leads to:</p>
+<ul>
+<li>Data loss</li>
+<li>Tight coupling between compute and storage</li>
+<li>Manual infrastructure management</li>
+<li>Fragile stateful deployments</li>
+</ul>
+<p>Kubernetes solves this by separating <strong>compute lifecycle</strong> from <strong>storage lifecycle</strong>.</p>
+<p>Persistent storage becomes an independent resource that Pods can attach to, detach from, and reattach when rescheduled.</p>
+<p>This preserves durability while maintaining Kubernetes’ declarative model.</p>
+<h2 id="the-core-mental-model">The Core Mental Model</h2>
+<p>Storage in Kubernetes follows a layered abstraction:</p>
 <ol>
-<li><strong>Volumes:</strong>  </li>
-<li>What problem do Volumes solve in ephemeral containers?  </li>
-<li>
-<p>When should you use emptyDir vs hostPath vs configMap volumes?</p>
-</li>
-<li>
-<p><strong>PV &amp; PVC:</strong>  </p>
-</li>
-<li>How do Persistent Volumes decouple storage from Pods?  </li>
-<li>
-<p>What happens if a Pod is deleted but the PVC is still bound?</p>
-</li>
-<li>
-<p><strong>Storage Classes:</strong>  </p>
-</li>
-<li>Why are Storage Classes important for dynamic provisioning?  </li>
-<li>
-<p>What parameters can be customized in a Storage Class?</p>
-</li>
-<li>
-<p><strong>StatefulSets:</strong>  </p>
-</li>
-<li>Why would you use a StatefulSet instead of a Deployment?  </li>
-<li>How does a StatefulSet ensure stable storage and network identity?</li>
+<li><strong>Volumes</strong> attach storage to a Pod.</li>
+<li><strong>Persistent Volumes (PV)</strong> represent real storage resources in the cluster.</li>
+<li><strong>Persistent Volume Claims (PVC)</strong> request and bind storage declaratively.</li>
+<li><strong>Storage Classes</strong> define how storage is dynamically provisioned.</li>
+<li><strong>StatefulSets</strong> coordinate stable identity and persistent storage for Pods.</li>
 </ol>
-<hr />
-<p><strong>Next Steps:</strong><br />
-After understanding the concepts in this chapter, apply them in labs by creating PVCs, using different volume types, and experimenting with dynamic provisioning to solidify your knowledge.</p><style type="text/css">.quiz {
+<p>The key principle is:</p>
+<blockquote>
+<p>Storage should outlive the Pod that uses it.</p>
+</blockquote>
+<p>Compute is ephemeral.<br />
+Storage is durable.<br />
+Kubernetes ensures they interact safely.</p>
+<h2 id="how-these-primitives-fit-together">How These Primitives Fit Together</h2>
+<p>At a high level:</p>
+<ul>
+<li>A <strong>PVC</strong> declares a storage requirement</li>
+<li>Kubernetes binds the PVC to a <strong>PV</strong></li>
+<li>A Pod mounts the PVC as a <strong>Volume</strong></li>
+<li>If the Pod is rescheduled, it reattaches the same persistent storage</li>
+<li>A <strong>Storage Class</strong> can automatically provision new PVs</li>
+<li>A <strong>StatefulSet</strong> ensures each Pod gets its own stable volume and identity</li>
+</ul>
+<p>These components cooperate to support stateful workloads without sacrificing declarative control.</p>
+<h2 id="scope-and-intent">Scope and Intent</h2>
+<p>Following the same structured approach:</p>
+<ul>
+<li>Emphasis is placed on mental models over configuration syntax</li>
+<li>Storage behavior is explained before YAML details</li>
+<li>Dynamic provisioning is introduced conceptually before implementation</li>
+</ul>
+<p>Hands-on labs will reinforce how storage binding, provisioning, and reattachment work in practice.</p>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
+<!-- mkdocs-quiz-source
+<quiz>
+Why are Volumes necessary?
+- [x] Containers lose data when they restart
+- [x] Pods are ephemeral
+- [ ] Volumes schedule Pods to nodes
+- [ ] Volumes replace Deployments
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
+    <a href="#quiz-0" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 1</h4>
+    <div class="quiz-question">
+        <p>Why are Volumes necessary?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Containers lose data when they restart</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-0-1" correct><label for="quiz-0-1">Pods are ephemeral</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Volumes schedule Pods to nodes</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Volumes replace Deployments</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Persistent Volumes (PV) and Persistent Volume Claims (PVC) allow:
+- [x] Decoupling storage from Pod lifecycle
+- [x] Durable storage across restarts
+- [ ] Automatic Pod scaling
+- [ ] Service load balancing
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
+    <a href="#quiz-1" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 2</h4>
+    <div class="quiz-question">
+        <p>Persistent Volumes (PV) and Persistent Volume Claims (PVC) allow:</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Decoupling storage from Pod lifecycle</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">Durable storage across restarts</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">Automatic Pod scaling</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Service load balancing</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+What happens if a Pod using a PVC is deleted?
+- [x] The PVC can remain bound to the PV
+- [x] A new Pod can reattach to the same storage
+- [ ] The data is automatically erased
+- [ ] The PV is always deleted immediately
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
+    <a href="#quiz-2" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 3</h4>
+    <div class="quiz-question">
+        <p>What happens if a Pod using a PVC is deleted?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">The PVC can remain bound to the PV</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-2-1" correct><label for="quiz-2-1">A new Pod can reattach to the same storage</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">The data is automatically erased</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">The PV is always deleted immediately</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Storage Classes are important because:
+- [x] They enable dynamic provisioning
+- [x] They define storage policies declaratively
+- [ ] They manage container networking
+- [ ] They expose Pods externally
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
+    <a href="#quiz-3" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 4</h4>
+    <div class="quiz-question">
+        <p>Storage Classes are important because:</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">They enable dynamic provisioning</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">They define storage policies declaratively</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">They manage container networking</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">They expose Pods externally</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+StatefulSets are used when:
+- [x] Pods require stable network identity
+- [x] Each replica needs persistent storage
+- [ ] Stateless applications need scaling
+- [ ] You only need rolling updates
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
+    <a href="#quiz-4" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 5</h4>
+    <div class="quiz-question">
+        <p>StatefulSets are used when:</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Pods require stable network identity</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">Each replica needs persistent storage</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">Stateless applications need scaling</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">You only need rolling updates</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000"><strong>The Kubernetes Book - Nigel-Poulton</strong></a></li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
@@ -3129,6 +3392,11 @@ window.mkdocsQuizConfig = {
     });
   }
 })(); // End of IIFE
+</script><script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  var article = document.querySelector("article") || document.querySelector("main") || document.body;
+  article.classList.add("quiz-auto-number");
+});
 </script>
 
 
@@ -3136,6 +3404,9 @@ window.mkdocsQuizConfig = {
 
 
 
+
+  
+  
 
 
 

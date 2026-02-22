@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -1439,10 +1439,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#why-failures-matter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Problem
+        Why Failures Matter
       
     </span>
   </a>
@@ -1450,10 +1450,143 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-failures" class="md-nav__link">
+  <a href="#common-failure-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Common Failures
+        Common Failure Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Failure Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-node-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Node Failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pod-crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pod Crash
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-resource-starvation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Resource Starvation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-storage-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Storage Failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-resilience-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Resilience Mechanisms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Resilience Mechanisms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-healing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Healing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-zone-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Zone Strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
       
     </span>
   </a>
@@ -1461,10 +1594,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#common-design-mistakes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        Common Design Mistakes
       
     </span>
   </a>
@@ -1483,10 +1616,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge_1" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        References
       
     </span>
   </a>
@@ -1536,10 +1669,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#why-failures-matter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Problem
+        Why Failures Matter
       
     </span>
   </a>
@@ -1547,10 +1680,143 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#common-failures" class="md-nav__link">
+  <a href="#common-failure-types" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Common Failures
+        Common Failure Types
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Failure Types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-node-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Node Failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-pod-crash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pod Crash
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-resource-starvation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Resource Starvation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-network-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Network Issues
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-storage-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Storage Failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-resilience-mechanisms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Resilience Mechanisms
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Resilience Mechanisms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#replication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Replication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-healing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Self-Healing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Probes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-zone-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-Zone Strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
       
     </span>
   </a>
@@ -1558,10 +1824,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#common-design-mistakes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        Common Design Mistakes
       
     </span>
   </a>
@@ -1580,10 +1846,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge_1" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        References
       
     </span>
   </a>
@@ -1645,91 +1911,203 @@
 
 
 <h1 id="failure-scenarios">Failure Scenarios</h1>
-<h2 id="the-problem">The Problem</h2>
-<p>Even well-configured clusters can experience failures: node crashes, network partitions, Pod evictions, or resource exhaustion. Developers must understand these to design resilient systems.</p>
-<h2 id="common-failures">Common Failures</h2>
-<table>
-<thead>
-<tr>
-<th>Failure Type</th>
-<th>Example / Mitigation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Node failure</td>
-<td>K8s reschedules Pods to healthy nodes automatically.</td>
-</tr>
-<tr>
-<td>Pod crash</td>
-<td>Liveness probes and restartPolicy handle self-healing.</td>
-</tr>
-<tr>
-<td>Resource starvation</td>
-<td>Requests and limits prevent one Pod from starving others.</td>
-</tr>
-<tr>
-<td>Network issues</td>
-<td>Services and DNS allow Pods to continue communicating after failure.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="solution">Solution</h2>
+<h2 id="why-failures-matter">Why Failures Matter</h2>
+<p>Failures are not edge cases.</p>
+<p>They are guaranteed.</p>
+<p>Nodes crash.<br />
+Containers leak memory.<br />
+Networks partition.<br />
+Storage fails.  </p>
+<p>If you design assuming perfection, your system will break.</p>
+<p>Resilience in Kubernetes comes from understanding failure patterns and designing for them.</p>
+<h2 id="common-failure-types">Common Failure Types</h2>
+<h3 id="1-node-failure">1. Node Failure</h3>
+<p>What happens:</p>
 <ul>
-<li>Use <strong>replicas</strong> to increase availability.  </li>
-<li>Configure <strong>probes</strong> for self-healing.  </li>
-<li>Apply <strong>resource requests/limits</strong> to prevent starvation.  </li>
-<li>Consider <strong>multi-zone deployments</strong> for higher resilience.</li>
+<li>Node becomes NotReady</li>
+<li>Pods on that node stop responding</li>
 </ul>
+<p>Kubernetes response:</p>
+<ul>
+<li>Controller marks Pods as failed</li>
+<li>Scheduler reschedules them to healthy nodes</li>
+<li>Replica count is restored</li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li>Use replicas</li>
+<li>Spread Pods across nodes</li>
+<li>Use anti-affinity rules</li>
+</ul>
+<hr />
+<h3 id="2-pod-crash">2. Pod Crash</h3>
+<p>Causes:</p>
+<ul>
+<li>Application bug</li>
+<li>OOMKill</li>
+<li>Misconfiguration</li>
+</ul>
+<p>Kubernetes response:</p>
+<ul>
+<li>Restart container (based on restartPolicy)</li>
+<li>Liveness probes trigger restarts</li>
+<li>ReplicaSet ensures desired count</li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li>Liveness probes</li>
+<li>Readiness probes</li>
+<li>Proper resource limits</li>
+</ul>
+<hr />
+<h3 id="3-resource-starvation">3. Resource Starvation</h3>
+<p>One Pod consumes:</p>
+<ul>
+<li>Excess CPU</li>
+<li>Excess memory</li>
+</ul>
+<p>Impact:</p>
+<ul>
+<li>Other Pods slow down or crash</li>
+<li>Node instability</li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li>Define requests and limits</li>
+<li>Prevent noisy neighbor problems</li>
+<li>Use resource quotas at namespace level</li>
+</ul>
+<p>Without limits, cascading failures happen.</p>
+<hr />
+<h3 id="4-network-issues">4. Network Issues</h3>
+<p>Examples:</p>
+<ul>
+<li>DNS failure</li>
+<li>Service misconfiguration</li>
+<li>NetworkPolicy blocking traffic</li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li>Readiness probes to remove broken Pods from Service</li>
+<li>Replicas for redundancy</li>
+<li>Monitoring and alerting</li>
+</ul>
+<hr />
+<h3 id="5-storage-failure">5. Storage Failure</h3>
+<p>Examples:</p>
+<ul>
+<li>Node hosting volume fails</li>
+<li>Cloud disk detached</li>
+<li>PVC stuck Pending</li>
+</ul>
+<p>Mitigation:</p>
+<ul>
+<li>Distributed storage</li>
+<li>Multi-zone deployment</li>
+<li>RWX-backed storage when appropriate</li>
+<li>Backups</li>
+</ul>
+<p>Storage is often the weakest link in resilience.</p>
+<h2 id="core-resilience-mechanisms">Core Resilience Mechanisms</h2>
+<h3 id="replication">Replication</h3>
+<p>More replicas = higher availability.</p>
+<p>If one fails:</p>
+<ul>
+<li>Others continue serving traffic</li>
+</ul>
+<p>Single replica = single point of failure.</p>
+<hr />
+<h3 id="self-healing">Self-Healing</h3>
+<p>Controllers constantly reconcile desired state.</p>
+<p>If something deviates:</p>
+<ul>
+<li>Kubernetes corrects it</li>
+</ul>
+<p>This is automatic — but only if configured correctly.</p>
+<hr />
+<h3 id="probes">Probes</h3>
+<ul>
+<li>Liveness → Restart unhealthy container</li>
+<li>Readiness → Remove Pod from Service endpoints</li>
+<li>Startup → Protect slow-start apps</li>
+</ul>
+<p>Probes prevent broken Pods from serving traffic.</p>
+<hr />
+<h3 id="multi-zone-strategy">Multi-Zone Strategy</h3>
+<p>Spread workloads across:</p>
+<ul>
+<li>Nodes</li>
+<li>Availability zones</li>
+<li>Failure domains</li>
+</ul>
+<p>Failure should reduce capacity — not cause outage.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Assume:</p>
+<ul>
+<li>Nodes will die</li>
+<li>Pods will crash</li>
+<li>Traffic will spike</li>
+<li>Storage will fail</li>
+</ul>
+<p>Design for:</p>
+<ul>
+<li>Replacement</li>
+<li>Redundancy</li>
+<li>Isolation</li>
+<li>Recovery</li>
+</ul>
+<p>Resilience is architecture, not luck.</p>
+<h2 id="common-design-mistakes">Common Design Mistakes</h2>
+<ul>
+<li>Running single replica in production</li>
+<li>No resource limits</li>
+<li>No readiness probes</li>
+<li>All replicas on same node</li>
+<li>No backups for stateful workloads</li>
+</ul>
+<p>These are not rare mistakes.
+They are the most common causes of outages.</p>
 <h2 id="check-your-knowledge">Check Your Knowledge</h2>
-<ol>
-<li>How does Kubernetes handle a Pod crash automatically?  </li>
-<li>What is the role of replication in mitigating failures?  </li>
-<li>How do resource limits reduce cascading failures in a cluster?</li>
-</ol>
-<h2 id="check-your-knowledge_1">Check your knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-Which of the following are common failure scenarios in Kubernetes? (Select all that apply)
-
-- [x] Node crash
-- [x] Pod crash
-- [x] Container image corruption
-- [x] Misconfigured service
+Why is running only one replica risky in production?
+- [x] It creates a single point of failure
+- [ ] It prevents scaling
+- [ ] It increases CPU usage
+- [ ] It disables Services
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>Which of the following are common failure scenarios in Kubernetes? (Select all that apply)</p>
+        <p>Why is running only one replica risky in production?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Node crash</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-0-1" correct><label for="quiz-0-1">Pod crash</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-0-2" correct><label for="quiz-0-2">Container image corruption</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-0-3" correct><label for="quiz-0-3">Misconfigured service</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">It creates a single point of failure</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">It prevents scaling</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">It increases CPU usage</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">It disables Services</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: A node fails. What does Kubernetes do with the pods scheduled on that node?
-
-- [x] Reschedules them to healthy nodes
-- [ ] Deletes them permanently
-- [ ] Leaves them pending indefinitely
-- [ ] Automatically scales the node back up
+What happens if a liveness probe continuously fails?
+- [x] The container is restarted
+- [ ] The Service IP changes
+- [ ] The PVC is deleted
+- [ ] The Deployment is removed
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Scenario: A node fails. What does Kubernetes do with the pods scheduled on that node?</p>
+        <p>What happens if a liveness probe continuously fails?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Reschedules them to healthy nodes</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">Deletes them permanently</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">Leaves them pending indefinitely</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Automatically scales the node back up</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">The container is restarted</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">The Service IP changes</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">The PVC is deleted</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">The Deployment is removed</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1738,40 +2116,44 @@ Scenario: A node fails. What does Kubernetes do with the pods scheduled on that 
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: Kubernetes ensures [[self-healing]] by automatically rescheduling pods when nodes or pods [[fail]].
+Scenario: A node crashes and all replicas were scheduled on it. What happens?
+- [x] Pods are rescheduled, but downtime occurs until they start
+- [ ] Nothing happens
+- [ ] Services automatically change IP
+- [ ] HPA scales to zero
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-2">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        Fill in the blank: Kubernetes ensures <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="self-healing" autocomplete="off" size="14"> by automatically rescheduling pods when nodes or pods <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="fail" autocomplete="off" size="6">.
+        <p>Scenario: A node crashes and all replicas were scheduled on it. What happens?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">Pods are rescheduled, but downtime occurs until they start</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">Nothing happens</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">Services automatically change IP</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">HPA scales to zero</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: A deployment has replicas=3. One pod crashes due to memory exhaustion. How does Kubernetes respond?
-
-- [x] Creates a new pod to maintain the desired replica count
-- [ ] Deletes all other pods
-- [ ] Triggers HPA to scale down
-- [ ] Changes the service endpoint
+How do resource limits prevent cascading failures?
+- [x] They stop one Pod from consuming all node resources
+- [ ] They increase replica count
+- [ ] They encrypt traffic
+- [ ] They create backups
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Scenario: A deployment has replicas=3. One pod crashes due to memory exhaustion. How does Kubernetes respond?</p>
+        <p>How do resource limits prevent cascading failures?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Creates a new pod to maintain the desired replica count</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">Deletes all other pods</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">Triggers HPA to scale down</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">Changes the service endpoint</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">They stop one Pod from consuming all node resources</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">They increase replica count</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">They encrypt traffic</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">They create backups</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1780,22 +2162,21 @@ Scenario: A deployment has replicas=3. One pod crashes due to memory exhaustion.
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which of the following help minimize the impact of failures? (Select all that apply)
-
-- [x] Readiness and liveness probes
-- [x] Proper resource requests and limits
-- [x] Pod anti-affinity rules
-- [x] Ignoring failures
+Which strategies improve resilience? (Select all that apply)
+- [x] Multiple replicas
+- [x] Pod anti-affinity
+- [x] Multi-zone deployment
+- [ ] Ignoring readiness probes
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>Which of the following help minimize the impact of failures? (Select all that apply)</p>
+        <p>Which strategies improve resilience? (Select all that apply)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Readiness and liveness probes</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">Proper resource requests and limits</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" correct><label for="quiz-4-2">Pod anti-affinity rules</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" correct><label for="quiz-4-3">Ignoring failures</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Multiple replicas</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">Pod anti-affinity</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" correct><label for="quiz-4-2">Multi-zone deployment</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">Ignoring readiness probes</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1804,14 +2185,14 @@ Which of the following help minimize the impact of failures? (Select all that ap
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: Using [[replica sets]] and [[self-healing]] mechanisms ensures high availability of critical workloads.
+Fill in the blank: High availability is achieved through [[replication]] and Kubernetes’ [[self-healing]] control loops.
 </quiz>
 -->
 <div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-5">
     <a href="#quiz-5" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 6</h4>
     <div class="quiz-question">
-        Fill in the blank: Using <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="replica sets" autocomplete="off" size="14"> and <input type="text" class="quiz-blank-input" id="quiz-5-blank-1" data-answer="self-healing" autocomplete="off" size="14"> mechanisms ensures high availability of critical workloads.
+        Fill in the blank: High availability is achieved through <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="replication" autocomplete="off" size="13"> and Kubernetes’ <input type="text" class="quiz-blank-input" id="quiz-5-blank-1" data-answer="self-healing" autocomplete="off" size="14"> control loops.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
@@ -1822,32 +2203,32 @@ Fill in the blank: Using [[replica sets]] and [[self-healing]] mechanisms ensure
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: A PersistentVolumeClaim becomes unavailable due to node failure. Which strategy helps prevent data loss?
-
-- [x] Use [[ReadWriteMany]] volumes with distributed storage
-- [ ] Use emptyDir volumes
-- [ ] Ignore PV backup
-- [ ] Rely solely on HPA
+Scenario: You need to prevent data loss during node failure for a database workload. What is critical?
+- [x] Use distributed or replicated storage
+- [ ] Use emptyDir
+- [ ] Disable liveness probes
+- [ ] Reduce replicas to one
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-6">
-                <a href="#quiz-6" class="quiz-header-link">#</a>
-                <h4 class="quiz-number">Question 7</h4>
-                <div class="quiz-question">
-                    <p>Scenario: A PersistentVolumeClaim becomes unavailable due to node failure. Which strategy helps prevent data loss?</p>
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+    <a href="#quiz-6" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 7</h4>
+    <div class="quiz-question">
+        <p>Scenario: You need to prevent data loss during node failure for a database workload. What is critical?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">Use distributed or replicated storage</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1" ><label for="quiz-6-1">Use emptyDir</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">Disable liveness probes</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3" ><label for="quiz-6-3">Reduce replicas to one</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<h2 id="references">References</h2>
 <ul>
-<li>[x] Use <input type="text" class="quiz-blank-input" id="quiz-6-blank-0" data-answer="ReadWriteMany" autocomplete="off" size="15"> volumes with distributed storage</li>
-<li>[ ] Use emptyDir volumes</li>
-<li>[ ] Ignore PV backup</li>
-<li>[ ] Rely solely on HPA</li>
-</ul>
-                </div>
-                <form action="javascript:void(0);" onsubmit="return false;">
-                    <div class="quiz-feedback hidden"></div>
-                    <button type="submit" class="quiz-button">Submit</button>
-                </form>
-                <section class="content hidden"></section>
-            </div><style type="text/css">.quiz {
+<li>Kubernetes Documentation – Cluster Resilience  </li>
+<li>The Kubernetes Book – Nigel Poulton</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

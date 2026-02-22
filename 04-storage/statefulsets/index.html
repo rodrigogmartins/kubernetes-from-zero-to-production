@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
@@ -1247,10 +1247,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#what-problem-statefulsets-solve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Problem
+        What Problem StatefulSets Solve
       
     </span>
   </a>
@@ -1258,10 +1258,104 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#the-solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-guarantees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Guarantees
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Guarantees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-stable-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Stable Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-stable-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Stable Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ordered-deployment-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ordered Deployment &amp; Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headless-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headless Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use StatefulSet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -1280,10 +1374,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge_1" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        References
       
     </span>
   </a>
@@ -1527,10 +1621,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-problem" class="md-nav__link">
+  <a href="#what-problem-statefulsets-solve" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Problem
+        What Problem StatefulSets Solve
       
     </span>
   </a>
@@ -1538,10 +1632,104 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#the-solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-guarantees" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Guarantees
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Guarantees">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-stable-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Stable Identity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-stable-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Stable Storage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ordered-deployment-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Ordered Deployment &amp; Scaling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#headless-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headless Services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use StatefulSet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-failure-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Failure Scenarios
       
     </span>
   </a>
@@ -1560,10 +1748,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge_1" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check your knowledge
+        References
       
     </span>
   </a>
@@ -1625,45 +1813,139 @@
 
 
 <h1 id="statefulsets">StatefulSets</h1>
-<h2 id="the-problem">The Problem</h2>
-<p>Some applications (databases, queues) require:</p>
+<h2 id="what-problem-statefulsets-solve">What Problem StatefulSets Solve</h2>
+<p>Some workloads are not interchangeable.</p>
+<p>Databases, distributed systems, and queues often require:</p>
 <ul>
-<li>Stable network identities (DNS names).  </li>
-<li>Persistent storage that survives Pod rescheduling.  </li>
-<li>Ordered deployment and scaling.</li>
+<li>Stable Pod identities</li>
+<li>Persistent storage per replica</li>
+<li>Ordered startup and shutdown</li>
+<li>Predictable scaling behavior</li>
 </ul>
-<p>A regular Deployment does not provide these guarantees.</p>
-<h2 id="solution">Solution</h2>
-<p><strong>StatefulSets</strong> manage Pods with stable identifiers and persistent storage:</p>
+<p>A Deployment treats Pods as identical and disposable.</p>
+<p>Stateful applications cannot rely on that model.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>StatefulSets provide:</p>
 <ul>
-<li>Each Pod gets a stable <strong>name</strong> and <strong>network ID</strong>.  </li>
-<li>PVCs are provisioned per Pod automatically using StatefulSet templates.  </li>
-<li>Pods are created, scaled, or deleted in a <strong>deterministic order</strong>.</li>
+<li>Stable Pod names (<code>app-0</code>, <code>app-1</code>, <code>app-2</code>)</li>
+<li>Stable DNS identities</li>
+<li>Dedicated PVC per Pod</li>
+<li>Ordered creation and termination</li>
 </ul>
-<h2 id="check-your-knowledge">Check Your Knowledge</h2>
+<p>Each replica is unique and consistent over time.</p>
+<h2 id="core-guarantees">Core Guarantees</h2>
+<h3 id="1-stable-identity">1. Stable Identity</h3>
+<p>Each Pod gets:</p>
+<ul>
+<li>A predictable name</li>
+<li>A stable hostname</li>
+<li>A stable DNS record (via Headless Service)</li>
+</ul>
+<p>Even if rescheduled:</p>
+<ul>
+<li>The Pod keeps the same identity</li>
+</ul>
+<hr />
+<h3 id="2-stable-storage">2. Stable Storage</h3>
+<p>StatefulSets use:</p>
+<ul>
+<li><code>volumeClaimTemplates</code></li>
+</ul>
+<p>For each replica:</p>
+<ul>
+<li>A unique PVC is automatically created</li>
+<li>The PVC sticks to that Pod identity</li>
+</ul>
+<p>If the Pod is deleted:</p>
+<ul>
+<li>The PVC remains</li>
+<li>Data is preserved</li>
+</ul>
+<p>When recreated:</p>
+<ul>
+<li>The Pod reattaches to the same volume</li>
+</ul>
+<hr />
+<h3 id="3-ordered-deployment-scaling">3. Ordered Deployment &amp; Scaling</h3>
+<p>StatefulSets:</p>
+<ul>
+<li>Start Pods sequentially (<code>0 → 1 → 2</code>)</li>
+<li>Terminate Pods in reverse order</li>
+<li>Scale up and down deterministically</li>
+</ul>
+<p>This is critical for:</p>
+<ul>
+<li>Leader election systems</li>
+<li>Distributed consensus clusters</li>
+<li>Databases requiring bootstrap ordering</li>
+</ul>
+<h2 id="headless-services">Headless Services</h2>
+<p>StatefulSets typically use:</p>
+<ul>
+<li>A Headless Service (<code>clusterIP: None</code>)</li>
+</ul>
+<p>This enables:</p>
+<ul>
+<li>Direct DNS resolution per Pod</li>
+<li>Stable network identity</li>
+</ul>
+<p>Example DNS pattern:</p>
+<pre><code class="language-md">pod-0.service-name.namespace.svc.cluster.local
+</code></pre>
+<p>Applications can address specific replicas directly.</p>
+<h2 id="when-to-use-statefulset">When to Use StatefulSet</h2>
+<p>Use StatefulSet when:</p>
+<ul>
+<li>You need stable network identity</li>
+<li>Each replica needs its own storage</li>
+<li>Order of startup/shutdown matters</li>
+<li>Replicas are not interchangeable</li>
+</ul>
+<p>Do NOT use it for:</p>
+<ul>
+<li>Stateless APIs</li>
+<li>Web frontends</li>
+<li>Simple scalable workers</li>
+</ul>
+<p>Use Deployments for those.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Deployment = Cattle<br />
+StatefulSet = Pets  </p>
+<p>Deployments replace Pods freely.<br />
+StatefulSets preserve identity and state.</p>
+<p>Choose based on workload behavior, not habit.</p>
+<h2 id="common-failure-scenarios">Common Failure Scenarios</h2>
+<ul>
+<li>Forgetting Headless Service → DNS not stable</li>
+<li>PVC provisioning fails → Pods stuck Pending</li>
+<li>Scaling down deletes Pod but PVC remains (by design)</li>
+<li>Assuming replicas are identical (they are not)</li>
+</ul>
+<p>Always check:</p>
 <ol>
-<li>How does StatefulSet maintain stable storage for Pods?  </li>
-<li>When would you use a StatefulSet instead of a Deployment?</li>
+<li>PVC status</li>
+<li>StorageClass</li>
+<li>DNS resolution</li>
+<li>Pod ordering</li>
 </ol>
-<h2 id="check-your-knowledge_1">Check your knowledge</h2>
+<h2 id="check-your-knowledge">Check Your Knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-What is a key difference between a Deployment and a StatefulSet?
-
-- [x] StatefulSet provides stable network IDs and persistent storage
-- [ ] Deployment guarantees pod IPs remain the same
-- [ ] StatefulSet cannot scale
-- [ ] Deployment uses PVs automatically
+Why are Pods in a StatefulSet not interchangeable?
+- [x] Each Pod has a stable identity and storage
+- [ ] They share the same IP
+- [ ] They cannot be rescheduled
+- [ ] They do not use Services
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What is a key difference between a Deployment and a StatefulSet?</p>
+        <p>Why are Pods in a StatefulSet not interchangeable?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">StatefulSet provides stable network IDs and persistent storage</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Deployment guarantees pod IPs remain the same</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">StatefulSet cannot scale</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Deployment uses PVs automatically</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Each Pod has a stable identity and storage</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">They share the same IP</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">They cannot be rescheduled</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">They do not use Services</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1672,22 +1954,21 @@ What is a key difference between a Deployment and a StatefulSet?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: You have a database pod that requires stable storage. Which resource should you use?
-
-- [x] StatefulSet with PVC
-- [ ] Deployment
-- [ ] ReplicaSet
-- [ ] DaemonSet
+What enables stable DNS for StatefulSet Pods?
+- [x] A Headless Service
+- [ ] NodePort
+- [ ] LoadBalancer
+- [ ] Ingress
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Scenario: You have a database pod that requires stable storage. Which resource should you use?</p>
+        <p>What enables stable DNS for StatefulSet Pods?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">StatefulSet with PVC</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">Deployment</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">ReplicaSet</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">DaemonSet</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">A Headless Service</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">NodePort</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">LoadBalancer</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Ingress</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1696,69 +1977,96 @@ Scenario: You have a database pod that requires stable storage. Which resource s
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: Pods in a StatefulSet are given [[stable, unique identifiers]] and are managed in a [[deterministic order]].
+Scenario: A StatefulSet Pod is deleted. What happens to its PVC?
+- [x] It remains and is reused when the Pod is recreated
+- [ ] It is deleted immediately
+- [ ] It is shared with another Pod
+- [ ] It is converted to emptyDir
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-2">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        Fill in the blank: Pods in a StatefulSet are given <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="stable, unique identifiers" autocomplete="off" size="28"> and are managed in a <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="deterministic order" autocomplete="off" size="21">.
+        <p>Scenario: A StatefulSet Pod is deleted. What happens to its PVC?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">It remains and is reused when the Pod is recreated</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">It is deleted immediately</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">It is shared with another Pod</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">It is converted to emptyDir</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which of these can be combined with a StatefulSet? (Select all that apply)
-
-- [x] PersistentVolumeClaims
-- [x] Headless Services
-- [ ] NetworkPolicies
-- [ ] ConfigMaps only
+In what order are StatefulSet Pods terminated when scaling down?
+- [x] Reverse order (highest index first)
+- [ ] Random order
+- [ ] All at once
+- [ ] Alphabetical order
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which of these can be combined with a StatefulSet? (Select all that apply)</p>
+        <p>In what order are StatefulSet Pods terminated when scaling down?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">PersistentVolumeClaims</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Headless Services</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">NetworkPolicies</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">ConfigMaps only</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Reverse order (highest index first)</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">Random order</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">All at once</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">Alphabetical order</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: A StatefulSet scales from 3 to 5 replicas. What happens to PVCs?
-
-- [x] Two new PVCs are created for the new pods
-- [ ] Existing PVCs are deleted
-- [ ] PVCs are shared across pods
-- [ ] No PVC is created automatically
+Scenario: You are deploying a distributed database requiring node-0 to initialize before others join. Which resource is appropriate?
+- [x] StatefulSet
+- [ ] Deployment
+- [ ] DaemonSet
+- [ ] ReplicaSet
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>Scenario: A StatefulSet scales from 3 to 5 replicas. What happens to PVCs?</p>
+        <p>Scenario: You are deploying a distributed database requiring node-0 to initialize before others join. Which resource is appropriate?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Two new PVCs are created for the new pods</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">Existing PVCs are deleted</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">PVCs are shared across pods</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">No PVC is created automatically</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">StatefulSet</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">Deployment</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">DaemonSet</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">ReplicaSet</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Fill in the blank: StatefulSets are ideal for [[stateful applications]] that require [[stable network identity]] and [[persistent storage]].
+</quiz>
+-->
+<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-5">
+    <a href="#quiz-5" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 6</h4>
+    <div class="quiz-question">
+        Fill in the blank: StatefulSets are ideal for <input type="text" class="quiz-blank-input" id="quiz-5-blank-0" data-answer="stateful applications" autocomplete="off" size="23"> that require <input type="text" class="quiz-blank-input" id="quiz-5-blank-1" data-answer="stable network identity" autocomplete="off" size="25"> and <input type="text" class="quiz-blank-input" id="quiz-5-blank-2" data-answer="persistent storage" autocomplete="off" size="20">.
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li>Kubernetes Documentation – StatefulSets  </li>
+<li>The Kubernetes Book – Nigel Poulton</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
