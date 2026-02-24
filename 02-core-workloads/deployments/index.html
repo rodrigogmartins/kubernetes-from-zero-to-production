@@ -719,10 +719,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-deployments-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Deployments Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rolling-update-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rolling Update Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollbacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
         Check your knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1494,10 +1604,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-deployments-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How Deployments Work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Core Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rolling-update-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rolling Update Strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollbacks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
         Check your knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1559,15 +1779,92 @@
 
 
 <h1 id="deployments">Deployments</h1>
-<p><strong>Deployments</strong> provide declarative updates to Pods and ReplicaSets.<br />
-They solve the problem of <strong>managing changes to workloads safely</strong> and automatically handling <strong>rolling updates, rollbacks, and scaling</strong>.</p>
-<p>Deployments manage ReplicaSets, which in turn manage Pods. This allows declarative updates, rolling updates, and rollbacks, without directly touching individual Pods.</p>
-<hr />
+<h2 id="the-problem">The Problem</h2>
+<p>Managing Pods directly is fragile:</p>
+<ul>
+<li>Updating container images manually causes downtime</li>
+<li>Replacing Pods one by one is error-prone</li>
+<li>Rolling back after a failed release is complex</li>
+<li>Scaling safely requires coordination</li>
+</ul>
+<p>You need controlled, repeatable workload management.</p>
+<h2 id="the-solution">The Solution</h2>
+<p><strong>Deployments</strong> provide declarative management for stateless applications.</p>
+<p>They:</p>
+<ul>
+<li>Manage ReplicaSets</li>
+<li>Orchestrate rolling updates</li>
+<li>Enable rollbacks</li>
+<li>Handle scaling</li>
+</ul>
+<p>You declare the desired state.<br />
+Kubernetes reconciles reality to match it.</p>
+<h2 id="how-deployments-work">How Deployments Work</h2>
+<p>Deployment<br />
+→ manages ReplicaSet<br />
+→ which manages Pods  </p>
+<p>When you update a Deployment:</p>
+<ol>
+<li>A new ReplicaSet is created</li>
+<li>Pods are gradually replaced</li>
+<li>Traffic shifts safely</li>
+<li>Old ReplicaSet is scaled down</li>
+</ol>
+<p>This enables zero-downtime releases when configured properly.</p>
+<h2 id="core-capabilities">Core Capabilities</h2>
+<ul>
+<li>Rolling updates</li>
+<li>Rollbacks to previous revisions</li>
+<li>Declarative scaling</li>
+<li>Revision history tracking</li>
+<li>Controlled rollout strategies</li>
+</ul>
+<p>You never update Pods directly in production.</p>
+<p>You update the Deployment.</p>
+<h2 id="rolling-update-strategy">Rolling Update Strategy</h2>
+<p>Default strategy: <code>RollingUpdate</code></p>
+<p>Controls:</p>
+<ul>
+<li><code>maxUnavailable</code></li>
+<li><code>maxSurge</code></li>
+</ul>
+<p>These parameters define how safe or aggressive the rollout is.</p>
+<p>Bad configuration can cause downtime.</p>
+<p>Good configuration enables seamless upgrades.</p>
+<h2 id="rollbacks">Rollbacks</h2>
+<p>If a rollout fails:</p>
+<ul>
+<li>Deployment keeps revision history</li>
+<li>You can revert to a previous working version</li>
+</ul>
+<p>This is operational safety built into the platform.</p>
+<h2 id="scaling">Scaling</h2>
+<p>To scale an application:</p>
+<ul>
+<li>Update the replica count in the Deployment</li>
+</ul>
+<p>The Deployment adjusts the ReplicaSet.
+The ReplicaSet adjusts the Pods.</p>
+<p>Do not manually create Pods for scaling.</p>
+<p>That defeats the controller model.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Pod = single instance<br />
+ReplicaSet = ensures desired replica count<br />
+Deployment = manages lifecycle and updates  </p>
+<p>Deployment is the control layer for application evolution.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Editing Pods directly</li>
+<li>Deleting ReplicaSets manually</li>
+<li>Ignoring rollout status</li>
+<li>Not monitoring during updates</li>
+<li>Using Deployments for stateful workloads (use StatefulSets instead)</li>
+</ul>
+<p>Deployments are powerful, but only when used correctly.</p>
 <h2 id="check-your-knowledge">Check your knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
 What is the primary purpose of a Deployment?
-
 - [x] Manage Pods and ReplicaSets, handling updates and rollbacks
 - [ ] Store secrets
 - [ ] Provide DNS for Pods
@@ -1591,7 +1888,6 @@ What is the primary purpose of a Deployment?
 <!-- mkdocs-quiz-source
 <quiz>
 Scenario: You want to upgrade a container image in production without downtime. Which resource should you use?
-
 - [x] Deployment
 - [ ] ReplicaSet
 - [ ] Service
@@ -1614,14 +1910,14 @@ Scenario: You want to upgrade a container image in production without downtime. 
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: Deployments solve the problem of [[rolling updates]] and [[rollback]] management.
+Fill in the blank: Deployments solve the problem of [[controlled rollouts]] and [[rollback management]].
 </quiz>
 -->
 <div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        Fill in the blank: Deployments solve the problem of <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="rolling updates" autocomplete="off" size="17"> and <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="rollback" autocomplete="off" size="10"> management.
+        Fill in the blank: Deployments solve the problem of <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="controlled rollouts" autocomplete="off" size="21"> and <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="rollback management" autocomplete="off" size="21">.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
@@ -1633,7 +1929,6 @@ Fill in the blank: Deployments solve the problem of [[rolling updates]] and [[ro
 <!-- mkdocs-quiz-source
 <quiz>
 Which of the following are features of Deployments? (multiple correct)
-
 - [x] Rolling updates
 - [x] Rollbacks
 - [x] Scaling Pods
@@ -1657,7 +1952,6 @@ Which of the following are features of Deployments? (multiple correct)
 <!-- mkdocs-quiz-source
 <quiz>
 True or false: A Deployment manages Pods directly without using ReplicaSets.
-
 - [ ] True
 - [x] False
 </quiz>
@@ -1679,7 +1973,6 @@ True or false: A Deployment manages Pods directly without using ReplicaSets.
 <!-- mkdocs-quiz-source
 <quiz>
 Scenario: You need to scale an application from 3 to 10 Pods automatically. What is the recommended approach?
-
 - [x] Update the Deployment replica count
 - [ ] Manually create new Pods
 - [ ] Modify each ReplicaSet individually
@@ -1698,7 +1991,13 @@ Scenario: You need to scale an application from 3 to 10 Pods automatically. What
 
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li>Kubernetes Documentation – Deployments  </li>
+<li>Kubernetes Patterns – Bilgin Ibryam</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

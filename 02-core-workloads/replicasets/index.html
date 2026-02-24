@@ -691,10 +691,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-replicasets-actually-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What ReplicaSets Actually Do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-with-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship with Deployments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-replicasets-do-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What ReplicaSets Do NOT Do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling ReplicaSets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#label-selectors-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label Selectors Matter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
         Check your knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1494,10 +1604,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-replicasets-actually-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What ReplicaSets Actually Do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-with-deployments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relationship with Deployments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-replicasets-do-not-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What ReplicaSets Do NOT Do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-replicasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scaling ReplicaSets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#label-selectors-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Label Selectors Matter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
         Check your knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1559,17 +1779,92 @@
 
 
 <h1 id="replicasets">ReplicaSets</h1>
-<p>A <strong>ReplicaSet</strong> ensures that a specified number of identical Pods are running at any given time.<br />
-It solves the problem of <strong>maintaining desired state</strong> for Pods, automatically replacing Pods that fail or are deleted.</p>
-<p>ReplicaSets are usually <strong>not created directly</strong>; Deployments manage them.<br />
-They provide <strong>self-healing and scaling</strong>, making Pods <strong>replaceable</strong> without manual intervention.</p>
-<p>ReplicaSets ensure a fixed number of Pod replicas are running, but they <strong>do not automatically update Pods</strong> with a new container image. Updates are handled by Deployments.</p>
-<hr />
+<h2 id="the-problem">The Problem</h2>
+<p>Pods are ephemeral.</p>
+<p>If a Pod:</p>
+<ul>
+<li>Crashes</li>
+<li>Is deleted</li>
+<li>Is evicted</li>
+<li>Node fails</li>
+</ul>
+<p>Nothing guarantees it will come back.</p>
+<p>Running a single Pod in production is fragile.</p>
+<p>You need automated replacement.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>A <strong>ReplicaSet</strong> ensures a defined number of identical Pods are always running.</p>
+<p>You declare:</p>
+<pre><code class="language-yaml">replicas: 3
+</code></pre>
+<p>Kubernetes ensures:</p>
+<p>Exactly 3 matching Pods exist.</p>
+<p>If one disappears:</p>
+<p>A new one is created automatically.</p>
+<p>This is self-healing.</p>
+<h2 id="what-replicasets-actually-do">What ReplicaSets Actually Do</h2>
+<p>ReplicaSets:</p>
+<ul>
+<li>Monitor matching Pods using label selectors</li>
+<li>Create new Pods if replicas &lt; desired</li>
+<li>Delete excess Pods if replicas &gt; desired</li>
+</ul>
+<p>They maintain quantity.</p>
+<p>They do not manage rollout strategy.</p>
+<h2 id="relationship-with-deployments">Relationship with Deployments</h2>
+<p>In real production:</p>
+<p>You rarely create ReplicaSets directly.</p>
+<p>Deployments:</p>
+<ul>
+<li>Create ReplicaSets</li>
+<li>Manage updates between them</li>
+<li>Handle rolling updates and rollbacks</li>
+</ul>
+<p>ReplicaSets handle stability.
+Deployments handle evolution.</p>
+<h2 id="what-replicasets-do-not-do">What ReplicaSets Do NOT Do</h2>
+<p>ReplicaSets do not:</p>
+<ul>
+<li>Perform rolling updates</li>
+<li>Track revision history</li>
+<li>Automatically change container images</li>
+<li>Provide scaling policies</li>
+</ul>
+<p>They only ensure replica count.</p>
+<p>If you change the Pod template directly:</p>
+<p>A new ReplicaSet must be created (usually by a Deployment).</p>
+<h2 id="scaling-replicasets">Scaling ReplicaSets</h2>
+<p>You can scale by:</p>
+<ul>
+<li>Updating <code>spec.replicas</code></li>
+<li>Scaling via a Deployment</li>
+<li>Using Horizontal Pod Autoscaler (HPA)</li>
+</ul>
+<p>ReplicaSets respond by adjusting Pod count.</p>
+<h2 id="label-selectors-matter">Label Selectors Matter</h2>
+<p>ReplicaSets use label selectors to match Pods.</p>
+<p>If labels overlap incorrectly:</p>
+<p>You can accidentally manage unintended Pods.</p>
+<p>Careless label design causes production issues.</p>
+<p>Be precise.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Pod = single instance<br />
+ReplicaSet = ensures count<br />
+Deployment = manages change  </p>
+<p>ReplicaSets provide redundancy.
+They are the self-healing foundation.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Creating ReplicaSets directly in production</li>
+<li>Misconfiguring label selectors</li>
+<li>Assuming ReplicaSets handle updates</li>
+<li>Forgetting that Pods are replaced, not repaired</li>
+</ul>
+<p>ReplicaSets enforce desired state.
+They do not manage application lifecycle changes.</p>
 <h2 id="check-your-knowledge">Check your knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
 What is the main function of a ReplicaSet?
-
 - [x] Maintain a specified number of Pod replicas
 - [ ] Manage persistent volumes
 - [ ] Control service routing
@@ -1593,7 +1888,6 @@ What is the main function of a ReplicaSet?
 <!-- mkdocs-quiz-source
 <quiz>
 Scenario: A Pod managed by a ReplicaSet crashes. What happens?
-
 - [x] The ReplicaSet creates a new Pod
 - [ ] The existing Pod is repaired
 - [ ] All Pods are terminated
@@ -1635,7 +1929,6 @@ Fill in the blank: ReplicaSets define the [[number]] of Pod [[replicas]] to run.
 <!-- mkdocs-quiz-source
 <quiz>
 Which of the following are valid ways to scale a ReplicaSet? (multiple correct)
-
 - [x] Manually updating the replica count
 - [x] Via a Deployment
 - [ ] Changing the Pod's container image without updating ReplicaSet
@@ -1659,7 +1952,6 @@ Which of the following are valid ways to scale a ReplicaSet? (multiple correct)
 <!-- mkdocs-quiz-source
 <quiz>
 True or false: ReplicaSets can self-update Pods automatically.
-
 - [ ] True
 - [x] False
 </quiz>
@@ -1681,7 +1973,6 @@ True or false: ReplicaSets can self-update Pods automatically.
 <!-- mkdocs-quiz-source
 <quiz>
 Scenario: You need to maintain exactly 3 identical Pods at all times. Which resource ensures this?
-
 - [x] ReplicaSet
 - [ ] Pod
 - [ ] Deployment
@@ -1700,7 +1991,13 @@ Scenario: You need to maintain exactly 3 identical Pods at all times. Which reso
 
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li>Kubernetes Documentation – ReplicaSets  </li>
+<li>Kubernetes Up &amp; Running – Burns, Beda, Hightower</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

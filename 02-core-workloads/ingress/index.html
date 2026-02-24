@@ -775,10 +775,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-distinction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Distinction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TLS Termination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-not-to-use-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to Use Ingress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
         Check your knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1494,10 +1604,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-distinction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Distinction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Routing Types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TLS Termination
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-not-to-use-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When NOT to Use Ingress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#check-your-knowledge" class="md-nav__link">
     <span class="md-ellipsis">
       
         Check your knowledge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -1559,15 +1779,106 @@
 
 
 <h1 id="ingress">Ingress</h1>
-<p><strong>Ingress</strong> manages external access to Services, typically HTTP/HTTPS.<br />
-It solves the problem of <strong>exposing multiple services via a single entry point</strong> with <strong>routing, TLS termination, and host/path rules</strong>.</p>
-<p>Ingress resources define HTTP/HTTPS routing rules, but require an <strong>Ingress Controller</strong> (like NGINX, Traefik, or HAProxy) to implement the routing and load balancing.</p>
-<hr />
+<h2 id="the-problem">The Problem</h2>
+<p>By default, Services are internal to the cluster.</p>
+<p>Exposing applications externally using:</p>
+<ul>
+<li>NodePort</li>
+<li>LoadBalancer per Service</li>
+</ul>
+<p>Does not scale well.</p>
+<p>You end up with:</p>
+<ul>
+<li>Multiple external IPs</li>
+<li>No centralized routing</li>
+<li>No unified TLS handling</li>
+<li>Hard-to-manage configurations</li>
+</ul>
+<p>You need a single entry point.</p>
+<h2 id="the-solution">The Solution</h2>
+<p><strong>Ingress</strong> provides HTTP/HTTPS routing to Services.</p>
+<p>It enables:</p>
+<ul>
+<li>Host-based routing (example.com, api.example.com)</li>
+<li>Path-based routing (/api, /web)</li>
+<li>TLS termination</li>
+<li>Centralized external access</li>
+</ul>
+<p>Ingress defines the rules.</p>
+<p>An Ingress Controller enforces them.</p>
+<h2 id="important-distinction">Important Distinction</h2>
+<p>Ingress Resource:</p>
+<ul>
+<li>Declarative routing rules</li>
+</ul>
+<p>Ingress Controller:</p>
+<ul>
+<li>Actual implementation of routing</li>
+<li>Reverse proxy + load balancer</li>
+</ul>
+<p>Without a controller, Ingress does nothing.</p>
+<p>Common controllers:</p>
+<ul>
+<li>NGINX</li>
+<li>Traefik</li>
+<li>HAProxy</li>
+</ul>
+<h2 id="how-it-works">How It Works</h2>
+<p>Client → Ingress Controller → Service → Pods</p>
+<p>The controller:</p>
+<ol>
+<li>Receives external HTTP/HTTPS traffic</li>
+<li>Matches host/path rules</li>
+<li>Routes traffic to the correct Service</li>
+<li>Optionally handles TLS termination</li>
+</ol>
+<p>Ingress operates at Layer 7 (HTTP).</p>
+<h2 id="routing-types">Routing Types</h2>
+<p>Host-based routing:</p>
+<ul>
+<li>api.example.com → api-service</li>
+<li>web.example.com → web-service</li>
+</ul>
+<p>Path-based routing:</p>
+<ul>
+<li>example.com/api → api-service</li>
+<li>example.com/web → web-service</li>
+</ul>
+<p>This allows multiple services behind one domain.</p>
+<h2 id="tls-termination">TLS Termination</h2>
+<p>Ingress can:</p>
+<ul>
+<li>Terminate HTTPS</li>
+<li>Manage certificates</li>
+<li>Redirect HTTP → HTTPS</li>
+</ul>
+<p>Centralizing TLS simplifies security management.</p>
+<p>Without Ingress, each Service would need its own TLS handling.</p>
+<h2 id="when-not-to-use-ingress">When NOT to Use Ingress</h2>
+<ul>
+<li>Non-HTTP protocols</li>
+<li>Internal-only communication</li>
+<li>Simple single-service exposure (LoadBalancer may be enough)</li>
+</ul>
+<p>Ingress is for HTTP traffic management.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Service = internal load balancing<br />
+Ingress = external HTTP routing layer  </p>
+<p>Service handles Pod distribution.<br />
+Ingress handles external traffic direction.</p>
+<p>They solve different layers of networking.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Creating Ingress without installing a controller</li>
+<li>Exposing sensitive services publicly</li>
+<li>Misconfiguring TLS secrets</li>
+<li>Forgetting DNS configuration</li>
+</ul>
+<p>Ingress depends on DNS + controller + Service configuration.</p>
 <h2 id="check-your-knowledge">Check your knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
 What is the main purpose of Ingress in Kubernetes?
-
 - [x] Expose HTTP/HTTPS routes to Services
 - [ ] Store persistent data
 - [ ] Schedule Pods
@@ -1590,14 +1901,14 @@ What is the main purpose of Ingress in Kubernetes?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: An Ingress resource defines [[routing rules]] and [[TLS settings]] for external traffic.
+Fill in the blank: An Ingress resource defines [[routing rules]] and [[TLS configuration]] for external traffic.
 </quiz>
 -->
 <div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        Fill in the blank: An Ingress resource defines <input type="text" class="quiz-blank-input" id="quiz-1-blank-0" data-answer="routing rules" autocomplete="off" size="15"> and <input type="text" class="quiz-blank-input" id="quiz-1-blank-1" data-answer="TLS settings" autocomplete="off" size="14"> for external traffic.
+        Fill in the blank: An Ingress resource defines <input type="text" class="quiz-blank-input" id="quiz-1-blank-0" data-answer="routing rules" autocomplete="off" size="15"> and <input type="text" class="quiz-blank-input" id="quiz-1-blank-1" data-answer="TLS configuration" autocomplete="off" size="19"> for external traffic.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
@@ -1609,7 +1920,6 @@ Fill in the blank: An Ingress resource defines [[routing rules]] and [[TLS setti
 <!-- mkdocs-quiz-source
 <quiz>
 Scenario: You need to expose multiple services on the same domain with different paths. Which resource should you use?
-
 - [x] Ingress
 - [ ] NodePort
 - [ ] Service
@@ -1633,7 +1943,6 @@ Scenario: You need to expose multiple services on the same domain with different
 <!-- mkdocs-quiz-source
 <quiz>
 Which of the following require an Ingress Controller? (multiple correct)
-
 - [x] NGINX
 - [x] Traefik
 - [x] HAProxy
@@ -1658,7 +1967,6 @@ Which of the following require an Ingress Controller? (multiple correct)
 <!-- mkdocs-quiz-source
 <quiz>
 True or false: Ingress can handle SSL/TLS termination.
-
 - [x] True
 - [ ] False
 </quiz>
@@ -1680,7 +1988,6 @@ True or false: Ingress can handle SSL/TLS termination.
 <!-- mkdocs-quiz-source
 <quiz>
 Scenario: You have a Service running on `/api` and another on `/web`. You want both accessible via `example.com`. How do you configure?
-
 - [x] Use an Ingress with path-based routing
 - [ ] Expose each Service via NodePort
 - [ ] Create two Deployments
@@ -1699,7 +2006,13 @@ Scenario: You have a Service running on `/api` and another on `/web`. You want b
 
     </form>
     <section class="content hidden"></section>
-</div><style type="text/css">.quiz {
+</div>
+
+<h2 id="references">References</h2>
+<ul>
+<li>Kubernetes Documentation – Ingress  </li>
+<li>Kubernetes Networking Deep Dive – CNCF</li>
+</ul><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
