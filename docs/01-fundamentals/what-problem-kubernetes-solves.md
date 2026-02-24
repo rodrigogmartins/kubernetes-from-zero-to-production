@@ -6,79 +6,168 @@ quiz:
 
 # What Problem Kubernetes Solves
 
-Kubernetes exists to **solve the challenges of running containers at scale**.
+## The Problem
 
-Containers alone provide process isolation, but they **do not solve deployment, scaling, or networking problems**. Running containers manually quickly becomes complex as you add more applications and nodes.
+Containers revolutionized application packaging.
 
-## Problems Containers Have
+They provide:
 
-- Containers are **ephemeral** — they can disappear at any time
-- Containers have **dynamic IPs** and no built-in service discovery
-- Containers do not **self-heal** — if a container crashes, nothing restarts it
-- Containers have no **declarative desired state** — you must manually keep track of what should be running
-- Scaling containers manually is error-prone and time-consuming
+- Process isolation
+- Consistent runtime environments
+- Lightweight deployment units
 
-## How Kubernetes Solves These Problems
+But containers alone do not solve distributed system challenges.
 
-Kubernetes introduces **higher-level abstractions** that manage containers indirectly:
+As you scale to multiple applications and nodes, problems emerge:
 
-- **Pods** — group containers together and give them a shared network and storage
+- Containers are ephemeral
+- IP addresses change
+- There is no built-in service discovery
+- Failed containers are not automatically replaced
+- Scaling must be done manually
+- There is no central desired state management
+
+Managing containers manually at scale becomes operationally complex and error-prone.
+
+You need orchestration.
+
+## The Solution
+
+Kubernetes solves the challenges of running containers at scale by introducing higher-level abstractions.
+
+Instead of managing containers directly, Kubernetes manages them indirectly through structured resources.
+
+Key abstractions:
+
+- **Pods** — group containers into schedulable units with shared networking and storage
 - **Controllers** — ensure the desired number of Pods are running
+- **Deployments** — manage rolling updates and rollbacks
 - **Services** — provide stable networking and service discovery
-- **Deployments** — handle rolling updates and rollbacks
 - **Ingress** — manage external HTTP/S access
 
-Kubernetes lets you **declare the desired state**, and the system continuously works to match reality to that state.  
+You declare the desired state.
+
+Kubernetes continuously works to match reality to that declaration.
+
+## Declarative Model
+
+Traditional model:
+
+- Manually start containers
+- Manually monitor
+- Manually restart
+- Manually scale
+
+Kubernetes model:
+
+1. Declare what you want
+2. The system observes the current state
+3. Controllers reconcile differences automatically
+
+This is the foundation of automation and reliability.
+
+## Core Problems Kubernetes Addresses
+
+### Ephemeral Workloads
+
+Pods can disappear.
+Kubernetes recreates them automatically.
+
+---
+
+### Dynamic Networking
+
+Pod IPs change.
+Services provide stable endpoints.
+
+---
+
+### Lack of Self-Healing
+
+Containers crash.
+Controllers create replacements.
+
+---
+
+### Manual Scaling
+
+Operators previously scaled containers manually.
+Deployments allow replica counts to be declared and enforced automatically.
 
 ## Mental Model
 
-Think of Kubernetes as a **control loop system**:
+Containers = execution units  
+Kubernetes = orchestration system  
 
-1. You declare *what you want* (desired state)
-2. Kubernetes continuously checks the current state
-3. It reconciles differences by creating, updating, or deleting resources
+Kubernetes treats containers as **cattle, not pets**.
 
-> “Kubernetes treats containers as cattle, not pets.”
+- Replaceable
+- Disposable
+- Automatically managed
 
-## Check Your Knowledge
+You manage intent.
+Kubernetes manages execution.
+
+## Common Misunderstandings
+
+- Kubernetes does not build container images
+- Kubernetes does not write application code
+- Kubernetes does not eliminate the need for monitoring
+- Kubernetes does not make applications inherently fault-tolerant
+
+It provides orchestration, not magic.
+
+## Check your knowledge
 
 <quiz>
-Which of the following are problems Kubernetes solves? (select all that apply)
-- [x] Scaling containers automatically
-- [x] Self-healing failed containers
-- [x] Stable networking between ephemeral Pods
-- [ ] Automatically building container images
+Which of the following problems does Kubernetes solve? (multiple correct)
+- [x] Automatic scaling of containers
+- [x] Self-healing failed workloads
+- [x] Stable networking for ephemeral Pods
+- [ ] Building container images automatically
 - [ ] Writing application code
 </quiz>
 
 <quiz>
-Containers are ephemeral. This means:
+What does it mean that containers are ephemeral?
 - [x] They can be replaced at any time
-- [x] IP addresses may change
-- [ ] They store persistent state by default
-- [ ] They automatically restart on all failures
+- [x] Their IP addresses may change
+- [ ] They permanently store state by default
+- [ ] They guarantee automatic restart without orchestration
 </quiz>
 
 <quiz>
-In Kubernetes, the desired state is:
+In Kubernetes, the desired state represents:
 - [x] A declaration of what should be running
-- [ ] A log of what is currently running
-- [ ] A single container instance
-- [ ] A node configuration file
+- [ ] A snapshot of node CPU usage
+- [ ] A running container instance
+- [ ] A backup file
 </quiz>
 
 <quiz>
-Fill the blank: Kubernetes treats containers as [[cattle]] not [[pets]].
+Fill in the blank: Kubernetes treats containers as [[cattle]] not [[pets]].
 </quiz>
 
 <quiz>
-Which abstraction provides stable networking and service discovery?
+Which Kubernetes abstraction provides stable networking and service discovery?
 - [x] Service
 - [ ] Pod
 - [ ] ReplicaSet
-- [ ] Deployment
+- [ ] Node
 </quiz>
 
-## References
+<quiz>
+Which resource is responsible for managing rolling updates?
+- [x] Deployment
+- [ ] Pod
+- [ ] Service
+- [ ] Container runtime
+</quiz>
 
-- [**The Kubernetes Book - Nigel Poulton**](https://www.amazon.com.br/Kubernetes-Book-Nigel-Poulton/dp/1916585000)
+<quiz>
+Why is manual container scaling considered problematic at scale?
+- [x] It is error-prone and time-consuming
+- [ ] It improves resilience
+- [ ] It eliminates the need for controllers
+- [ ] It guarantees high availability
+</quiz>

@@ -6,64 +6,159 @@ quiz:
 
 # Control Plane vs Data Plane
 
-Kubernetes architecture is split into two main layers:
+## The Problem
 
-- **Control Plane** — responsible for cluster-wide decisions  
-- **Data Plane** — responsible for running workloads
+In a distributed system, responsibilities must be clearly separated.
+
+Kubernetes must:
+
+- Decide where workloads should run
+- Store cluster state reliably
+- Enforce desired configuration
+- Execute containers on nodes
+- Maintain networking between workloads
+
+If decision-making and workload execution were mixed together, the system would be unstable and hard to scale.
+
+You need architectural separation.
+
+## The Solution
+
+Kubernetes separates responsibilities into two layers:
+
+- **Control Plane** — makes decisions and manages cluster state
+- **Data Plane** — runs workloads and handles execution
+
+This separation enables scalability, reliability, and clear operational boundaries.
 
 ## Control Plane
 
-Components:
+The control plane is the brain of the cluster.
 
-- **kube-apiserver** — exposes Kubernetes API  
-- **etcd** — stores cluster state  
-- **kube-scheduler** — decides which node a Pod should run on  
-- **kube-controller-manager** — enforces desired state
+It:
 
-The control plane ensures the cluster matches the **desired state** you declare.
+- Receives API requests
+- Stores desired and current state
+- Schedules workloads
+- Enforces declared configuration
+
+### Core Components
+
+- **kube-apiserver** — exposes the Kubernetes API
+- **etcd** — persistent key-value store for cluster state
+- **kube-scheduler** — assigns Pods to nodes
+- **kube-controller-manager** — reconciles desired vs current state
+
+The control plane ensures the cluster matches the declared desired state.
+
+It does not run application containers.
 
 ## Data Plane
 
-Components:
+The data plane is responsible for execution.
 
-- **kubelet** — runs Pods on each node  
-- **kube-proxy** — handles networking for Pods  
-- **Container runtime** — executes containers (Docker, containerd)
+It:
 
-Data plane nodes **execute workloads** and report back to the control plane.
+- Runs application workloads
+- Maintains node-level networking
+- Reports status back to the control plane
 
-## Quiz
+### Core Components
+
+- **kubelet** — ensures Pods are running on a node
+- **kube-proxy** — manages networking rules for Services
+- **Container runtime** — executes containers (e.g., containerd)
+
+Data plane nodes execute workloads but do not make cluster-wide decisions.
+
+## How They Interact
+
+1. A user submits a Pod definition.
+2. The control plane stores it in etcd.
+3. The scheduler assigns it to a node.
+4. The kubelet on that node starts the container.
+5. The node reports status back to the control plane.
+
+Control plane decides.
+Data plane executes.
+
+## Mental Model
+
+Control Plane = brain  
+Data Plane = workers  
+
+Control plane defines *what should happen*.  
+Data plane performs *what is required*.
+
+## What Each Layer Does NOT Do
+
+Control Plane does not:
+
+- Run application containers
+- Handle node-level execution
+
+Data Plane does not:
+
+- Decide scheduling across cluster
+- Store cluster-wide state
+
+Clear separation prevents architectural confusion.
+
+## Common Mistakes
+
+- Thinking kubelet is part of the control plane
+- Assuming scheduler runs containers
+- Confusing kube-proxy with API server
+- Believing etcd runs workloads
+
+Understand the boundary between decision and execution.
+
+## Check your knowledge
 
 <quiz>
-Which component of the control plane decides where Pods are scheduled?
-- [x] kube-scheduler
+Which layer of Kubernetes is responsible for making cluster-wide scheduling decisions?
+- [x] Control Plane
+- [ ] Data Plane
+</quiz>
+
+<quiz>
+Which component stores the cluster’s desired and current state?
+- [x] etcd
 - [ ] kubelet
 - [ ] kube-proxy
-- [ ] etcd
+- [ ] container runtime
 </quiz>
 
 <quiz>
-What is the role of kubelet?
-- [x] Ensures Pods run on a node according to the specification
-- [ ] Stores cluster state
-- [ ] Manages rolling updates
-- [ ] Routes external traffic
-</quiz>
-
-<quiz>
-Fill the blank: The [[control plane]] manages the cluster, while the [[data plane]] runs workloads.
-</quiz>
-
-<quiz>
-kube-proxy is part of:
-- [x] Data Plane
-- [ ] Control Plane
-</quiz>
-
-<quiz>
-Which of these are control plane components? (select all that apply)
-- [x] kube-apiserver
-- [x] kube-controller-manager
+Which component is responsible for assigning Pods to nodes?
 - [x] kube-scheduler
+- [ ] kube-controller-manager
 - [ ] kubelet
+- [ ] kube-proxy
+</quiz>
+
+<quiz>
+The kubelet runs on:
+- [x] Data plane nodes
+- [ ] Only the control plane
+- [ ] etcd servers
+- [ ] External load balancers
+</quiz>
+
+<quiz>
+Fill in the blank: The [[control plane]] manages desired state, while the [[data plane]] executes workloads.
+</quiz>
+
+<quiz>
+Which of the following are data plane components? (multiple correct)
+- [x] kubelet
+- [x] kube-proxy
+- [x] Container runtime
+- [ ] kube-scheduler
+</quiz>
+
+<quiz>
+True or false: The control plane directly runs application containers.
+- [ ] True
+- [x] False
 </quiz>
