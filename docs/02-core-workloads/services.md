@@ -8,180 +8,139 @@ quiz:
 
 ## The Problem
 
-Pods are ephemeral.
+Pods are ephemeral:
 
-When a Pod:
+- They are recreated
+- Their IPs change
+- They scale dynamically
 
-- Is recreated
-- Crashes
-- Is rescheduled
-- Moves to another node
+Directly connecting to Pod IPs creates fragile systems.
 
-Its IP address changes.
+Applications need:
 
-If clients connect directly to Pod IPs:
-
-Your application breaks the moment a Pod is replaced.
-
-You need stable service discovery.
+- A stable endpoint
+- Built-in load balancing
+- Decoupling from Pod lifecycle
 
 ## The Solution
 
 A **Service** provides:
 
-- A stable virtual IP
-- DNS name
+- A stable virtual IP (ClusterIP)
+- A DNS name
 - Load balancing across matching Pods
 
-Clients connect to the Service.
+Clients communicate with the Service.
 The Service routes traffic to healthy Pods.
 
-Pods can come and go.
-The Service endpoint remains stable.
+Pods can change.
+The Service endpoint does not.
 
-## How It Works
+## Service Types (When to Use Each)
 
-Service:
+### ClusterIP (Default)
 
-- Uses label selectors to match Pods
-- Maintains a list of endpoints
-- Distributes traffic across them
-
-Flow:
-
-Client → Service → Pod
-
-Service abstracts Pod lifecycle instability.
-
-## Service Types
-
-### ClusterIP (default)
-
-- Internal access only
-- Accessible inside the cluster
+- Internal-only access
+- Used for microservice-to-microservice communication
 - Most common type
 
-Use for internal microservices.
+Use when:
+Internal services must communicate reliably.
 
 ---
 
 ### NodePort
 
-- Exposes the Service on each node
-- Uses a static port
-- Accessible externally via NodeIP:NodePort
+- Exposes the Service on every node
+- Accessible via `<NodeIP>:NodePort`
 
-Simple but not ideal for production-scale routing.
+Use when:
+- Testing
+- Simple on-prem exposure
+- No cloud load balancer available
 
 ---
 
 ### LoadBalancer
 
-- Integrates with cloud provider
-- Creates external load balancer
-- Assigns public IP
+- Creates an external cloud load balancer
+- Exposes Service publicly
 
-Production-ready for cloud environments.
+Use when:
+- Public production workloads
+- Cloud environments
 
 ---
 
 ### ExternalName
 
-- Maps Service to external DNS name
+- Maps Service to external DNS
 - No proxying
-- DNS-level alias
 
-Used to connect to external systems.
+Use when:
+- Connecting to external systems
+- Migrating legacy services
 
 ## What Services Do NOT Do
 
 Services do not:
 
 - Create Pods
-- Manage scaling
-- Perform rolling updates
+- Perform scaling
+- Manage rollouts
 - Guarantee application health
 
-They route traffic.
+They provide stable connectivity.
 
-Controllers manage lifecycle.
+## Design Principle
 
-## Services and Scaling
-
-When Pods scale up or down:
-
-- Service automatically updates endpoints
-- Traffic continues flowing
-
-Clients never need to know how many Pods exist.
-
-This is decoupling in practice.
-
-## Mental Model
-
-Pod = execution unit  
-ReplicaSet/Deployment = lifecycle  
-Service = stable access + load balancing  
-
-Services isolate clients from infrastructure churn.
-
-## Common Mistakes
-
-- Hardcoding Pod IPs
-- Exposing everything as NodePort
-- Confusing Service with Ingress
-- Forgetting label selector alignment
-
-A Service with incorrect selectors routes to nothing.
-
-Labels must match.
+Service = Stable access layer  
+Deployment = Lifecycle management  
+Pod = Execution unit  
 
 ## Check your knowledge
 
 <quiz>
-What problem do Kubernetes Services solve?
-- [x] Pod IPs are ephemeral, so services provide stable endpoints
-- [ ] Pods cannot communicate with containers
-- [ ] Nodes are replaced automatically
-- [ ] ReplicaSets manage DNS
+A company runs a Deployment with multiple Pods behind a Service. During rolling updates, Pod IPs change. Clients continue accessing the application without interruption. What ensures this behavior?
+
+- [x] The Service provides a stable virtual IP and updates endpoints automatically
+- [ ] The Pods retain their original IP addresses
+- [ ] The Deployment rewrites DNS records
+- [ ] kube-scheduler pins Pods to the same node
 </quiz>
 
 <quiz>
-Fill in the blank: ClusterIP, NodePort, LoadBalancer, and ExternalName are [[types]] of Services.
-</quiz>
+A startup deploys an internal API consumed only by other services inside the cluster. The API must not be exposed externally. Which Service type should be used?
 
-<quiz>
-Scenario: You have multiple Pods behind a service and want traffic balanced automatically. Which resource handles this?
-- [x] Service
-- [ ] Deployment
-- [ ] ReplicaSet
-- [ ] StatefulSet
-</quiz>
-
-<quiz>
-Which of these are valid Service types? (multiple correct)
 - [x] ClusterIP
-- [x] NodePort
+- [ ] NodePort
+- [ ] LoadBalancer
+- [ ] ExternalName
+</quiz>
+
+<quiz>
+An application running in a cloud environment must be accessible from the public internet with minimal operational overhead. Which Service type is most appropriate?
+
 - [x] LoadBalancer
-- [x] ExternalName
-- [ ] Sidecar
+- [ ] ClusterIP
+- [ ] NodePort
+- [ ] Headless Service
 </quiz>
 
 <quiz>
-True or false: Services are required to reach Pods inside the cluster.
-- [ ] True
-- [x] False
+A team exposes a Service but traffic does not reach any Pods. What is the MOST likely cause?
+
+- [x] The Service selector does not match Pod labels
+- [ ] The Deployment replica count is too high
+- [ ] The Pods are using localhost incorrectly
+- [ ] The container image is outdated
 </quiz>
 
 <quiz>
-Scenario: You delete a Pod behind a Service. What happens?
-- [x] The Service redirects traffic to the remaining Pods
-- [ ] The Service stops working
-- [ ] The Service creates a new Pod
-- [ ] The Deployment must be updated
+After scaling a Deployment from 3 to 10 Pods, traffic automatically distributes across all Pods. What Kubernetes feature enables this?
+
+- [x] Service endpoint updates
+- [ ] Manual DNS modification
+- [ ] Static IP assignment
+- [ ] Node affinity rules
 </quiz>
-
-## References
-
-- Kubernetes Documentation – Services  
-- Kubernetes Networking Deep Dive – CNCF
