@@ -4,190 +4,121 @@ quiz:
   shuffle_answers: true
 ---
 
-# Kubernetes Services
+# Services – Networking Deep Dive
 
-## What Problem Services Solve
+## Internal Architecture
 
-Pods are ephemeral:
+A Service is implemented using:
 
-- They are recreated
-- Their IP addresses change
-- They scale up and down
+- ClusterIP (virtual IP)
+- Endpoints / EndpointSlices
+- kube-proxy (data plane programming)
+- iptables or IPVS rules
 
-Directly connecting to Pod IPs is unreliable.
+Service routing is not magic.
+It is programmed network rules.
 
-Applications need:
+## Traffic Flow
 
-- A stable endpoint
-- Automatic load balancing
-- Service discovery
+Client → ClusterIP  
+ClusterIP → kube-proxy rules  
+kube-proxy → Pod IP  
 
-Kubernetes Services provide that abstraction.
+kube-proxy watches the API server and:
 
-## How Services Work
+- Updates routing rules when Pods scale
+- Removes failed Pod endpoints
+- Distributes traffic across healthy backends
 
-A Service:
+## EndpointSlices
 
-- Gets a stable virtual IP (ClusterIP)
-- Gets a DNS name
-- Selects Pods via labels
-- Load-balances traffic across matching Pods
+Modern Kubernetes uses:
 
-Even if Pods are recreated:
+- EndpointSlices instead of a single Endpoints object
+- Improves scalability
+- Reduces API server load
 
-- The Service IP does not change
-- Endpoints are updated automatically
-- Clients continue using the same DNS name
+Critical in large clusters.
 
-kube-proxy programs the data plane to route traffic correctly.
+## Data Plane Implementation
 
-## Core Concepts
+kube-proxy modes:
 
-### 1. ClusterIP (Default)
+- iptables
+- IPVS
 
-- Internal-only access
-- Reachable inside the cluster
-- Most common type
-- Foundation for other Service types
+IPVS is more scalable and performant for large environments.
 
-Used for internal microservices communication.
+## NodePort Internals
 
----
+NodePort:
 
-### 2. NodePort
+- Allocates port (30000–32767 by default)
+- Opens that port on every node
+- Routes traffic to ClusterIP internally
 
-- Exposes the Service on every node’s IP
-- Allocates a port from a defined range
-- Accessible externally via: `<NodeIP>:<NodePort>`
-
-Useful for:
-
-- Testing
-- Simple external exposure
-- On-prem environments
-
-Requires firewall rules to allow traffic.
-
----
-
-### 3. LoadBalancer
-
-- Integrates with cloud providers
-- Provisions an external load balancer
-- Routes traffic to NodePorts internally
-
-Common in:
-
-- Cloud production deployments
-- Public-facing applications
-
----
-
-### 4. ExternalName
-
-- Maps a Service to an external DNS name
-- No proxying
-- DNS-level alias only
-
-Used for:
-
-- External databases
-- Third-party APIs
-
----
-
-### 5. Service Selectors
-
-A Service targets Pods using:
-
-- Pod labels (primary mechanism)
-- Namespace scoping
-
-When scaling:
-
-- New Pods matching labels are automatically included
-- Removed Pods are automatically excluded
-
-This makes Services dynamic and self-updating.
-
-## Mental Model
-
-Think of a Service as:
-
-- A stable front door
-- Behind it: rotating Pods
-- Clients don’t care which Pod responds
-
-Services provide:
-
-- Stability
-- Discovery
-- Load balancing
-- Decoupling between consumers and producers
+LoadBalancer builds on NodePort.
 
 ## Common Failure Scenarios
 
-- Service exists but no matching Pods → empty endpoints
-- NodePort unreachable → firewall blocking
-- kube-proxy not running → routing rules missing
-- Selector mismatch → Service not targeting intended Pods
-- Cloud LoadBalancer pending → provider integration issue
+1. Service has no endpoints  
+   → Selector mismatch  
 
-Debug path:
+2. NodePort unreachable  
+   → Firewall blocking  
 
-1. Check Service
-2. Check Endpoints
-3. Check Pod labels
-4. Check kube-proxy
-5. Check network/firewall
+3. Traffic not routing  
+   → kube-proxy not running  
 
-## Check Your Knowledge
+4. High latency  
+   → iptables scaling issue  
+
+## Debug Strategy
+
+1. kubectl get svc  
+2. kubectl get endpoints / endpointslices  
+3. Check Pod labels  
+4. Check kube-proxy logs  
+5. Verify node firewall rules  
+
+## Check Your Knowledge (AWS-style)
 
 <quiz>
-Why does a Service remain reachable even when Pods are recreated?
-- [x] The Service IP is stable
-- [x] Endpoints update automatically
-- [ ] Pod IPs never change
-- [ ] DNS entries are static
+A Service is created but shows no endpoints. Pods are running successfully. What is the MOST likely cause?
+
+- [x] The Service selector does not match Pod labels
+- [ ] kube-proxy is running in IPVS mode
+- [ ] The Pods are using host networking
+- [ ] The cluster DNS is misconfigured
 </quiz>
 
 <quiz>
-Which Service type exposes an application externally using a cloud provider?
-- [x] LoadBalancer
-- [ ] ClusterIP
-- [ ] ExternalPod
-- [ ] PersistentService
+An organization runs a large cluster with thousands of Services and experiences performance issues in service routing. Which kube-proxy mode provides better scalability?
+
+- [x] IPVS
+- [ ] iptables
+- [ ] hostNetwork
+- [ ] bridge mode
 </quiz>
 
 <quiz>
-Scenario: You create a Service but it has no endpoints. What is the most likely cause?
-- [x] No Pods match the selector
-- [ ] kube-scheduler failure
-- [ ] etcd corruption
-- [ ] DNS misconfiguration
+A LoadBalancer Service is created in a cloud environment. Which underlying mechanism enables external traffic routing to Pods?
+
+- [x] NodePort combined with a cloud provider load balancer
+- [ ] Direct Pod IP exposure
+- [ ] Ingress Controller
+- [ ] StatefulSet routing
 </quiz>
 
 <quiz>
-Which statement about NodePort is correct?
-- [x] It opens a port on every node
-- [ ] It assigns a new Pod IP
-- [ ] It works only inside the cluster
-- [ ] It replaces kube-proxy
+After scaling a Deployment, new Pods are not receiving traffic. kube-proxy is running. What should be checked first?
+
+- [x] Whether the new Pods match the Service selector
+- [ ] Whether etcd is healthy
+- [ ] Whether the node OS is updated
+- [ ] Whether CoreDNS restarted
 </quiz>
 
 <quiz>
-Fill in the blank: Services select backend Pods using [[labels]].
+Fill in the blank: kube-proxy programs the cluster data plane using [[iptables]] or [[IPVS]].
 </quiz>
-
-<quiz>
-Scenario: After scaling a Deployment, traffic automatically distributes across new Pods. What enables this?
-- [x] kube-proxy updating Service endpoints
-- [ ] Manual DNS reconfiguration
-- [ ] Static IP reassignment
-- [ ] Node reboot
-</quiz>
-
-## References
-
-- Kubernetes Documentation – Services  
-- The Kubernetes Book – Nigel Poulton
