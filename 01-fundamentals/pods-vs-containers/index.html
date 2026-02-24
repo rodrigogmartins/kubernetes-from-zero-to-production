@@ -525,6 +525,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-differences" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -536,10 +558,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quiz" class="md-nav__link">
+  <a href="#single-vs-multi-container-pods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quiz
+        Single vs Multi-Container Pods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your knowledge
       
     </span>
   </a>
@@ -1505,6 +1571,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Problem
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Solution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-differences" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1516,10 +1604,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quiz" class="md-nav__link">
+  <a href="#single-vs-multi-container-pods" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quiz
+        Single vs Multi-Container Pods
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shared Environment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your knowledge
       
     </span>
   </a>
@@ -1581,7 +1713,30 @@
 
 
 <h1 id="pods-vs-containers">Pods vs Containers</h1>
-<p>While containers are the smallest deployable unit, <strong>Pods are the smallest schedulable unit</strong> in Kubernetes.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>Containers package applications and their dependencies.</p>
+<p>But in a cluster environment, Kubernetes must decide:</p>
+<ul>
+<li>Where workloads run</li>
+<li>How containers share networking</li>
+<li>How tightly coupled processes operate together</li>
+<li>What unit should be scheduled onto nodes</li>
+</ul>
+<p>Containers alone are not ideal scheduling boundaries.</p>
+<p>You need a higher-level execution unit.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>Kubernetes introduces <strong>Pods</strong>.</p>
+<p>While a container is the smallest deployable artifact,<br />
+a <strong>Pod is the smallest schedulable unit</strong>.</p>
+<p>Pods wrap one or more containers and provide:</p>
+<ul>
+<li>Shared networking</li>
+<li>Shared storage</li>
+<li>Unified lifecycle</li>
+<li>A single scheduling boundary</li>
+</ul>
+<p>Containers run.
+Pods are scheduled.</p>
 <h2 id="key-differences">Key Differences</h2>
 <table>
 <thead>
@@ -1594,51 +1749,89 @@
 <tbody>
 <tr>
 <td>Scheduling</td>
-<td>Not schedulable</td>
-<td>Schedulable unit</td>
+<td>Not scheduled directly</td>
+<td>Scheduled onto nodes</td>
 </tr>
 <tr>
 <td>Networking</td>
-<td>Own namespace</td>
-<td>Shared among containers in Pod</td>
+<td>Own network namespace (alone)</td>
+<td>Shared among containers in the Pod</td>
 </tr>
 <tr>
 <td>Lifecycle</td>
-<td>Manual</td>
-<td>Managed by controllers</td>
+<td>Managed by container runtime</td>
+<td>Managed through Kubernetes controllers</td>
 </tr>
 <tr>
 <td>Scaling</td>
 <td>Manual</td>
-<td>Controlled via ReplicaSets or Deployments</td>
+<td>Controlled via Deployments/ReplicaSets</td>
 </tr>
 </tbody>
 </table>
-<p>Pods <strong>wrap one or more containers</strong> to provide:</p>
+<p>Kubernetes never schedules individual containers.
+It schedules Pods.</p>
+<h2 id="single-vs-multi-container-pods">Single vs Multi-Container Pods</h2>
+<p>Most Pods run:</p>
 <ul>
-<li>Shared networking</li>
-<li>Shared storage</li>
-<li>Lifecycle management</li>
+<li>A single container</li>
 </ul>
-<p>Most Pods run a single container. Multi-container Pods use the <strong>sidecar pattern</strong> for closely coupled workloads.</p>
-<h2 id="quiz">Quiz</h2>
+<p>Why?</p>
+<ul>
+<li>Simpler scaling</li>
+<li>Clear ownership</li>
+<li>Easier debugging</li>
+</ul>
+<p>Multi-container Pods are used when containers are tightly coupled.</p>
+<p>Common example:</p>
+<ul>
+<li><strong>Sidecar pattern</strong></li>
+<li>Logging agent</li>
+<li>Proxy</li>
+<li>Metrics collector</li>
+</ul>
+<p>If containers need independent scaling, they should not share a Pod.</p>
+<h2 id="shared-environment">Shared Environment</h2>
+<p>Containers inside a Pod:</p>
+<ul>
+<li>Share the same IP address</li>
+<li>Communicate using <code>localhost</code></li>
+<li>Can share volumes</li>
+<li>Start and stop together</li>
+</ul>
+<p>This design enables close cooperation between containers.</p>
+<p>It is intentional coupling.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>Container = process<br />
+Pod = execution boundary<br />
+Controller = lifecycle manager  </p>
+<p>Pods define how containers live together in a cluster.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Thinking Kubernetes schedules containers directly</li>
+<li>Overusing multi-container Pods</li>
+<li>Trying to scale containers independently inside one Pod</li>
+<li>Treating Pods as persistent infrastructure</li>
+</ul>
+<p>Pods are execution units, not independent infrastructure components.</p>
+<h2 id="check-your-knowledge">Check your knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-Pods are the smallest:
+In Kubernetes, what is the smallest schedulable unit?
 - [ ] Container
-- [x] Schedulable unit
+- [x] Pod
 - [ ] Deployment
-- [ ] Service
+- [ ] Node
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>Pods are the smallest:</p>
+        <p>In Kubernetes, what is the smallest schedulable unit?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" ><label for="quiz-0-0">Container</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" correct><label for="quiz-0-1">Schedulable unit</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Deployment</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Service</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" ><label for="quiz-0-0">Container</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" correct><label for="quiz-0-1">Pod</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Deployment</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">Node</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1647,21 +1840,21 @@ Pods are the smallest:
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which of the following are reasons to use multi-container Pods? (select all that apply)
-- [x] Share localhost networking
-- [x] Share storage volumes
-- [ ] Independent scaling of containers
-- [ ] Reduce node count
+Why does Kubernetes use Pods instead of scheduling containers directly?
+- [x] To provide a shared execution boundary
+- [x] To group tightly coupled containers
+- [ ] To eliminate container runtimes
+- [ ] To assign multiple IPs per container
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Which of the following are reasons to use multi-container Pods? (select all that apply)</p>
+        <p>Why does Kubernetes use Pods instead of scheduling containers directly?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">Share localhost networking</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">Share storage volumes</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">Independent scaling of containers</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">Reduce node count</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">To provide a shared execution boundary</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">To group tightly coupled containers</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">To eliminate container runtimes</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">To assign multiple IPs per container</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1670,14 +1863,14 @@ Which of the following are reasons to use multi-container Pods? (select all that
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill the blank: A Pod can contain [[one]] or more [[containers]] that share [[network]] and [[storage]].
+Fill in the blank: A Pod can contain [[one]] or more [[containers]] that share [[network]] and [[storage]].
 </quiz>
 -->
 <div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        Fill the blank: A Pod can contain <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="one" autocomplete="off" size="5"> or more <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="containers" autocomplete="off" size="12"> that share <input type="text" class="quiz-blank-input" id="quiz-2-blank-2" data-answer="network" autocomplete="off" size="9"> and <input type="text" class="quiz-blank-input" id="quiz-2-blank-3" data-answer="storage" autocomplete="off" size="9">.
+        Fill in the blank: A Pod can contain <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="one" autocomplete="off" size="5"> or more <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="containers" autocomplete="off" size="12"> that share <input type="text" class="quiz-blank-input" id="quiz-2-blank-2" data-answer="network" autocomplete="off" size="9"> and <input type="text" class="quiz-blank-input" id="quiz-2-blank-3" data-answer="storage" autocomplete="off" size="9">.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
@@ -1688,19 +1881,42 @@ Fill the blank: A Pod can contain [[one]] or more [[containers]] that share [[ne
 
 <!-- mkdocs-quiz-source
 <quiz>
-Most Pods run:
-- [x] A single container
-- [ ] Multiple unrelated containers
+Which of the following are valid reasons to use a multi-container Pod? (multiple correct)
+- [x] Containers need to share localhost networking
+- [x] Containers need to share storage volumes
+- [ ] Containers must scale independently
+- [ ] Containers are unrelated applications
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Most Pods run:</p>
+        <p>Which of the following are valid reasons to use a multi-container Pod? (multiple correct)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">A single container</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">Multiple unrelated containers</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Containers need to share localhost networking</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Containers need to share storage volumes</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">Containers must scale independently</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">Containers are unrelated applications</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+        <button type="submit" class="quiz-button">Submit</button>
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Most Pods in production environments run:
+- [x] A single container
+- [ ] Multiple unrelated containers
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
+    <a href="#quiz-4" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 5</h4>
+    <div class="quiz-question">
+        <p>Most Pods in production environments run:</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">A single container</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">Multiple unrelated containers</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1709,22 +1925,44 @@ Most Pods run:
 
 <!-- mkdocs-quiz-source
 <quiz>
-Why do Pods exist in Kubernetes?
-- [x] To group containers and provide a shared execution environment
-- [x] To serve as the unit of scheduling
-- [ ] To replace nodes
+True or false: Kubernetes schedules individual containers directly onto nodes.
+- [ ] True
+- [x] False
 </quiz>
 -->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
-    <a href="#quiz-4" class="quiz-header-link">#</a>
-    <h4 class="quiz-number">Question 5</h4>
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
+    <a href="#quiz-5" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 6</h4>
     <div class="quiz-question">
-        <p>Why do Pods exist in Kubernetes?</p>
+        <p>True or false: Kubernetes schedules individual containers directly onto nodes.</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">To group containers and provide a shared execution environment</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">To serve as the unit of scheduling</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">To replace nodes</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" ><label for="quiz-5-0">True</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" correct><label for="quiz-5-1">False</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+If two containers need independent scaling behavior, what should be done?
+- [x] Place them in separate Pods
+- [ ] Keep them in the same Pod
+- [ ] Disable controllers
+- [ ] Use a Service
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+    <a href="#quiz-6" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 7</h4>
+    <div class="quiz-question">
+        <p>If two containers need independent scaling behavior, what should be done?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">Place them in separate Pods</label></div><div><input type="radio" name="answer" value="1" id="quiz-6-1" ><label for="quiz-6-1">Keep them in the same Pod</label></div><div><input type="radio" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">Disable controllers</label></div><div><input type="radio" name="answer" value="3" id="quiz-6-3" ><label for="quiz-6-3">Use a Service</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
     </form>
     <section class="content hidden"></section>
 </div><style type="text/css">.quiz {

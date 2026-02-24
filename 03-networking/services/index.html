@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubernetes-services" class="md-skip">
+        <a href="#services-networking-deep-dive" class="md-skip">
           Skip to content
         </a>
       
@@ -969,10 +969,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-problem-services-solve" class="md-nav__link">
+  <a href="#internal-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What Problem Services Solve
+        Internal Architecture
       
     </span>
   </a>
@@ -980,10 +980,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-services-work" class="md-nav__link">
+  <a href="#traffic-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How Services Work
+        Traffic Flow
       
     </span>
   </a>
@@ -991,82 +991,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#core-concepts" class="md-nav__link">
+  <a href="#endpointslices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core Concepts
+        EndpointSlices
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Core Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-clusterip-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. ClusterIP (Default)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-nodeport" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. NodePort
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-loadbalancer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. LoadBalancer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-externalname" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. ExternalName
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-service-selectors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Service Selectors
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mental-model" class="md-nav__link">
+  <a href="#data-plane-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mental Model
+        Data Plane Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodeport-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NodePort Internals
       
     </span>
   </a>
@@ -1085,10 +1035,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge" class="md-nav__link">
+  <a href="#debug-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check Your Knowledge
+        Debug Strategy
       
     </span>
   </a>
@@ -1096,10 +1046,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#check-your-knowledge-aws-style" class="md-nav__link">
     <span class="md-ellipsis">
       
-        References
+        Check Your Knowledge (AWS-style)
       
     </span>
   </a>
@@ -1621,10 +1571,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-problem-services-solve" class="md-nav__link">
+  <a href="#internal-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What Problem Services Solve
+        Internal Architecture
       
     </span>
   </a>
@@ -1632,10 +1582,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-services-work" class="md-nav__link">
+  <a href="#traffic-flow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How Services Work
+        Traffic Flow
       
     </span>
   </a>
@@ -1643,82 +1593,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#core-concepts" class="md-nav__link">
+  <a href="#endpointslices" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core Concepts
+        EndpointSlices
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Core Concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-clusterip-default" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. ClusterIP (Default)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-nodeport" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. NodePort
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-loadbalancer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. LoadBalancer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-externalname" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. ExternalName
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-service-selectors" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. Service Selectors
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mental-model" class="md-nav__link">
+  <a href="#data-plane-implementation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mental Model
+        Data Plane Implementation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodeport-internals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NodePort Internals
       
     </span>
   </a>
@@ -1737,10 +1637,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#check-your-knowledge" class="md-nav__link">
+  <a href="#debug-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check Your Knowledge
+        Debug Strategy
       
     </span>
   </a>
@@ -1748,10 +1648,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#check-your-knowledge-aws-style" class="md-nav__link">
     <span class="md-ellipsis">
       
-        References
+        Check Your Knowledge (AWS-style)
       
     </span>
   </a>
@@ -1812,168 +1712,120 @@
 
 
 
-<h1 id="kubernetes-services">Kubernetes Services</h1>
-<h2 id="what-problem-services-solve">What Problem Services Solve</h2>
-<p>Pods are ephemeral:</p>
+<h1 id="services-networking-deep-dive">Services – Networking Deep Dive</h1>
+<h2 id="internal-architecture">Internal Architecture</h2>
+<p>A Service is implemented using:</p>
 <ul>
-<li>They are recreated</li>
-<li>Their IP addresses change</li>
-<li>They scale up and down</li>
+<li>ClusterIP (virtual IP)</li>
+<li>Endpoints / EndpointSlices</li>
+<li>kube-proxy (data plane programming)</li>
+<li>iptables or IPVS rules</li>
 </ul>
-<p>Directly connecting to Pod IPs is unreliable.</p>
-<p>Applications need:</p>
+<p>Service routing is not magic.
+It is programmed network rules.</p>
+<h2 id="traffic-flow">Traffic Flow</h2>
+<p>Client → ClusterIP<br />
+ClusterIP → kube-proxy rules<br />
+kube-proxy → Pod IP  </p>
+<p>kube-proxy watches the API server and:</p>
 <ul>
-<li>A stable endpoint</li>
-<li>Automatic load balancing</li>
-<li>Service discovery</li>
+<li>Updates routing rules when Pods scale</li>
+<li>Removes failed Pod endpoints</li>
+<li>Distributes traffic across healthy backends</li>
 </ul>
-<p>Kubernetes Services provide that abstraction.</p>
-<h2 id="how-services-work">How Services Work</h2>
-<p>A Service:</p>
+<h2 id="endpointslices">EndpointSlices</h2>
+<p>Modern Kubernetes uses:</p>
 <ul>
-<li>Gets a stable virtual IP (ClusterIP)</li>
-<li>Gets a DNS name</li>
-<li>Selects Pods via labels</li>
-<li>Load-balances traffic across matching Pods</li>
+<li>EndpointSlices instead of a single Endpoints object</li>
+<li>Improves scalability</li>
+<li>Reduces API server load</li>
 </ul>
-<p>Even if Pods are recreated:</p>
+<p>Critical in large clusters.</p>
+<h2 id="data-plane-implementation">Data Plane Implementation</h2>
+<p>kube-proxy modes:</p>
 <ul>
-<li>The Service IP does not change</li>
-<li>Endpoints are updated automatically</li>
-<li>Clients continue using the same DNS name</li>
+<li>iptables</li>
+<li>IPVS</li>
 </ul>
-<p>kube-proxy programs the data plane to route traffic correctly.</p>
-<h2 id="core-concepts">Core Concepts</h2>
-<h3 id="1-clusterip-default">1. ClusterIP (Default)</h3>
+<p>IPVS is more scalable and performant for large environments.</p>
+<h2 id="nodeport-internals">NodePort Internals</h2>
+<p>NodePort:</p>
 <ul>
-<li>Internal-only access</li>
-<li>Reachable inside the cluster</li>
-<li>Most common type</li>
-<li>Foundation for other Service types</li>
+<li>Allocates port (30000–32767 by default)</li>
+<li>Opens that port on every node</li>
+<li>Routes traffic to ClusterIP internally</li>
 </ul>
-<p>Used for internal microservices communication.</p>
-<hr />
-<h3 id="2-nodeport">2. NodePort</h3>
-<ul>
-<li>Exposes the Service on every node’s IP</li>
-<li>Allocates a port from a defined range</li>
-<li>Accessible externally via: <code>&lt;NodeIP&gt;:&lt;NodePort&gt;</code></li>
-</ul>
-<p>Useful for:</p>
-<ul>
-<li>Testing</li>
-<li>Simple external exposure</li>
-<li>On-prem environments</li>
-</ul>
-<p>Requires firewall rules to allow traffic.</p>
-<hr />
-<h3 id="3-loadbalancer">3. LoadBalancer</h3>
-<ul>
-<li>Integrates with cloud providers</li>
-<li>Provisions an external load balancer</li>
-<li>Routes traffic to NodePorts internally</li>
-</ul>
-<p>Common in:</p>
-<ul>
-<li>Cloud production deployments</li>
-<li>Public-facing applications</li>
-</ul>
-<hr />
-<h3 id="4-externalname">4. ExternalName</h3>
-<ul>
-<li>Maps a Service to an external DNS name</li>
-<li>No proxying</li>
-<li>DNS-level alias only</li>
-</ul>
-<p>Used for:</p>
-<ul>
-<li>External databases</li>
-<li>Third-party APIs</li>
-</ul>
-<hr />
-<h3 id="5-service-selectors">5. Service Selectors</h3>
-<p>A Service targets Pods using:</p>
-<ul>
-<li>Pod labels (primary mechanism)</li>
-<li>Namespace scoping</li>
-</ul>
-<p>When scaling:</p>
-<ul>
-<li>New Pods matching labels are automatically included</li>
-<li>Removed Pods are automatically excluded</li>
-</ul>
-<p>This makes Services dynamic and self-updating.</p>
-<h2 id="mental-model">Mental Model</h2>
-<p>Think of a Service as:</p>
-<ul>
-<li>A stable front door</li>
-<li>Behind it: rotating Pods</li>
-<li>Clients don’t care which Pod responds</li>
-</ul>
-<p>Services provide:</p>
-<ul>
-<li>Stability</li>
-<li>Discovery</li>
-<li>Load balancing</li>
-<li>Decoupling between consumers and producers</li>
-</ul>
+<p>LoadBalancer builds on NodePort.</p>
 <h2 id="common-failure-scenarios">Common Failure Scenarios</h2>
-<ul>
-<li>Service exists but no matching Pods → empty endpoints</li>
-<li>NodePort unreachable → firewall blocking</li>
-<li>kube-proxy not running → routing rules missing</li>
-<li>Selector mismatch → Service not targeting intended Pods</li>
-<li>Cloud LoadBalancer pending → provider integration issue</li>
-</ul>
-<p>Debug path:</p>
 <ol>
-<li>Check Service</li>
-<li>Check Endpoints</li>
-<li>Check Pod labels</li>
-<li>Check kube-proxy</li>
-<li>Check network/firewall</li>
+<li>
+<p>Service has no endpoints<br />
+   → Selector mismatch  </p>
+</li>
+<li>
+<p>NodePort unreachable<br />
+   → Firewall blocking  </p>
+</li>
+<li>
+<p>Traffic not routing<br />
+   → kube-proxy not running  </p>
+</li>
+<li>
+<p>High latency<br />
+   → iptables scaling issue  </p>
+</li>
 </ol>
-<h2 id="check-your-knowledge">Check Your Knowledge</h2>
+<h2 id="debug-strategy">Debug Strategy</h2>
+<ol>
+<li>kubectl get svc  </li>
+<li>kubectl get endpoints / endpointslices  </li>
+<li>Check Pod labels  </li>
+<li>Check kube-proxy logs  </li>
+<li>Verify node firewall rules  </li>
+</ol>
+<h2 id="check-your-knowledge-aws-style">Check Your Knowledge (AWS-style)</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-Why does a Service remain reachable even when Pods are recreated?
-- [x] The Service IP is stable
-- [x] Endpoints update automatically
-- [ ] Pod IPs never change
-- [ ] DNS entries are static
+A Service is created but shows no endpoints. Pods are running successfully. What is the MOST likely cause?
+
+- [x] The Service selector does not match Pod labels
+- [ ] kube-proxy is running in IPVS mode
+- [ ] The Pods are using host networking
+- [ ] The cluster DNS is misconfigured
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>Why does a Service remain reachable even when Pods are recreated?</p>
+        <p>A Service is created but shows no endpoints. Pods are running successfully. What is the MOST likely cause?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">The Service IP is stable</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-0-1" correct><label for="quiz-0-1">Endpoints update automatically</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Pod IPs never change</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">DNS entries are static</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">The Service selector does not match Pod labels</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">kube-proxy is running in IPVS mode</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">The Pods are using host networking</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">The cluster DNS is misconfigured</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which Service type exposes an application externally using a cloud provider?
-- [x] LoadBalancer
-- [ ] ClusterIP
-- [ ] ExternalPod
-- [ ] PersistentService
+An organization runs a large cluster with thousands of Services and experiences performance issues in service routing. Which kube-proxy mode provides better scalability?
+
+- [x] IPVS
+- [ ] iptables
+- [ ] hostNetwork
+- [ ] bridge mode
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Which Service type exposes an application externally using a cloud provider?</p>
+        <p>An organization runs a large cluster with thousands of Services and experiences performance issues in service routing. Which kube-proxy mode provides better scalability?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">LoadBalancer</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">ClusterIP</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">ExternalPod</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">PersistentService</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">IPVS</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">iptables</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">hostNetwork</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">bridge mode</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1982,21 +1834,22 @@ Which Service type exposes an application externally using a cloud provider?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: You create a Service but it has no endpoints. What is the most likely cause?
-- [x] No Pods match the selector
-- [ ] kube-scheduler failure
-- [ ] etcd corruption
-- [ ] DNS misconfiguration
+A LoadBalancer Service is created in a cloud environment. Which underlying mechanism enables external traffic routing to Pods?
+
+- [x] NodePort combined with a cloud provider load balancer
+- [ ] Direct Pod IP exposure
+- [ ] Ingress Controller
+- [ ] StatefulSet routing
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        <p>Scenario: You create a Service but it has no endpoints. What is the most likely cause?</p>
+        <p>A LoadBalancer Service is created in a cloud environment. Which underlying mechanism enables external traffic routing to Pods?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">No Pods match the selector</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">kube-scheduler failure</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">etcd corruption</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">DNS misconfiguration</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">NodePort combined with a cloud provider load balancer</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">Direct Pod IP exposure</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">Ingress Controller</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">StatefulSet routing</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -2005,21 +1858,22 @@ Scenario: You create a Service but it has no endpoints. What is the most likely 
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which statement about NodePort is correct?
-- [x] It opens a port on every node
-- [ ] It assigns a new Pod IP
-- [ ] It works only inside the cluster
-- [ ] It replaces kube-proxy
+After scaling a Deployment, new Pods are not receiving traffic. kube-proxy is running. What should be checked first?
+
+- [x] Whether the new Pods match the Service selector
+- [ ] Whether etcd is healthy
+- [ ] Whether the node OS is updated
+- [ ] Whether CoreDNS restarted
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which statement about NodePort is correct?</p>
+        <p>After scaling a Deployment, new Pods are not receiving traffic. kube-proxy is running. What should be checked first?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">It opens a port on every node</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">It assigns a new Pod IP</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">It works only inside the cluster</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">It replaces kube-proxy</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">Whether the new Pods match the Service selector</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">Whether etcd is healthy</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">Whether the node OS is updated</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">Whether CoreDNS restarted</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -2028,50 +1882,21 @@ Which statement about NodePort is correct?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: Services select backend Pods using [[labels]].
+Fill in the blank: kube-proxy programs the cluster data plane using [[iptables]] or [[IPVS]].
 </quiz>
 -->
 <div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        Fill in the blank: Services select backend Pods using <input type="text" class="quiz-blank-input" id="quiz-4-blank-0" data-answer="labels" autocomplete="off" size="8">.
+        Fill in the blank: kube-proxy programs the cluster data plane using <input type="text" class="quiz-blank-input" id="quiz-4-blank-0" data-answer="iptables" autocomplete="off" size="10"> or <input type="text" class="quiz-blank-input" id="quiz-4-blank-1" data-answer="IPVS" autocomplete="off" size="6">.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
     <section class="content hidden"></section>
-</div>
-
-<!-- mkdocs-quiz-source
-<quiz>
-Scenario: After scaling a Deployment, traffic automatically distributes across new Pods. What enables this?
-- [x] kube-proxy updating Service endpoints
-- [ ] Manual DNS reconfiguration
-- [ ] Static IP reassignment
-- [ ] Node reboot
-</quiz>
--->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
-    <a href="#quiz-5" class="quiz-header-link">#</a>
-    <h4 class="quiz-number">Question 6</h4>
-    <div class="quiz-question">
-        <p>Scenario: After scaling a Deployment, traffic automatically distributes across new Pods. What enables this?</p>
-    </div>
-    <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">kube-proxy updating Service endpoints</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" ><label for="quiz-5-1">Manual DNS reconfiguration</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">Static IP reassignment</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">Node reboot</label></div></fieldset>
-        <div class="quiz-feedback hidden"></div>
-
-    </form>
-    <section class="content hidden"></section>
-</div>
-
-<h2 id="references">References</h2>
-<ul>
-<li>Kubernetes Documentation – Services  </li>
-<li>The Kubernetes Book – Nigel Poulton</li>
-</ul><style type="text/css">.quiz {
+</div><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;

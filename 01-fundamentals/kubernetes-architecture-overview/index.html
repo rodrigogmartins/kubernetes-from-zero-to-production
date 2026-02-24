@@ -553,10 +553,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+  <a href="#the-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components
+        The Problem
       
     </span>
   </a>
@@ -564,10 +564,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-ideas" class="md-nav__link">
+  <a href="#the-solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Ideas
+        The Solution
       
     </span>
   </a>
@@ -575,10 +575,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quiz" class="md-nav__link">
+  <a href="#control-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quiz
+        Control Plane
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-plane-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Plane (Nodes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-ons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add-ons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your knowledge
       
     </span>
   </a>
@@ -1516,10 +1582,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+  <a href="#the-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Components
+        The Problem
       
     </span>
   </a>
@@ -1527,10 +1593,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-ideas" class="md-nav__link">
+  <a href="#the-solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Ideas
+        The Solution
       
     </span>
   </a>
@@ -1538,10 +1604,76 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quiz" class="md-nav__link">
+  <a href="#control-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quiz
+        Control Plane
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-plane-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data Plane (Nodes)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-ons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Add-ons
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-architectural-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Architectural Principles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental Model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-your-knowledge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check your knowledge
       
     </span>
   </a>
@@ -1603,24 +1735,110 @@
 
 
 <h1 id="kubernetes-architecture-overview">Kubernetes Architecture Overview</h1>
-<p>Kubernetes architecture is <strong>modular and layered</strong>, designed for scalability and resilience.</p>
-<h2 id="components">Components</h2>
+<h2 id="the-problem">The Problem</h2>
+<p>Orchestrating containers at scale is complex.</p>
+<p>A system must:</p>
 <ul>
-<li><strong>Control Plane</strong>: kube-apiserver, etcd, scheduler, controller-manager  </li>
-<li><strong>Node / Data Plane</strong>: kubelet, kube-proxy, container runtime  </li>
-<li><strong>Add-ons</strong>: DNS, metrics, ingress controllers</li>
+<li>Accept user declarations</li>
+<li>Store cluster state reliably</li>
+<li>Decide where workloads run</li>
+<li>Maintain networking between components</li>
+<li>Recover automatically from failures</li>
+<li>Scale without breaking applications</li>
 </ul>
-<h2 id="key-ideas">Key Ideas</h2>
+<p>Without structure and separation of responsibilities, orchestration becomes fragile and difficult to operate.</p>
+<p>You need a layered architecture.</p>
+<h2 id="the-solution">The Solution</h2>
+<p>Kubernetes uses a <strong>modular and layered architecture</strong> designed for:</p>
 <ul>
-<li>Desired state declared by the user  </li>
-<li>Controllers reconcile actual vs desired state  </li>
-<li>Pods are ephemeral; controllers maintain replicas  </li>
-<li>Services provide stable networking  </li>
+<li>Scalability</li>
+<li>Resilience</li>
+<li>Clear separation of concerns</li>
+<li>Automated reconciliation</li>
 </ul>
-<h2 id="quiz">Quiz</h2>
+<p>The architecture is divided into:</p>
+<ul>
+<li><strong>Control Plane</strong></li>
+<li><strong>Data Plane (Nodes)</strong></li>
+<li><strong>Add-ons</strong></li>
+</ul>
+<p>Each layer has a defined responsibility.</p>
+<h2 id="control-plane">Control Plane</h2>
+<p>The control plane manages the cluster.</p>
+<p>It:</p>
+<ul>
+<li>Exposes the API</li>
+<li>Stores cluster state</li>
+<li>Schedules workloads</li>
+<li>Enforces desired configuration</li>
+</ul>
+<p>Core components:</p>
+<ul>
+<li>kube-apiserver</li>
+<li>etcd</li>
+<li>kube-scheduler</li>
+<li>kube-controller-manager</li>
+</ul>
+<p>The control plane runs the reconciliation loop.</p>
+<p>It ensures actual state matches desired state.</p>
+<h2 id="data-plane-nodes">Data Plane (Nodes)</h2>
+<p>The data plane executes workloads.</p>
+<p>Each node runs:</p>
+<ul>
+<li>kubelet</li>
+<li>kube-proxy</li>
+<li>Container runtime</li>
+</ul>
+<p>Responsibilities:</p>
+<ul>
+<li>Run Pods</li>
+<li>Maintain node-level networking</li>
+<li>Report status back to control plane</li>
+</ul>
+<p>Nodes execute.
+They do not make global decisions.</p>
+<h2 id="add-ons">Add-ons</h2>
+<p>Add-ons extend cluster functionality.</p>
+<p>Common examples:</p>
+<ul>
+<li>DNS (CoreDNS)</li>
+<li>Metrics server</li>
+<li>Ingress controllers</li>
+</ul>
+<p>Add-ons are not core components but provide essential operational capabilities.</p>
+<h2 id="key-architectural-principles">Key Architectural Principles</h2>
+<p>Desired State Model<br />
+Users declare what they want.</p>
+<p>Reconciliation<br />
+Controllers continuously compare:</p>
+<ul>
+<li>Desired state</li>
+<li>Actual state</li>
+</ul>
+<p>If they differ, corrective action is taken.</p>
+<p>Ephemeral Workloads<br />
+Pods are replaceable.
+Controllers maintain replica counts.</p>
+<p>Stable Networking<br />
+Services provide stable endpoints for Pods.</p>
+<h2 id="mental-model">Mental Model</h2>
+<p>API → Desired State<br />
+Controllers → Reconciliation<br />
+Nodes → Execution<br />
+Services → Stability  </p>
+<p>Kubernetes is a control loop system.</p>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li>Confusing control plane with node components</li>
+<li>Thinking Pods are durable infrastructure</li>
+<li>Ignoring reconciliation behavior</li>
+<li>Assuming add-ons are part of the core control plane</li>
+</ul>
+<p>Understanding the layering clarifies troubleshooting and scaling decisions.</p>
+<h2 id="check-your-knowledge">Check your knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-Which layer manages the reconciliation loop?
+Which layer of Kubernetes is responsible for running the reconciliation loop?
 - [x] Control Plane
 - [ ] Data Plane
 </quiz>
@@ -1629,7 +1847,7 @@ Which layer manages the reconciliation loop?
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>Which layer manages the reconciliation loop?</p>
+        <p>Which layer of Kubernetes is responsible for running the reconciliation loop?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Control Plane</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Data Plane</label></div></fieldset>
@@ -1641,21 +1859,21 @@ Which layer manages the reconciliation loop?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which Kubernetes component runs on each node?
+Which components run on every node? (multiple correct)
 - [x] kubelet
 - [x] kube-proxy
 - [ ] kube-apiserver
-- [ ] controller-manager
+- [ ] kube-controller-manager
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        <p>Which Kubernetes component runs on each node?</p>
+        <p>Which components run on every node? (multiple correct)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">kubelet</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">kube-proxy</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">kube-apiserver</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">controller-manager</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">kubelet</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-1-1" correct><label for="quiz-1-1">kube-proxy</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">kube-apiserver</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">kube-controller-manager</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1664,14 +1882,14 @@ Which Kubernetes component runs on each node?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill the blank: [[Services]] provide stable networking for [[Pods]].
+Fill in the blank: [[Services]] provide stable networking for [[Pods]].
 </quiz>
 -->
 <div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        Fill the blank: <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="Services" autocomplete="off" size="10"> provide stable networking for <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="Pods" autocomplete="off" size="6">.
+        Fill in the blank: <input type="text" class="quiz-blank-input" id="quiz-2-blank-0" data-answer="Services" autocomplete="off" size="10"> provide stable networking for <input type="text" class="quiz-blank-input" id="quiz-2-blank-1" data-answer="Pods" autocomplete="off" size="6">.
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
         <div class="quiz-feedback hidden"></div>
@@ -1682,21 +1900,21 @@ Fill the blank: [[Services]] provide stable networking for [[Pods]].
 
 <!-- mkdocs-quiz-source
 <quiz>
-What is an example of an add-on in Kubernetes?
+Which of the following are examples of Kubernetes add-ons? (multiple correct)
 - [x] DNS
 - [x] Metrics server
+- [x] Ingress controller
 - [ ] kube-scheduler
-- [ ] ReplicaSet
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>What is an example of an add-on in Kubernetes?</p>
+        <p>Which of the following are examples of Kubernetes add-ons? (multiple correct)</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">DNS</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Metrics server</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">kube-scheduler</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">ReplicaSet</label></div></fieldset>
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">DNS</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">Metrics server</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" correct><label for="quiz-3-2">Ingress controller</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">kube-scheduler</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
@@ -1705,20 +1923,64 @@ What is an example of an add-on in Kubernetes?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Why is Kubernetes layered architecture important?
-- [x] Supports scalability and resilience
-- [x] Separates concerns between control and data planes
-- [ ] Simplifies container images
+What is the primary purpose of controllers in Kubernetes?
+- [x] To reconcile actual state with desired state
+- [ ] To build container images
+- [ ] To assign static IP addresses
+- [ ] To replace kubelet
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>Why is Kubernetes layered architecture important?</p>
+        <p>What is the primary purpose of controllers in Kubernetes?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Supports scalability and resilience</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">Separates concerns between control and data planes</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">Simplifies container images</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">To reconcile actual state with desired state</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">To build container images</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">To assign static IP addresses</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">To replace kubelet</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+True or false: Nodes make cluster-wide scheduling decisions.
+- [ ] True
+- [x] False
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
+    <a href="#quiz-5" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 6</h4>
+    <div class="quiz-question">
+        <p>True or false: Nodes make cluster-wide scheduling decisions.</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" ><label for="quiz-5-0">True</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" correct><label for="quiz-5-1">False</label></div></fieldset>
+        <div class="quiz-feedback hidden"></div>
+
+    </form>
+    <section class="content hidden"></section>
+</div>
+
+<!-- mkdocs-quiz-source
+<quiz>
+Why is Kubernetes architecture layered?
+- [x] To separate responsibilities between decision-making and execution
+- [x] To improve scalability and resilience
+- [ ] To eliminate the need for container runtimes
+</quiz>
+-->
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-6">
+    <a href="#quiz-6" class="quiz-header-link">#</a>
+    <h4 class="quiz-number">Question 7</h4>
+    <div class="quiz-question">
+        <p>Why is Kubernetes architecture layered?</p>
+    </div>
+    <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-6-0" correct><label for="quiz-6-0">To separate responsibilities between decision-making and execution</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-6-1" correct><label for="quiz-6-1">To improve scalability and resilience</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-6-2" ><label for="quiz-6-2">To eliminate the need for container runtimes</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
         <button type="submit" class="quiz-button">Submit</button>
     </form>
