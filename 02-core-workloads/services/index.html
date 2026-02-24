@@ -769,33 +769,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#service-types-when-to-use-each" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How It Works
+        Service Types (When to Use Each)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#service-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Types
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service Types">
+    <nav class="md-nav" aria-label="Service Types (When to Use Each)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#clusterip-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ClusterIP (default)
+        ClusterIP (Default)
       
     </span>
   </a>
@@ -852,32 +841,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#services-and-scaling" class="md-nav__link">
+  <a href="#design-principle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Services and Scaling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mental-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mental Model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-mistakes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Mistakes
+        Design Principle
       
     </span>
   </a>
@@ -889,17 +856,6 @@
     <span class="md-ellipsis">
       
         Check your knowledge
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
       
     </span>
   </a>
@@ -1665,33 +1621,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#service-types-when-to-use-each" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How It Works
+        Service Types (When to Use Each)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#service-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Types
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service Types">
+    <nav class="md-nav" aria-label="Service Types (When to Use Each)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#clusterip-default" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ClusterIP (default)
+        ClusterIP (Default)
       
     </span>
   </a>
@@ -1748,32 +1693,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#services-and-scaling" class="md-nav__link">
+  <a href="#design-principle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Services and Scaling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mental-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Mental Model
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-mistakes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Mistakes
+        Design Principle
       
     </span>
   </a>
@@ -1785,17 +1708,6 @@
     <span class="md-ellipsis">
       
         Check your knowledge
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
       
     </span>
   </a>
@@ -1858,121 +1770,99 @@
 
 <h1 id="services">Services</h1>
 <h2 id="the-problem">The Problem</h2>
-<p>Pods are ephemeral.</p>
-<p>When a Pod:</p>
+<p>Pods are ephemeral:</p>
 <ul>
-<li>Is recreated</li>
-<li>Crashes</li>
-<li>Is rescheduled</li>
-<li>Moves to another node</li>
+<li>They are recreated</li>
+<li>Their IPs change</li>
+<li>They scale dynamically</li>
 </ul>
-<p>Its IP address changes.</p>
-<p>If clients connect directly to Pod IPs:</p>
-<p>Your application breaks the moment a Pod is replaced.</p>
-<p>You need stable service discovery.</p>
+<p>Directly connecting to Pod IPs creates fragile systems.</p>
+<p>Applications need:</p>
+<ul>
+<li>A stable endpoint</li>
+<li>Built-in load balancing</li>
+<li>Decoupling from Pod lifecycle</li>
+</ul>
 <h2 id="the-solution">The Solution</h2>
 <p>A <strong>Service</strong> provides:</p>
 <ul>
-<li>A stable virtual IP</li>
-<li>DNS name</li>
+<li>A stable virtual IP (ClusterIP)</li>
+<li>A DNS name</li>
 <li>Load balancing across matching Pods</li>
 </ul>
-<p>Clients connect to the Service.
+<p>Clients communicate with the Service.
 The Service routes traffic to healthy Pods.</p>
-<p>Pods can come and go.
-The Service endpoint remains stable.</p>
-<h2 id="how-it-works">How It Works</h2>
-<p>Service:</p>
+<p>Pods can change.
+The Service endpoint does not.</p>
+<h2 id="service-types-when-to-use-each">Service Types (When to Use Each)</h2>
+<h3 id="clusterip-default">ClusterIP (Default)</h3>
 <ul>
-<li>Uses label selectors to match Pods</li>
-<li>Maintains a list of endpoints</li>
-<li>Distributes traffic across them</li>
-</ul>
-<p>Flow:</p>
-<p>Client → Service → Pod</p>
-<p>Service abstracts Pod lifecycle instability.</p>
-<h2 id="service-types">Service Types</h2>
-<h3 id="clusterip-default">ClusterIP (default)</h3>
-<ul>
-<li>Internal access only</li>
-<li>Accessible inside the cluster</li>
+<li>Internal-only access</li>
+<li>Used for microservice-to-microservice communication</li>
 <li>Most common type</li>
 </ul>
-<p>Use for internal microservices.</p>
+<p>Use when:
+Internal services must communicate reliably.</p>
 <hr />
 <h3 id="nodeport">NodePort</h3>
 <ul>
-<li>Exposes the Service on each node</li>
-<li>Uses a static port</li>
-<li>Accessible externally via NodeIP:NodePort</li>
+<li>Exposes the Service on every node</li>
+<li>Accessible via <code>&lt;NodeIP&gt;:NodePort</code></li>
 </ul>
-<p>Simple but not ideal for production-scale routing.</p>
+<p>Use when:
+- Testing
+- Simple on-prem exposure
+- No cloud load balancer available</p>
 <hr />
 <h3 id="loadbalancer">LoadBalancer</h3>
 <ul>
-<li>Integrates with cloud provider</li>
-<li>Creates external load balancer</li>
-<li>Assigns public IP</li>
+<li>Creates an external cloud load balancer</li>
+<li>Exposes Service publicly</li>
 </ul>
-<p>Production-ready for cloud environments.</p>
+<p>Use when:
+- Public production workloads
+- Cloud environments</p>
 <hr />
 <h3 id="externalname">ExternalName</h3>
 <ul>
-<li>Maps Service to external DNS name</li>
+<li>Maps Service to external DNS</li>
 <li>No proxying</li>
-<li>DNS-level alias</li>
 </ul>
-<p>Used to connect to external systems.</p>
+<p>Use when:
+- Connecting to external systems
+- Migrating legacy services</p>
 <h2 id="what-services-do-not-do">What Services Do NOT Do</h2>
 <p>Services do not:</p>
 <ul>
 <li>Create Pods</li>
-<li>Manage scaling</li>
-<li>Perform rolling updates</li>
+<li>Perform scaling</li>
+<li>Manage rollouts</li>
 <li>Guarantee application health</li>
 </ul>
-<p>They route traffic.</p>
-<p>Controllers manage lifecycle.</p>
-<h2 id="services-and-scaling">Services and Scaling</h2>
-<p>When Pods scale up or down:</p>
-<ul>
-<li>Service automatically updates endpoints</li>
-<li>Traffic continues flowing</li>
-</ul>
-<p>Clients never need to know how many Pods exist.</p>
-<p>This is decoupling in practice.</p>
-<h2 id="mental-model">Mental Model</h2>
-<p>Pod = execution unit<br />
-ReplicaSet/Deployment = lifecycle<br />
-Service = stable access + load balancing  </p>
-<p>Services isolate clients from infrastructure churn.</p>
-<h2 id="common-mistakes">Common Mistakes</h2>
-<ul>
-<li>Hardcoding Pod IPs</li>
-<li>Exposing everything as NodePort</li>
-<li>Confusing Service with Ingress</li>
-<li>Forgetting label selector alignment</li>
-</ul>
-<p>A Service with incorrect selectors routes to nothing.</p>
-<p>Labels must match.</p>
+<p>They provide stable connectivity.</p>
+<h2 id="design-principle">Design Principle</h2>
+<p>Service = Stable access layer<br />
+Deployment = Lifecycle management<br />
+Pod = Execution unit  </p>
 <h2 id="check-your-knowledge">Check your knowledge</h2>
 <!-- mkdocs-quiz-source
 <quiz>
-What problem do Kubernetes Services solve?
-- [x] Pod IPs are ephemeral, so services provide stable endpoints
-- [ ] Pods cannot communicate with containers
-- [ ] Nodes are replaced automatically
-- [ ] ReplicaSets manage DNS
+A company runs a Deployment with multiple Pods behind a Service. During rolling updates, Pod IPs change. Clients continue accessing the application without interruption. What ensures this behavior?
+
+- [x] The Service provides a stable virtual IP and updates endpoints automatically
+- [ ] The Pods retain their original IP addresses
+- [ ] The Deployment rewrites DNS records
+- [ ] kube-scheduler pins Pods to the same node
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-0">
     <a href="#quiz-0" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 1</h4>
     <div class="quiz-question">
-        <p>What problem do Kubernetes Services solve?</p>
+        <p>A company runs a Deployment with multiple Pods behind a Service. During rolling updates, Pod IPs change. Clients continue accessing the application without interruption. What ensures this behavior?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">Pod IPs are ephemeral, so services provide stable endpoints</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">Pods cannot communicate with containers</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">Nodes are replaced automatically</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">ReplicaSets manage DNS</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-0-0" correct><label for="quiz-0-0">The Service provides a stable virtual IP and updates endpoints automatically</label></div><div><input type="radio" name="answer" value="1" id="quiz-0-1" ><label for="quiz-0-1">The Pods retain their original IP addresses</label></div><div><input type="radio" name="answer" value="2" id="quiz-0-2" ><label for="quiz-0-2">The Deployment rewrites DNS records</label></div><div><input type="radio" name="answer" value="3" id="quiz-0-3" ><label for="quiz-0-3">kube-scheduler pins Pods to the same node</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -1981,39 +1871,46 @@ What problem do Kubernetes Services solve?
 
 <!-- mkdocs-quiz-source
 <quiz>
-Fill in the blank: ClusterIP, NodePort, LoadBalancer, and ExternalName are [[types]] of Services.
+A startup deploys an internal API consumed only by other services inside the cluster. The API must not be exposed externally. Which Service type should be used?
+
+- [x] ClusterIP
+- [ ] NodePort
+- [ ] LoadBalancer
+- [ ] ExternalName
 </quiz>
 -->
-<div class="quiz quiz-fill-blank" data-quiz-type="fill-blank" data-show-correct="true" data-disable-after-submit="true" id="quiz-1">
+<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-1">
     <a href="#quiz-1" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 2</h4>
     <div class="quiz-question">
-        Fill in the blank: ClusterIP, NodePort, LoadBalancer, and ExternalName are <input type="text" class="quiz-blank-input" id="quiz-1-blank-0" data-answer="types" autocomplete="off" size="7"> of Services.
+        <p>A startup deploys an internal API consumed only by other services inside the cluster. The API must not be exposed externally. Which Service type should be used?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-1-0" correct><label for="quiz-1-0">ClusterIP</label></div><div><input type="radio" name="answer" value="1" id="quiz-1-1" ><label for="quiz-1-1">NodePort</label></div><div><input type="radio" name="answer" value="2" id="quiz-1-2" ><label for="quiz-1-2">LoadBalancer</label></div><div><input type="radio" name="answer" value="3" id="quiz-1-3" ><label for="quiz-1-3">ExternalName</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-Scenario: You have multiple Pods behind a service and want traffic balanced automatically. Which resource handles this?
-- [x] Service
-- [ ] Deployment
-- [ ] ReplicaSet
-- [ ] StatefulSet
+An application running in a cloud environment must be accessible from the public internet with minimal operational overhead. Which Service type is most appropriate?
+
+- [x] LoadBalancer
+- [ ] ClusterIP
+- [ ] NodePort
+- [ ] Headless Service
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-2">
     <a href="#quiz-2" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 3</h4>
     <div class="quiz-question">
-        <p>Scenario: You have multiple Pods behind a service and want traffic balanced automatically. Which resource handles this?</p>
+        <p>An application running in a cloud environment must be accessible from the public internet with minimal operational overhead. Which Service type is most appropriate?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">Service</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">Deployment</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">ReplicaSet</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">StatefulSet</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-2-0" correct><label for="quiz-2-0">LoadBalancer</label></div><div><input type="radio" name="answer" value="1" id="quiz-2-1" ><label for="quiz-2-1">ClusterIP</label></div><div><input type="radio" name="answer" value="2" id="quiz-2-2" ><label for="quiz-2-2">NodePort</label></div><div><input type="radio" name="answer" value="3" id="quiz-2-3" ><label for="quiz-2-3">Headless Service</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
@@ -2022,77 +1919,51 @@ Scenario: You have multiple Pods behind a service and want traffic balanced auto
 
 <!-- mkdocs-quiz-source
 <quiz>
-Which of these are valid Service types? (multiple correct)
-- [x] ClusterIP
-- [x] NodePort
-- [x] LoadBalancer
-- [x] ExternalName
-- [ ] Sidecar
+A team exposes a Service but traffic does not reach any Pods. What is the MOST likely cause?
+
+- [x] The Service selector does not match Pod labels
+- [ ] The Deployment replica count is too high
+- [ ] The Pods are using localhost incorrectly
+- [ ] The container image is outdated
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-3">
     <a href="#quiz-3" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 4</h4>
     <div class="quiz-question">
-        <p>Which of these are valid Service types? (multiple correct)</p>
+        <p>A team exposes a Service but traffic does not reach any Pods. What is the MOST likely cause?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="checkbox" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">ClusterIP</label></div><div><input type="checkbox" name="answer" value="1" id="quiz-3-1" correct><label for="quiz-3-1">NodePort</label></div><div><input type="checkbox" name="answer" value="2" id="quiz-3-2" correct><label for="quiz-3-2">LoadBalancer</label></div><div><input type="checkbox" name="answer" value="3" id="quiz-3-3" correct><label for="quiz-3-3">ExternalName</label></div><div><input type="checkbox" name="answer" value="4" id="quiz-3-4" ><label for="quiz-3-4">Sidecar</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-3-0" correct><label for="quiz-3-0">The Service selector does not match Pod labels</label></div><div><input type="radio" name="answer" value="1" id="quiz-3-1" ><label for="quiz-3-1">The Deployment replica count is too high</label></div><div><input type="radio" name="answer" value="2" id="quiz-3-2" ><label for="quiz-3-2">The Pods are using localhost incorrectly</label></div><div><input type="radio" name="answer" value="3" id="quiz-3-3" ><label for="quiz-3-3">The container image is outdated</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
-        <button type="submit" class="quiz-button">Submit</button>
+
     </form>
     <section class="content hidden"></section>
 </div>
 
 <!-- mkdocs-quiz-source
 <quiz>
-True or false: Services are required to reach Pods inside the cluster.
-- [ ] True
-- [x] False
+After scaling a Deployment from 3 to 10 Pods, traffic automatically distributes across all Pods. What Kubernetes feature enables this?
+
+- [x] Service endpoint updates
+- [ ] Manual DNS modification
+- [ ] Static IP assignment
+- [ ] Node affinity rules
 </quiz>
 -->
 <div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-4">
     <a href="#quiz-4" class="quiz-header-link">#</a>
     <h4 class="quiz-number">Question 5</h4>
     <div class="quiz-question">
-        <p>True or false: Services are required to reach Pods inside the cluster.</p>
+        <p>After scaling a Deployment from 3 to 10 Pods, traffic automatically distributes across all Pods. What Kubernetes feature enables this?</p>
     </div>
     <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" ><label for="quiz-4-0">True</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" correct><label for="quiz-4-1">False</label></div></fieldset>
+        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-4-0" correct><label for="quiz-4-0">Service endpoint updates</label></div><div><input type="radio" name="answer" value="1" id="quiz-4-1" ><label for="quiz-4-1">Manual DNS modification</label></div><div><input type="radio" name="answer" value="2" id="quiz-4-2" ><label for="quiz-4-2">Static IP assignment</label></div><div><input type="radio" name="answer" value="3" id="quiz-4-3" ><label for="quiz-4-3">Node affinity rules</label></div></fieldset>
         <div class="quiz-feedback hidden"></div>
 
     </form>
     <section class="content hidden"></section>
-</div>
-
-<!-- mkdocs-quiz-source
-<quiz>
-Scenario: You delete a Pod behind a Service. What happens?
-- [x] The Service redirects traffic to the remaining Pods
-- [ ] The Service stops working
-- [ ] The Service creates a new Pod
-- [ ] The Deployment must be updated
-</quiz>
--->
-<div class="quiz" data-show-correct="true" data-auto-submit="true" data-disable-after-submit="true" data-shuffle-answers="true" id="quiz-5">
-    <a href="#quiz-5" class="quiz-header-link">#</a>
-    <h4 class="quiz-number">Question 6</h4>
-    <div class="quiz-question">
-        <p>Scenario: You delete a Pod behind a Service. What happens?</p>
-    </div>
-    <form action="javascript:void(0);" onsubmit="return false;">
-        <fieldset><div><input type="radio" name="answer" value="0" id="quiz-5-0" correct><label for="quiz-5-0">The Service redirects traffic to the remaining Pods</label></div><div><input type="radio" name="answer" value="1" id="quiz-5-1" ><label for="quiz-5-1">The Service stops working</label></div><div><input type="radio" name="answer" value="2" id="quiz-5-2" ><label for="quiz-5-2">The Service creates a new Pod</label></div><div><input type="radio" name="answer" value="3" id="quiz-5-3" ><label for="quiz-5-3">The Deployment must be updated</label></div></fieldset>
-        <div class="quiz-feedback hidden"></div>
-
-    </form>
-    <section class="content hidden"></section>
-</div>
-
-<h2 id="references">References</h2>
-<ul>
-<li>Kubernetes Documentation – Services  </li>
-<li>Kubernetes Networking Deep Dive – CNCF</li>
-</ul><style type="text/css">.quiz {
+</div><style type="text/css">.quiz {
   border: 1px solid black;
   padding: 1rem;
   margin: 1rem 0;
