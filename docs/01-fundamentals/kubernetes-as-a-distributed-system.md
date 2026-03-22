@@ -4,164 +4,270 @@ quiz:
   shuffle_answers: true
 ---
 
-# Kubernetes as a Distributed System
+# Kubernetes como um Sistema Distribuído
 
-## The Problem
+## O problema
 
-Running applications on a single machine creates limitations:
+Executar aplicações em uma única máquina traz limitações claras:
 
-- Single point of failure
-- Limited scalability
-- No fault tolerance
-- Manual recovery when failures occur
+- ponto único de falha
+- escalabilidade limitada
+- ausência de tolerância a falhas
+- recuperação manual em caso de problemas
 
-Modern systems require:
+Sistemas modernos exigem:
 
-- High availability
-- Automatic recovery
-- Horizontal scalability
-- Coordinated state management
+- alta disponibilidade
+- recuperação automática
+- escalabilidade horizontal
+- gerenciamento coordenado de estado
 
-You need a distributed architecture.
+Para atender a esses requisitos, é necessário adotar uma **arquitetura distribuída**.
 
-## The Solution
+---
 
-Kubernetes is designed as a **distributed system**.
+## A solução
 
-It:
+O Kubernetes foi projetado como um **sistema distribuído**.
 
-- Runs workloads across multiple nodes
-- Stores cluster state in a consistent data store
-- Automatically replaces failed resources
-- Scales horizontally by adding nodes
+Ele:
 
-Instead of one machine doing everything, responsibilities are spread across the cluster.
+- executa workloads em múltiplos nodes
+- armazena o estado do cluster de forma consistente
+- substitui recursos com falha automaticamente
+- escala horizontalmente com a adição de novos nodes
 
-## Core Distributed Components
+Em vez de uma única máquina centralizando tudo, as responsabilidades são distribuídas entre os componentes do cluster.
 
-### etcd — Cluster State Store
+---
 
-- Distributed key-value store
-- Stores desired and current cluster state
-- Designed for high availability
+## Componentes distribuídos centrais
 
-If etcd is unavailable, the control plane cannot function correctly.
+### Storage — Armazenamento de estado
+
+- banco de dados distribuído do tipo key-value
+- armazena o estado desejado e atual do cluster
+- projetado para alta disponibilidade e consistência
+
+Se o Storage ficar indisponível, o Control Plane perde a capacidade de operar corretamente.
 
 ---
 
 ### Nodes
 
-Nodes:
+Os nodes:
 
-- Execute workloads (Pods)
-- Run kubelet and kube-proxy
-- Report status to the control plane
+- executam workloads (Pods)
+- rodam kubelet e kube-proxy
+- reportam seu estado ao Control Plane
 
-Nodes do not store the desired state.
-They follow instructions from the control plane.
+Os nodes **não armazenam o estado desejado**.
 
-## Distributed System Principles in Kubernetes
-
-### Replication
-
-- Workloads can run on multiple nodes
-- Controllers maintain replica counts
-- Improves availability
+Eles apenas executam instruções definidas pelo Control Plane.
 
 ---
 
-### Decentralization
+## Princípios de sistemas distribuídos no Kubernetes
 
-- Multiple nodes share execution responsibilities
-- Control plane components can be replicated
-- No single worker node controls the cluster
+### Replicação
 
----
-
-### Resilience
-
-- Failed Pods are recreated
-- Failed nodes are detected
-- Controllers restore desired state
-
-The system self-heals.
+- workloads podem rodar em múltiplos nodes
+- controllers mantêm o número de réplicas
+- aumenta a disponibilidade
 
 ---
 
-### Scalability
+### Descentralização
 
-- Nodes can be added to increase capacity
-- Nodes can be removed to reduce capacity
-- Workloads are redistributed as needed
+- múltiplos nodes compartilham a execução
+- componentes do Control Plane podem ser replicados
+- nenhum node individual controla o cluster
 
-Scaling is horizontal.
+---
 
-## Mental Model
+### Resiliência
 
-etcd = source of truth  
-Control plane = coordination layer  
-Nodes = distributed execution layer  
+- Pods com falha são recriados automaticamente
+- nodes com problema são detectados
+- controllers restauram o estado desejado
 
-Kubernetes is not a single machine.
-It is a coordinated system of machines.
+O sistema é auto-recuperável (self-healing)
 
-## Common Mistakes
+---
 
-- Thinking a single node runs everything
-- Confusing nodes with control plane components
-- Assuming Pods are permanent
-- Ignoring the role of etcd in availability
+### Escalabilidade
 
-Understanding distributed principles makes troubleshooting clearer.
+- nodes podem ser adicionados para aumentar capacidade
+- nodes podem ser removidos para reduzir capacidade
+- workloads são redistribuídos automaticamente
 
-## Check your knowledge
+A escala é horizontal
+
+---
+
+## Modelo mental
+
+Storage = fonte da verdade  
+Control Plane = camada de coordenação  
+Nodes = camada de execução distribuída  
+
+O Kubernetes não é uma única máquina, mas sim um sistema coordenado de múltiplas máquinas.
+
+---
+
+## Equívocos comuns
+
+- Achar que um único node executa tudo
+- Confundir nodes com componentes do Control Plane
+- Assumir que Pods são permanentes
+- Ignorar o papel do Storage na disponibilidade
+
+Entender esses conceitos facilita muito o troubleshooting.
+
+---
+
+## Próximo passo
+
+Se o Kubernetes é um sistema distribuído que depende de um estado compartilhado, surge uma pergunta:
+
+- Como esse estado é mantido consistente e acessado por todos os componentes?
+
+Para responder, vamos explorar o **Control Plane**.
+
+---
+
+## Verifique seu conhecimento
 
 <quiz>
-What is the primary data store used by Kubernetes?
-- [x] etcd
+Qual é o principal banco de dados utilizado pelo Kubernetes?
+- [x] Storage
 - [ ] MySQL
 - [ ] kubelet
-- [ ] Container runtime
+- [ ] container runtime
 </quiz>
 
 <quiz>
-Which distributed system principle ensures workloads run on multiple nodes?
-- [x] Replication
-- [ ] Serialization
-- [ ] Virtualization
-- [ ] Static allocation
+Qual é o papel do Storage no cluster?
+- [x] Armazenar o estado do cluster
+- [ ] Executar containers
+- [ ] Agendar Pods
+- [ ] Gerenciar rede
 </quiz>
 
 <quiz>
-Fill in the blank: Kubernetes stores cluster state in [[etcd]] to ensure [[high availability]].
+Se o Storage ficar indisponível, o que pode acontecer?
+- [x] O cluster pode parar de aceitar mudanças
+- [ ] Todos os Pods param imediatamente
+- [ ] Os nodes são desligados
+- [ ] O scheduler assume o controle total
 </quiz>
 
 <quiz>
-Which statements about Kubernetes nodes are true? (multiple correct)
-- [x] Nodes execute workloads
-- [x] Nodes report status to the control plane
-- [ ] Nodes store the desired cluster state
-- [ ] Nodes manage the API server
+Qual das opções descreve melhor um node?
+- [x] Máquina responsável por executar Pods
+- [ ] Componente que armazena estado do cluster
+- [ ] Responsável por agendar Pods
+- [ ] Responsável por expor a API
 </quiz>
 
 <quiz>
-How does Kubernetes demonstrate resilience?
-- [x] It recreates failed Pods automatically
-- [x] It redistributes workloads when nodes fail
-- [ ] It prevents all hardware failures
-- [ ] It eliminates the need for backups
+Quais são responsabilidades dos nodes? (múltiplas corretas)
+- [x] Executar workloads
+- [x] Reportar status ao Control Plane
+- [ ] Armazenar estado desejado
+- [ ] Gerenciar o API Server
 </quiz>
 
 <quiz>
-What enables Kubernetes to scale horizontally?
-- [x] Adding or removing nodes from the cluster
-- [ ] Increasing container image size
-- [ ] Restarting the API server
-- [ ] Disabling replication
+Qual princípio garante que workloads possam rodar em múltiplos nodes?
+- [x] Replicação
+- [ ] Serialização
+- [ ] Virtualização
+- [ ] Centralização
 </quiz>
 
 <quiz>
-True or false: In Kubernetes, all workloads run on a single master node.
-- [ ] True
-- [x] False
+O que significa escalabilidade horizontal?
+- [x] Adicionar ou remover nodes do cluster
+- [ ] Aumentar CPU de um node
+- [ ] Reiniciar containers
+- [ ] Reduzir número de Pods
+</quiz>
+
+<quiz>
+Como o Kubernetes demonstra resiliência?
+- [x] Recriando Pods com falha automaticamente
+- [x] Redistribuindo workloads quando necessário
+- [ ] Evitando qualquer falha de hardware
+- [ ] Eliminando necessidade de monitoramento
+</quiz>
+
+<quiz>
+Qual das opções melhor descreve descentralização no Kubernetes?
+- [x] Responsabilidades distribuídas entre múltiplos componentes
+- [ ] Um único node controla todo o cluster
+- [ ] Apenas o scheduler toma decisões
+- [ ] O kubelet gerencia todo o sistema
+</quiz>
+
+<quiz>
+Os nodes armazenam o estado desejado do cluster?
+- [ ] Sim
+- [x] Não
+</quiz>
+
+<quiz>
+Qual componente é considerado a fonte da verdade do cluster?
+- [x] Storage
+- [ ] kubelet
+- [ ] scheduler
+- [ ] container runtime
+</quiz>
+
+<quiz>
+Qual das opções melhor descreve o Kubernetes?
+- [x] Um sistema distribuído coordenado
+- [ ] Uma única máquina com containers
+- [ ] Um banco de dados distribuído
+- [ ] Um sistema operacional
+</quiz>
+
+<quiz>
+O que acontece quando um node falha?
+- [x] Workloads podem ser redistribuídos
+- [ ] O cluster inteiro para
+- [ ] O Storage é removido
+- [ ] O scheduler deixa de funcionar
+</quiz>
+
+<quiz>
+Qual é o papel do Control Plane em um sistema distribuído Kubernetes?
+- [x] Coordenar o estado e comportamento do cluster
+- [ ] Executar workloads diretamente
+- [ ] Armazenar logs
+- [ ] Gerenciar containers localmente
+</quiz>
+
+<quiz>
+Qual das opções NÃO é um benefício de sistemas distribuídos?
+- [ ] Alta disponibilidade
+- [ ] Escalabilidade
+- [ ] Resiliência
+- [x] Eliminação total de falhas
+</quiz>
+
+<quiz>
+Qual das afirmações é verdadeira sobre Pods em um sistema distribuído?
+- [x] Podem ser movidos ou recriados em diferentes nodes
+- [ ] Sempre rodam no mesmo node
+- [ ] Possuem IP fixo permanente
+- [ ] Nunca são recriados
+</quiz>
+
+<quiz>
+Por que sistemas distribuídos são necessários?
+- [x] Para lidar com escala e falhas
+- [ ] Para eliminar a necessidade de rede
+- [ ] Para rodar apenas uma aplicação
+- [ ] Para simplificar completamente o sistema
 </quiz>

@@ -1,58 +1,51 @@
-# Phase 1 - Kubernetes Fundamentals
+# Fase 1 - Fundamentos do Kubernetes
 
-This phase builds the **mental model of Kubernetes**, preparing you to understand how it deploys, scales, and connects workloads.
+Essa fase tem como objetivo construir o modelo mental do Kubernetes, um primeiro passo para compreender como funcionam deploys, escalabilidade e a comunicação entre workloads dentro de um cluster.
 
-Before learning YAML, kubectl commands, or real deployments, it is critical to grasp:
+Antes de aprender YAML, comandos `kubectl` ou executar deploys, é importante entender três pontos fundamentais:
 
-- **Why Kubernetes exists**
-- **What problems it solves**
-- **How it thinks and reacts**
+- **Por que o Kubernetes existe**
+- **Qual problema ele resolve**
+- **Como o Kubernetes "pensa" e reage às mudanças no sistema"**
 
-Skipping this step leads to misunderstandings later.
+Esses conceitos ajudam a entender como o cluster toma decisões automaticamente e mantém aplicações funcionando mesmo em ambientes dinâmicos.
 
-## What This Phase Covers
+## O que essa fase aborda
 
-- **Desired State vs Current State**  
-- **Reconciliation Loops**  
-- **Control Plane vs Data Plane**  
-- **Controllers and Control Theory**  
-- **Kubernetes as a Distributed System**  
-- **Why failures are expected, not exceptional**
+Nesta fase vamos explorar os fundamentos da arquitetura e do funcionamento do Kubernetes:
 
-## Why These Concepts Matter
+- **Por que o Kubernetes existe**
+- **Arquitetura geral do cluster**
+- **Control Plane**
+- **Data Plane (ou Worker Nodes)**
+- **Modelo declarativo**
+- **Loop de reconciliação**
 
-Containers are ephemeral, dynamic, and stateless. Kubernetes introduces **abstractions** to:
+Esses conceitos formam a base necessária para compreender como o Kubernetes gerencia aplicações distribuídas.
 
-- Ensure self-healing and high availability  
-- Maintain the desired number of workloads  
-- Provide stable networking  
-- Automate scaling and updates
+## Por que esses conceitos são importantes?
 
-Kubernetes continuously reconciles reality to your **declared desired state**, rather than executing sequential commands.
+Containers são **efêmeros, dinâmicos e frequentemente sem estado**. Em ambientes distribuídos, falhas são inevitáveis: processos podem encerrar inesperadamente, máquinas podem falhar e redes podem apresentar instabilidades.
 
-## How to Use This Phase
+O Kubernetes introduz abstrações que permitem lidar com esse cenário, como:
 
-1. Read each document in order  
-2. Take notes and rephrase concepts in your own words  
-3. Explain ideas aloud to solidify understanding  
-4. Observe how Kubernetes behaves in labs  
+- Self-healing e alta disponibilidade
+- Manutenção automática do número desejado de workloads
+- Rede estável entre aplicações
+- Automação de escala e atualizações
 
-The focus is **conceptual mastery**, not operational skills yet.
+Em vez de executar comandos sequenciais, o Kubernetes trabalha com um modelo diferente.
 
-## Documents in This Phase
+Você declara **qual deve ser o estado desejado do sistema**, e o cluster continuamente tenta fazer o estado real convergir para esse objetivo.
 
-1. **What Problem Kubernetes Solves** — why traditional deployments fail  
-2. **Control Plane vs Data Plane** — who decides vs who executes  
-3. **Reconciliation Loop** — how the system self-corrects  
-4. **Kubernetes as a Distributed System** — why failures, latency, and partial truths are normal  
-5. **Pods vs Containers** — the smallest schedulable unit  
-6. **Kubernetes Architecture Overview** — layered, modular design
+Esse processo contínuo é chamado de **reconciliação**.
 
-## Outcome
+Nesta fase, o foco é compreender **os conceitos fundamentais**, não ainda as habilidades operacionais.
 
-After this phase, you should be able to:
+## Resultado esperado
 
-- Explain Kubernetes **conceptually**, without mentioning Docker or YAML  
-- Reason about failures and self-healing  
-- Understand how controllers enforce desired state  
-- Prepare for hands-on deployment and networking concepts in Phase 2
+Ao final desta fase, você deverá ser capaz de:
+
+- Explicar o propósito do Kubernetes em um ambiente distribuído
+- Compreender como o cluster lida com falhas e recuperação automática
+- Entender como o sistema mantém continuamente o estado desejado das aplicações.

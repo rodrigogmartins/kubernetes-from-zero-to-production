@@ -7,3 +7,10 @@ Here, you will explore **core concepts, practical primitives, and networking pat
 Throughout the site, you will encounter **challenges and exercises** embedded in the topics. These are designed to test your understanding, encourage problem-solving, and prepare you for real-world scenarios.
 
 Dive in, follow the structured phases, and take your Kubernetes knowledge from foundational concepts to practical mastery.
+
+## Como consumir esse material
+
+1. Read each document in order  
+2. Take notes and rephrase concepts in your own words  
+3. Explain ideas aloud to solidify understanding  
+4. Observe how Kubernetes behaves in labs  
